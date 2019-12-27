@@ -17,6 +17,9 @@
   <a href="#" alt="React Native CLI Versión">
     <img src="https://img.shields.io/badge/react--native--cli-2.0.1-green" />
   </a>
+  <a href='https://coveralls.io/github/LexFTW/Proyecto-de-Sintesis?branch=master'>
+    <img src='https://coveralls.io/repos/github/LexFTW/Proyecto-de-Sintesis/badge.svg?branch=master' alt='Coverage Status' />
+  </a>
 </p>
 
 ### Tabla de Contenidos

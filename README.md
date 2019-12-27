@@ -1,173 +1,256 @@
 ---
-# React Native Router (v4.x) [![Backers on Open Collective](https://opencollective.com/react-native-router-flux/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/react-native-router-flux/sponsors/badge.svg)](#sponsors) [![Join the chat at https://gitter.im/aksonov/react-native-router-flux](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aksonov/react-native-router-flux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Codacy Badge](https://api.codacy.com/project/badge/grade/c6d869e2367a4fb491efc9de228c5ac6)](https://www.codacy.com/app/aksonov-github/react-native-router-flux) [![npm version](https://badge.fury.io/js/react-native-router-flux.svg)](http://badge.fury.io/js/react-native-router-flux) [![CircleCI](https://circleci.com/gh/aksonov/react-native-router-flux.svg?style=svg)](https://circleci.com/gh/aksonov/react-native-router-flux)
-
+<a href="https://github.com/badges/shields/graphs/contributors" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
 # Nombre del Proyecto
 
 ### Tabla de Contenidos
 En está sección podrás usarla como referencia de destino.
 
-- [![Descripción]](#description)
+- [Descripción](#description)
 - [Como utilizar](#how-to-use)
 - [Referencias](#references)
 
 ---
 
-[Follow author @PAksonov](https://twitter.com/PAksonov)
 
-`react-native-router-flux` is a different API over `react-navigation`. It helps users to define all the routes in one central place and navigate and communicate between different screens in an easy way. But it also means that `react-native-router-flux` inherits all [limitations](https://reactnavigation.org/docs/en/limitations.html) and changes from updated versions.
+<p align="center">
+    <img src="https://raw.githubusercontent.com/badges/shields/master/frontend/images/logo.svg?sanitize=true"
+        height="130">
+</p>
+<p align="center">
+    <a href="https://github.com/badges/shields/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
+    <a href="#backers" alt="Backers on Open Collective">
+        <img src="https://img.shields.io/opencollective/backers/shields" /></a>
+    <a href="#sponsors" alt="Sponsors on Open Collective">
+        <img src="https://img.shields.io/opencollective/sponsors/shields" /></a>
+    <a href="https://github.com/badges/shields/pulse" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
+    <a href="https://circleci.com/gh/badges/shields/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
+    <a href="https://circleci.com/gh/badges/daily-tests">
+        <img src="https://img.shields.io/circleci/project/github/badges/daily-tests?label=service%20tests"
+            alt="service-test status"></a>
+    <a href="https://coveralls.io/github/badges/shields">
+        <img src="https://img.shields.io/coveralls/github/badges/shields"
+            alt="coverage"></a>
+    <a href="https://lgtm.com/projects/g/badges/shields/alerts/">
+        <img src="https://img.shields.io/lgtm/alerts/g/badges/shields"
+            alt="Total alerts"/></a>
+    <a href="https://github.com/badges/shields/compare/gh-pages...master">
+        <img src="https://img.shields.io/github/commits-since/badges/shields/gh-pages?label=commits%20to%20be%20deployed"
+            alt="commits to be deployed"></a>
+    <a href="https://discord.gg/HjJCwm5">
+        <img src="https://img.shields.io/discord/308323056592486420?logo=discord"
+            alt="chat on Discord"></a>
+    <a href="https://twitter.com/intent/follow?screen_name=shields_io">
+        <img src="https://img.shields.io/twitter/follow/shields_io?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
+</p>
 
-### IMPORTANT NOTES
+This is home to [Shields.io][shields.io], a service for concise, consistent,
+and legible badges in SVG and raster format, which can easily be included in
+GitHub readmes or any other web page. The service supports dozens of
+continuous integration services, package registries, distributions, app
+stores, social networks, code coverage services, and code analysis services.
+Every month it serves over 470 million images.
 
-#### v4.2.0-beta.x is based on [React Navigation v4.x](https://reactnavigation.org/)
+This repo hosts:
 
-#### v4.1.0-beta.x is based on [React Navigation v3.x](https://reactnavigation.org/docs/en/3.x/getting-started.html)
+- The [Shields.io][shields.io] frontend and server code
+- An [NPM library for generating badges][gh-badges]
+  - [documentation][gh-badges-docs]
+  - [changelog][gh-badges-changelog]
+- The [badge design specification][badge-spec]
 
-#### v4.0.x is based on [React Navigation v2.x]. See [this branch](https://github.com/aksonov/react-native-router-flux/tree/v3) and [docs](https://github.com/aksonov/react-native-router-flux/blob/master/README3.md) for v3 based on deprecated React Native Experimental Navigation API. It is not supported and may not work with latest React Native versions.
+[shields.io]: https://shields.io/
+[gh-badges]: https://www.npmjs.com/package/gh-badges
+[badge-spec]: https://github.com/badges/shields/tree/master/spec
+[gh-badges-docs]: https://github.com/badges/shields/tree/master/gh-badges/README.md
+[gh-badges-changelog]: https://github.com/badges/shields/tree/master/gh-badges/CHANGELOG.md
 
-#### v4.0.0-beta.x is based on [React Navigation v1.5.x](https://reactnavigation.org/). See [this branch](https://github.com/aksonov/react-native-router-flux/tree/v4.0.0-beta) for this version. It is also not supported and may not work with the latest React Native versions.
+## Examples
 
----
+- code coverage percentage: ![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
+- stable release version: ![version](https://img.shields.io/badge/version-1.2.3-blue)
+- package manager release: ![gem](https://img.shields.io/badge/gem-2.2.0-blue)
+- status of third-party dependencies: ![dependencies](https://img.shields.io/badge/dependencies-out%20of%20date-orange)
+- static code analysis grade: ![codacy](https://img.shields.io/badge/codacy-B-green)
+- [SemVer](https://semver.org/) version observance: ![semver](https://img.shields.io/badge/semver-2.0.0-blue)
+- amount of [Liberapay](https://liberapay.com/) donations per week: ![receives](https://img.shields.io/badge/receives-2.00%20USD%2Fweek-yellow)
+- Python package downloads: ![downloads](https://img.shields.io/badge/downloads-13k%2Fmonth-brightgreen)
+- Chrome Web Store extension rating: ![rating](https://img.shields.io/badge/rating-★★★★☆-brightgreen)
+- [Uptime Robot](https://uptimerobot.com) percentage: ![uptime](https://img.shields.io/badge/uptime-100%25-brightgreen)
 
-- [Examples](#try-the-example-apps)
-- [Motivation](https://gist.github.com/aksonov/e2d7454421e44b1c4c72214d14053410)
-- [v4 Features](#v4-features)
-- [API](/docs/API.md)
-- [Migrating from v3](/docs/MIGRATION.md)
-- [Sponsors/Backers/Contributors](#contributors)
+[Make your own badges!][custom badges]
+(Quick example: `https://img.shields.io/badge/left-right-f39f37`)
 
-## Getting Started
+Browse a [complete list of badges][shields.io].
 
-1. Install native dependencies used by React Native Router (https://reactnavigation.org/docs/en/getting-started.html)
-2. Install this component
+[custom badges]: http://shields.io/#your-badge
 
-```
-yarn add react-native-router-flux
-```
+## Contributing
 
-## Usage
+Shields is a community project. We invite your participation through issues
+and pull requests! You can peruse the [contributing guidelines][contributing].
 
-Define all your routes in one React component...
+When adding or changing a service [please add tests][service-tests].
 
-```js
-const App = () => (
-  <Router>
-    <Stack key="root">
-      <Scene key="login" component={Login} title="Login" />
-      <Scene key="register" component={Register} title="Register" />
-      <Scene key="home" component={Home} />
-    </Stack>
-  </Router>
-);
-```
+This project has quite a backlog of suggestions! If you're new to the project,
+maybe you'd like to open a pull request to address one of them:
 
-...and navigate from one scene to another scene with a simple and powerful API.
+[![GitHub issues by-label](https://img.shields.io/github/issues/badges/shields/good%20first%20issue)](https://github.com/badges/shields/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 
-```js
-// Login.js
+You can read a [tutorial on how to add a badge][tutorial].
 
-// navigate to 'home' as defined in your top-level router
-Actions.home(PARAMS);
+[service-tests]: https://github.com/badges/shields/blob/master/doc/service-tests.md
+[tutorial]: doc/TUTORIAL.md
+[contributing]: CONTRIBUTING.md
 
-// go back (i.e. pop the current screen off the nav stack)
-Actions.pop();
+## Development
 
-// refresh the current Scene with the specified props
-Actions.refresh({ param1: 'hello', param2: 'world' });
-```
+1. Install Node 8 or later. You can use the [package manager][] of your choice.
+   Tests need to pass in Node 8 and 10.
+2. Clone this repository.
+3. Run `npm ci` to install the dependencies.
+4. Run `npm start` to start the badge server and the frontend dev server.
+5. Open `http://localhost:3000/` to view the frontend.
 
-## API
+When server source files change, the badge server should automatically restart
+itself (using [nodemon][]). When the frontend files change, the frontend dev
+server (`gatsby dev`) should also automatically reload. However the badge
+definitions are built only before the server first starts. To regenerate those,
+either run `npm run defs` or manually restart the server.
 
-For a full listing of the API, [view the API docs](https://github.com/aksonov/react-native-router-flux/blob/master/docs/API.md).
+To debug a badge from the command line, run `npm run badge -- /npm/v/nock`.
+It also works with full URLs like
+`npm run badge -- https://img.shields.io/npm/v/nock`.
 
-## Try the [example apps](https://github.com/aksonov/react-native-router-flux/tree/master/examples)
+Use `npm run debug:server` to start server in debug mode.
+[This recipe][nodemon debug] shows how to debug Node.js application in [VS Code][].
 
-![rnrf](https://user-images.githubusercontent.com/3681859/27937441-ef61d932-626b-11e7-885f-1db7dc74b32e.gif)
+Shields has experimental support for [Gitpod][gitpod], a pre-configured development
+environment that runs in your browser. To use Gitpod, click the button below and
+sign in with GitHub. Gitpod also offers a browser add-on, though it is not required.
+Please report any Gitpod bugs, questions, or suggestions in issue
+[#2772](https://github.com/badges/shields/issues/2772).
 
-```bash
-# Get the code
-git clone https://github.com/aksonov/react-native-router-flux.git
-cd react-native-router-flux/examples/[expo|react-native|redux]
+[![Edit with Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/badges/shields)
 
-# Installing dependencies
-yarn
+[Snapshot tests][] ensure we don't inadvertently make changes that affect the
+SVG or JSON output. When deliberately changing the output, run
+`SNAPSHOT_DRY=1 npm run test:js:server` to preview changes to the saved
+snapshots, and `SNAPSHOT_UPDATE=1 npm run test:js:server` to update them.
 
-# Run it
-yarn start
-```
+The server can be configured to use [Sentry][] ([configuration][sentry configuration]) and [Prometheus][] ([configuration][prometheus configuration]).
 
-## v4 Features
+Daily tests, including a full run of the service tests and overall code coverage, are run via [badges/daily-tests][daily-tests].
 
-- Based on latest [React Navigation](https://reactnavigation.org) API
-- Separate navigation logic from presentation. You may now change navigation state directly from your business logic code - stores/reducers/etc. navigationStore
-- Built-in state machine (v3 `Switch` replacement)
-  - Each `Scene` with `component` defined can have `onEnter`/`onExit`/`on` handlers.
-  - `onEnter`/`on` handler can be async.
-  - For 'truthy' return of `onEnter`/`on`, `success` handler (if defined) will be executed
-    - if `success` is a string then router will navigate to the `Scene` with that key
-  - in case of handler's failure, `failure` prop (if defined) will be run.
-  - Combining `onEnter`, `onExit`, `success`, and `failure` makes patterns like authentication, data validation, and conditional transitions simple and intuitive.
-- [MobX](https://mobx.js.org/)-friendly: all scenes are wrapped with `observer`. You may subscribe to `navigationStore` (`Actions` in v3) and observe current navigation state. Not applicable to Redux.
-- Flexible Nav bar customization, currently not allowed by React Navigation:
-  https://github.com/react-community/react-navigation/issues/779
-- Drawer support (provided by React Navigation)
-- Inheritance of scene attributes allow you to avoid any code/attribute duplications. Adding `rightTitle` to a scene will apply to all child scenes simultaneously. See example app.
-- Access to your app navigations state as simple as `Actions.state`.
-- Use `Actions.currentScene` to get name of current scene.
+[package manager]: https://nodejs.org/en/download/package-manager/
+[gitpod]: https://www.gitpod.io/
+[snapshot tests]: https://glebbahmutov.com/blog/snapshot-testing/
+[prometheus]: https://prometheus.io/
+[prometheus configuration]: doc/self-hosting.md#prometheus
+[sentry]: https://sentry.io/
+[sentry configuration]: doc/self-hosting.md#sentry
+[daily-tests]: https://github.com/badges/daily-tests
+[nodemon]: https://nodemon.io/
+[nodemon debug]: https://github.com/Microsoft/vscode-recipes/tree/master/nodemon
+[vs code]: https://code.visualstudio.com/
 
-### Helpful tips if you run into some gotchas
+## Hosting your own server
 
-## Using Static on Methods with HOCs
+There is documentation about [hosting your own server][self-hosting].
 
-- This is just a helpful tip for anyone who use the onExit/onEnter methods as a static method in their Component Class. Please refer to this link https://reactjs.org/docs/higher-order-components.html.
+[self-hosting]: doc/self-hosting.md
 
-- If your Scene Components are Wrapped in Custom HOCs/ Decorators, then the static onExit/onEnter methods will not work as your Custom HOCs will not copy the static methods over to your Enhanced Component.Use the npm package called hoist-non-react-statics to copy your Component level static methods over to your Enhanced Component.
+## History
 
-## Implement onBack from your Scene after declaring it
+b.adge.me was the original website for this service. Heroku back then had a
+thing which made it hard to use a toplevel domain with it, hence the odd
+domain. It used code developed in 2013 from a library called
+[gh-badges][old-gh-badges], both developed by [Thaddée Tyl][espadrine].
+The project merged with shields.io by making it use the b.adge.me code
+and closed b.adge.me.
 
-- If you have a Scene where in you want to make some changes to your Component State when Back button is pressed, then doing this
+The original badge specification was developed in 2013 by
+[Olivier Lacan][olivierlacan]. It was inspired by the Travis CI and similar
+badges (there were a lot fewer, back then). In 2014 Thaddée Tyl redesigned
+it with help from a Travis CI employee and convinced everyone to switch to
+it. The old design is what today is called the plastic style; the new one
+is the flat style.
 
-```js
-<Scene key={...} component={...} onBack={()=>{/*code*/}}/>
-```
+You can read more about [the project's inception][thread],
+[the motivation of the SVG badge specification][motivation], and
+[the specification itself][spec].
 
-will not help.
+[olivierlacan]: https://github.com/olivierlacan
+[espadrine]: https://github.com/espadrine
+[old-gh-badges]: https://github.com/badges/gh-badges
+[motivation]: spec/motivation.md
+[spec]: spec/SPECIFICATION.md
+[thread]: https://github.com/h5bp/lazyweb-requests/issues/150
 
-```js
-<Scene key={...} component={...} onBack={()=>{/*code*/}} back={true}/>
-```
+## Project leaders
 
-Make sure back = true is passed to your scene, now in your Component's lifecycle add this
+Maintainers:
 
-```js
-componentDidMount(){
-    InteractionManager.runAfterInteractions(()=> {
-        Actions.refresh({onBack:()=>this.changeSomethingInYourComponent()})
-    })
-}
-```
+- [calebcartwright](https://github.com/calebcartwright) (core team)
+- [chris48s](https://github.com/chris48s) (core team)
+- [Daniel15](https://github.com/Daniel15) (core team)
+- [espadrine](https://github.com/espadrine) (core team)
+- [paulmelnikow](https://github.com/paulmelnikow) (core team)
+- [platan](https://github.com/platan) (core team)
+- [PyvesB](https://github.com/PyvesB) (core team)
+- [RedSparr0w](https://github.com/RedSparr0w) (core team)
+
+Operations:
+
+- [espadrine](https://github.com/espadrine) (sysadmin)
+- [paulmelnikow](https://github.com/paulmelnikow) (limited access)
+
+Alumni:
+
+- [olivierlacan](https://github.com/olivierlacan)
+
+## Related projects
+
+- [badgerbadgerbadger gem][gem]
+- [pybadges python library][pybadges]
+
+[gem]: https://github.com/badges/badgerbadgerbadger
+[pybadges]: https://github.com/google/pybadges
+
+## License
+
+All assets and code are under the [CC0 LICENSE](LICENSE) and in the public
+domain unless specified otherwise.
+
+The assets in `logo/` are trademarks of their respective companies and are
+under their terms and license.
 
 ## Contributors
 
-This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="https://github.com/aksonov/react-native-router-flux/graphs/contributors"><img src="https://opencollective.com/react-native-router-flux/contributors.svg?width=890" /></a>
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/badges/shields/graphs/contributors"><img src="https://opencollective.com/shields/contributors.svg?width=890" /></a>
 
 ## Backers
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/react-native-router-flux#backer)]
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/shields#backer)]
 
-<a href="https://opencollective.com/react-native-router-flux#backers" target="_blank"><img src="https://opencollective.com/react-native-router-flux/backers.svg?width=890"></a>
+<a href="https://opencollective.com/shields#backers" target="_blank"><img src="https://opencollective.com/shields/backers.svg?width=890"></a>
 
 ## Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/react-native-router-flux#sponsor)]
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/shields#sponsor)]
 
-<a href="https://opencollective.com/react-native-router-flux/sponsor/0/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/1/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/2/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/3/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/4/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/5/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/6/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/7/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/8/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/9/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/0/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/1/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/2/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/3/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/4/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/5/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/6/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/7/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/8/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/shields/sponsor/9/website" target="_blank"><img src="https://opencollective.com/shields/sponsor/9/avatar.svg"></a>

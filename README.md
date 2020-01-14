@@ -26,6 +26,7 @@
 En está sección podrás usarla como referencia de destino.
 
 - [Descripción](#description)
+- [Objetivos](#goals)
 - [Como utilizar](#how-to-use)
 - [Referencias](#references)
 

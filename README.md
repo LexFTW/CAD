@@ -56,11 +56,15 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 ## Objetivos
 [ ] Módulo de Login con Google Account.
 > Este módulo permitirá acceder al aplicación con una cuenta de Google.
+
 [ ] Módulo de MultiPerfil.
 > Este módulo permitirá a un usuario tener más de un perfil para gestionar a diferentes personas. Este módulo será muy útil para familias que tengan a más de una persona diabetica.
+
 [ ] Módulo de Lectura por NFC.
 > Este módulo gestionará la lectura de la parte *hardware* y obtendrá la información del nivel de glucosa.
+
 [ ] Módulo de Estadistica e Historial.
 > Este módulo servirá para poder tener un control e historial de los niveles de glucosa.
+
 [ ] Módulo de Automatización y configuración de reglas.
 

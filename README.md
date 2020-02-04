@@ -22,12 +22,36 @@
   </a>
 </p>
 
-### Tabla de Contenidos
+## Tabla de Contenidos
 En está sección podrás usarla como referencia de destino.
 
 - [Descripción](#description)
+- [Herramientas](#tools)
 - [Objetivos](#goals)
 - [Como utilizar](#how-to-use)
 - [Referencias](#references)
 
 ---
+
+## Descripción
+CAD (Control y Automatización de la Diabetes) es un proyecto que busca establecer un sistema que permita al usuario tener un control más exacto y automatico sobre su nivel de glucosa en sangre en el día a día. En este proyecto constará la parte de *software*, la idea es que en un futuro añadir la parte *hardware* donde a partir de la configuración establecida y una serie de reglas establecidas por el usuario, el *hardware* permita regular la glucosa automaticamente.
+
+---
+
+## Herramientas
+- Lenguaje de Programación: React Nativo.
+- Base de datos NoSQL: Firebase.
+- API/s y Framework/s: 
+  - Expo CLI.
+	- NFC Manage.
+	- Chart Kit.
+	- Firebase Mailing / SMS.
+- Tarjetas de NFC.
+
+- Opcionales:
+	- Login con Huella de Dactilar SHA1.
+
+---
+
+
+

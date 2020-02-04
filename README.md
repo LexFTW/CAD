@@ -49,7 +49,7 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 - Tarjetas de NFC.
 
 - Opcionales:
-	- Login con Huella de Dactilar SHA1.
+	- Login con Huella Dactilar SHA1.
 
 ---
 
@@ -67,4 +67,4 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 > Este módulo servirá para poder tener un control e historial de los niveles de glucosa.
 
 - [ ] Módulo de Automatización y configuración de reglas.
-
+> Este módulo consiste en una serie de configuraciones y reglas establecidas por el propio usuario con la finalidad de que la aplicación pueda, a partir del dato leído por NFC, indicar que cantidad de insulina se debe de añadir la persona.

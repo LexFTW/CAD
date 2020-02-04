@@ -1,5 +1,5 @@
 ---
-# Nombre del Proyecto
+# Control y Automatización de la Diabetes (CAD)
 
 <p align="center">
   <a href="https://travis-ci.com/LexFTW/Proyecto-de-Sintesis" alt="Build">

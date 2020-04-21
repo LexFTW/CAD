@@ -1,5 +1,6 @@
 ---
 # Control y Automatización de la Diabetes (CAD)
+<img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.png" />
 
 <p align="center">
   <a href="https://travis-ci.com/LexFTW/Proyecto-de-Sintesis" alt="Build">

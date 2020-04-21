@@ -31,7 +31,10 @@ En está sección podrás usarla como referencia de destino.
 - [Objetivos](#objetivos)
 - [Como utilizar](#how-to-use)
 - [Referencias](#references)
-
+<a href='https://github.com/LexFTW/CAD/blob/master/Guia%20para%20crear-iniciar%20proyecto%20React%20Nativo.txt'>
+    - [Guia crear/iniciar]
+  </a>
+  
 ---
 
 ## Descripción

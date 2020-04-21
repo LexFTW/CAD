@@ -31,9 +31,8 @@ En está sección podrás usarla como referencia de destino.
 - [Objetivos](#objetivos)
 - [Como utilizar](#how-to-use)
 - [Referencias](#references)
-<a href='https://github.com/LexFTW/CAD/blob/master/Guia%20para%20crear-iniciar%20proyecto%20React%20Nativo.txt'>
-    - [Guia crear/iniciar]
-  </a>
+- [Wireframes](#references)
+- [Wiki](#wiki)
   
 ---
 
@@ -74,3 +73,6 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 
 - [ ] Módulo de Automatización y configuración de reglas.
 > Este módulo consiste en una serie de configuraciones y reglas establecidas por el propio usuario con la finalidad de que la aplicación pueda, a partir del dato leído por NFC, indicar que cantidad de insulina se debe de añadir la persona.
+
+## Wiki
+<a href='https://github.com/LexFTW/CAD/blob/master/Guia%20para%20crear-iniciar%20proyecto%20React%20Nativo.txt'>Guia crear/iniciar</a>

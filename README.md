@@ -52,6 +52,8 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 	- Login con Huella Dactilar SHA1.
 
 ---
+## Wireframes
+<img src="https://github.com/LexFTW/CAD/blob/master/images/Wireframe.png" />
 
 ## Objetivos
 - [ ] Módulo de Login con Google Account.

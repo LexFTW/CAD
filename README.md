@@ -1,7 +1,6 @@
-<p align="center>
 ---
 # Control y Automatización de la Diabetes (CAD)
-<img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.svg" width="10%">
+<p align="center><img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.svg" width="10%"></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/npm-6.4.1-blue" />
@@ -65,4 +64,3 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 
 ## Wiki
 <a href='https://github.com/LexFTW/CAD/blob/master/Guia%20para%20crear-iniciar%20proyecto%20React%20Nativo.txt'>Guia crear/iniciar</a>
-</p>

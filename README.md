@@ -1,6 +1,8 @@
----
 # Control y Automatización de la Diabetes (CAD)
-<p align="center><img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.svg" width="10%"></p>
+
+<p align="center>
+  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.svg" width="10%" />
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/npm-6.4.1-blue" />

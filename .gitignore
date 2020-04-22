@@ -1,14 +1,27 @@
-node_modules/**/*
-.expo/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-web-report/
+# OS X
+.DS_Store*
+Icon?
+._*
 
-# macOS
-.DS_Store
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+
+# npm
+node_modules
+package-lock.json
+*.log
+*.gz
+
+
+# Coveralls
+coverage
+
+# Benchmarking
+benchmarks/graphs

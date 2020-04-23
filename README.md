@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.png" width="450">
+  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.jpg" width="450">
 </p>
 
 <p align="center">

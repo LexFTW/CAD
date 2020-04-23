@@ -12,7 +12,6 @@
 </p>
 
 ## Tabla de Contenidos
-En está sección podrás usarla como referencia de destino.
 
 - [Descripción](#descripción)
 - [Herramientas](#herramientas)
@@ -30,17 +29,12 @@ CAD (Control y Automatización de la Diabetes) es un proyecto que busca establec
 ---
 
 ## Herramientas
-- Lenguaje de Programación: React Nativo.
-- Base de datos NoSQL: Firebase.
-- API/s y Framework/s: 
-  - Expo CLI.
-	- NFC Manage.
-	- Chart Kit.
-	- Firebase Mailing / SMS.
-- Tarjetas de NFC.
 
-- Opcionales:
-	- Login con Huella Dactilar SHA1.
+<a href="https://reactjs.org/" target="_blank">ReactJS</a>
+<a href="https://expo.io/"> target="_blank">Expo CLI</a>
+<a href="https://firebase.google.com/" target="_blank">Firebase</a>
+<a href="https://www.npmjs.com/package/react-native-chart-kit" target="_blank">Chart Kit</a>
+<a href="https://jestjs.io/" target="_blank">Jest</a>
 
 ---
 ## Wireframes

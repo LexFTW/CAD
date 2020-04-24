@@ -1,4 +1,5 @@
 const Resources = {
+  DEMO_HOME: 'Pantalla de Inicio',
   LOGIN_EMAIL: 'Correo Electrónico',
   LOGIN_PASSWORD: 'Contraseña',
   LOGIN_SIGNIN: 'Iniciar Sesión',

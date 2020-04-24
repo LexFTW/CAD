@@ -1,27 +1,61 @@
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
+import * as WebBrowser from 'expo-web-browser';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button, SafeAreaView, StatusBar } from 'react-native';
-import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-appearance';
-import { ScrollView } from 'react-native-gesture-handler';
+import Resources from './../config/resources/resources';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import ReaderScreen from '../screens/ReaderScreen';
+import UserScreen from '../screens/UserScreen';
+import TabBarIconFoundation from '../components/TabBarIconFoundation';
+import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
+import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
-import { MonoText } from '../components/StyledText';
+const Tab = createBottomTabNavigator();
 
-export default function HomeScreen() {
-  const colorScheme = useColorScheme();
+export default class HomeScreen extends React.Component {
 
-  const themeStatusBarStyle = colorScheme === 'light' ? 'light-content' : 'dark-content';
-  const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle = colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
+  render(){
+    return (
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
+              if (route.name === 'Home') {
+                iconName = focused
+                  ? 'ios-information-circle'
+                  : 'ios-information-circle-outline';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
+              }
 
-  return (
-    <SafeAreaView style={[styles.container, themeContainerStyle]}>
-      <StatusBar barStyle={themeStatusBarStyle} />
-      <Text style={[styles.text, themeTextStyle]}>
-        Color scheme: {colorScheme}
-      </Text>
-    </SafeAreaView>
-  );
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'white',
+            inactiveTintColor: '#ccc',
+          }}
+        >
+          <Tab.Screen
+            name="Reader"
+            component={ReaderScreen}
+            options={{
+              tabBarIcon: ({ focused }) => <TabBarIconIonicons focused={focused} name="md-wifi" />,
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={UserScreen}
+            options={{
+              tabBarIcon: ({ focused }) => <TabBarIconFontAwesome size={24} focused={focused} name="user" />,
+            }}
+          />
+        </Tab.Navigator>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -29,17 +63,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  lightContainer: {
-    backgroundColor: '#eeeeee',
-  },
-  darkContainer: {
-    backgroundColor: '#242C40',
-  },
-  lightThemeText: {
-    color: '#242C40',
-  },
-  darkThemeText: {
-    color: '#D0D0C0',
   },
 });

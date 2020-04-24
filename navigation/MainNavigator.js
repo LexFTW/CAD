@@ -6,7 +6,7 @@ import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
 import LoginScreen from '../screens/LoginScreen';
-import ReaderScreen from '../screens/ReaderScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = 'Login';
@@ -25,7 +25,7 @@ export default function MainNavigator({ navigation, route }) {
         }}
       >
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Reader" component={ReaderScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
   );
 }

@@ -56,18 +56,18 @@ export default class LoginScreen extends Component {
   }
 
   onLoginSuccess() {
-    this.props.navigation.navigate('Reader')
+    this.props.navigation.navigate('Home')
   }
 
   renderCurrentState(){
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.props.navigation.navigate('Reader');
+          this.props.navigation.navigate('Home');
         }
      });
 
     if(this.state.auth){
-        this.props.navigation.navigate('Reader');
+        this.props.navigation.navigate('Home');
     }
 
     return <View>

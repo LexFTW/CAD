@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import firebase from '../config/firebase';
 import * as GoogleSignIn from 'expo-google-sign-in'
+import * as Facebook from 'expo-facebook';
 
 import TextInputIcon from '../components/TextInputIcon';
 import Separator from '../components/Separator';
@@ -14,6 +15,7 @@ import Resources from './../config/resources/resources';
 const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
+
   constructor(props){
     super(props);
     this.state = {email: 'test@test.com', password: 'Asdqwe123', error: '', auth: false }
@@ -33,6 +35,30 @@ export default class LoginScreen extends Component {
               this.onLoginFailure.bind(this)(errorMessage);
           }
       });
+  }
+
+  async signInWithFacebook() {
+    try {
+    await Facebook.initializeAsync('666200950884855');
+    const {
+      type,
+      token,
+      expires,
+      permissions,
+      declinedPermissions,
+    } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ['public_profile'],
+    });
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+      Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+    } else {
+      // type === 'cancel'
+    }
+  } catch ({ message }) {
+    alert(`Facebook Login Error: ${message}`);
+  }
   }
 
   async signInWithGoogle() {
@@ -101,10 +127,18 @@ export default class LoginScreen extends Component {
       <Button
         icon="google"
         mode="contained"
-        style={{backgroundColor: '#DB4437', borderRadius: 0}}
+        style={{backgroundColor: '#DB4437', borderRadius: 0, marginBottom: 5}}
         onPress={() => this.signInWithGoogle()}
         >
           {Resources.LOGIN_SIGNIN_GOOGLE}
+      </Button>
+      <Button
+        icon="facebook"
+        mode="contained"
+        style={{backgroundColor: '#3b5998', borderRadius: 0}}
+        onPress={() => this.signInWithFacebook()}
+        >
+          {Resources.LOGIN_SIGNIN_FACEBOOK}
       </Button>
       <Separator />
       <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}>

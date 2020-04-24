@@ -12,6 +12,7 @@ import useLinking from './navigation/useLinking';
 const Stack = createStackNavigator();
 
 export default function App(props) {
+
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const containerRef = React.useRef();
@@ -31,6 +32,7 @@ export default function App(props) {
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         });
+
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);

@@ -18,25 +18,9 @@ export default class HomeScreen extends React.Component {
   render(){
     return (
         <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === 'Home') {
-                iconName = focused
-                  ? 'ios-information-circle'
-                  : 'ios-information-circle-outline';
-              } else if (route.name === 'Settings') {
-                iconName = focused ? 'ios-list-box' : 'ios-list';
-              }
-
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-          })}
           tabBarOptions={{
             activeTintColor: 'white',
-            inactiveTintColor: '#ccc',
+            inactiveTintColor: '#72a2d3',
           }}
         >
           <Tab.Screen

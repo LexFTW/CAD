@@ -1,4 +1,4 @@
-## DCA (Diabetes Control and Automation) <img src="https://img.shields.io/badge/npm-6.4.1-blue" /><img src="https://img.shields.io/badge/react_native-0.61.4-green" /><img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
+## DCA (Diabetes Control and Automation) <img src="https://img.shields.io/badge/npm-6.4.1-blue" /> <img src="https://img.shields.io/badge/react_native-0.61.4-green" /> <img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
 
 DCA (Control and Automation of Diabetes) is a project that seeks to establish a system that allows the user to have more accurate and automated control over his blood glucose level in his day to day.
 

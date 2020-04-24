@@ -27,3 +27,15 @@ npm install
 ```
 
 This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
+
+## Deployment
+
+## Built With
+* [ReactJS](https://reactjs.org/) - The web framework used
+* [ExpoCLI](https://expo.io/) - The web framework used for a compiler the app in Android, IPhone and Web.
+* [JestJS](https://jestjs.io/) - The framework for unit test and mock.
+* [Firebase](https://firebase.google.com/) - The host for the app.
+
+## Authors
+* Alexis Mengual Vázquez
+* David Usón

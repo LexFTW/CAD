@@ -48,6 +48,7 @@ En este proyecto constará la parte de *software*, la idea es que en un futuro a
 - [x] Módulo de *Multilanguages*
 > Conseguir que la aplicación sea multilenguaje, dependiendo del idioma del OS.
 - Idiomas Disponibles:
+  - ca_ES
   - es_ES
   - en_US
 

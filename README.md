@@ -29,6 +29,15 @@ npm install
 This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
 
 ## Deployment
+For deploy the app in Android, iOS or Web, from the terminal pointing to the root directory of the project, you will execute this statement.
+
+```
+expo start
+```
+
+Once executed, a window will open in your default browser and you can select in which System you want to run the application.
+
+*To do it from Android or iOS, you will need to have the Expo app installed on your mobile or have an emulator on your computer*
 
 ## Built With
 * [ReactJS](https://reactjs.org/) - The web framework used

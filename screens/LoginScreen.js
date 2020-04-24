@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
 import { Button, ActivityIndicator, Colors } from 'react-native-paper';
 
+import { createStackNavigator } from '@react-navigation/stack';
+
 import firebase from 'firebase';
 import firebaseConfig from '../config/firebase';
+import * as GoogleSignIn from 'expo-google-sign-in'
 
 import TextInputIcon from '../components/TextInputIcon';
 import Separator from '../components/Separator';
 import Resources from './../config/resources/resources';
 
 firebase.initializeApp(firebaseConfig);
+
+const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
   constructor(props){
@@ -33,20 +38,35 @@ export default class LoginScreen extends Component {
       });
   }
 
+  async signInWithGoogle() {
+    try {
+      await GoogleSignIn.askForPlayServicesAsync();
+      const { type, user } = await GoogleSignIn.signInAsync();
+      const data = await GoogleSignIn.GoogleAuthentication.prototype.toJSON();
+      if (type === 'success') {
+        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
+        const googleProfileData = await firebase.auth().signInWithCredential(credential);
+        this.onLoginSuccess.bind(this);
+      }
+    } catch ({ message }) {
+      alert('login: Error:' + message);
+    }
+  }
+
   onLoginFailure(errorMessage) {
     this.setState({ error: errorMessage, auth: false });
   }
 
   onLoginSuccess() {
-    this.props.navigation.navigate('HomeScreen');
+    this.props.navigation.navigate('Reader')
   }
 
   renderCurrentState(){
     if(this.state.auth){
-        return <View>
-          <ActivityIndicator size={90} color={Colors.blue800}/>
-        </View>
+        this.props.navigation.navigate('Reader');
     }
+
     return <View>
       <Image source={require('../assets/images/CAD_Logo.png')} style={{width: 250, height: 200, marginBottom: 15}} />
       <TextInputIcon
@@ -75,8 +95,13 @@ export default class LoginScreen extends Component {
       >
         {Resources.LOGIN_SIGNIN}
       </Button>
-      <Button icon="google" mode="contained" style={{backgroundColor: '#DB4437', borderRadius: 0}}>
-        {Resources.LOGIN_SIGNIN_GOOGLE}
+      <Button
+        icon="google"
+        mode="contained"
+        style={{backgroundColor: '#DB4437', borderRadius: 0}}
+        onPress={() => this.signInWithGoogle()}
+        >
+          {Resources.LOGIN_SIGNIN_GOOGLE}
       </Button>
       <Separator />
       <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}>

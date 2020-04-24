@@ -22,8 +22,8 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
-        name="Login"
-        component={LoginScreen}
+        name="Home"
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabBarIconFoundation focused={focused} name="graph-pie" />,
         }}

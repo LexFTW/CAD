@@ -4,37 +4,42 @@ import {
   View,
   TextInput,
   Platform,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
+import { Button, Colors } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 const styles = StyleSheet.create({
   input: {
-    ...Platform.select({
-      android: {
-        width: 250,
-      },
-      web: {
-        width: screenWidth * .25,
-      }
-    }),
+    width: 285,
     height: 40,
     fontSize: 16,
     marginBottom: 10,
     padding: 10,
+    borderWidth: 1.5,
+    borderColor: '#2069b2',
     paddingLeft: 40,
     backgroundColor: 'rgba(178, 178, 178, 0.2)',
-    fontFamily: 'nunito-light',
-    color: 'gray'
+    color: 'gray',
   },
 
   inputIcon: {
     position: 'absolute',
     top: 5,
     left: 12,
-    color: 'rgba(178, 178, 178, 0.5)',
+    color: '#2069b2',
+  },
+  inputIconRight: {
+    position: 'absolute',
+    top: 1.5,
+    right: 0,
+    color: '#fff',
+    backgroundColor: '#2069b2',
+    borderRadius: 0,
+    justifyContent: 'center',
   },
 })
 
@@ -46,6 +51,24 @@ export default class TextInputIcon extends Component{
     this.placeholder = props.placeholder;
     this.textContentType = props.textContentType;
     this.secureTextEntry = props.secureTextEntry;
+    this.id = props.id;
+    this.showPassword = props.showPassword;
+  }
+
+  iWantButtonForShowPassword(){
+    if(this.showPassword){
+      return <Button
+        icon="eye"
+        mode="contained"
+        style={styles.inputIconRight}
+        labelStyle={{marginRight: 0}}
+        onPress={() => this.showPasswordInTheInput.bind(this)}
+      />
+    }
+  }
+
+  showPasswordInTheInput(){
+    Alert.alert(this.props)
   }
 
   render(){
@@ -59,7 +82,9 @@ export default class TextInputIcon extends Component{
           secureTextEntry={this.secureTextEntry}
           style={styles.input}
           textContentType={this.textContentType}
+          id={this.id}
         />
+        {this.iWantButtonForShowPassword()}
       </View>
     );
   }

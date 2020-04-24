@@ -1,10 +1,10 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 4116,
-  "webpackServerPort": 19006,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://4k-v2p.anonymous.cad.exp.direct",
-  "packagerNgrokUrl": "https://packager.4k-v2p.anonymous.cad.exp.direct",
-  "ngrokPid": 1500
+  "packagerPort": 19001,
+  "packagerPid": 3524,
+  "expoServerNgrokUrl": "https://t9-fmv.anonymous.google-account-expo-2.exp.direct",
+  "packagerNgrokUrl": "https://packager.t9-fmv.anonymous.google-account-expo-2.exp.direct",
+  "ngrokPid": 5072,
+  "webpackServerPort": 19006
 }

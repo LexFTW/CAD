@@ -1,9 +1,8 @@
 {
   "expo": {
-    "name": "React Expo || Prueba",
-    "slug": "NombreDeProyecto",
-    "privacy": "public",
-    "sdkVersion": "36.0.0",
+    "name": "google-account-expo-2",
+    "slug": "google-account-expo-2",
+    "userInterfaceStyle": "automatic",
     "platforms": [
       "ios",
       "android",
@@ -11,9 +10,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,7 +24,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "userInterfaceStyle": "dark",
+    },
+    "android": {
+      "package": "cad.expo.googlesignin",
+      "googleServicesFile": "./google-services.json",
+      "userInterfaceStyle": "dark",
     }
   }
 }

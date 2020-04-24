@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 3524,
-  "expoServerNgrokUrl": "https://t9-fmv.anonymous.google-account-expo-2.exp.direct",
-  "packagerNgrokUrl": "https://packager.t9-fmv.anonymous.google-account-expo-2.exp.direct",
-  "ngrokPid": 5072,
+  "packagerPid": 15516,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }

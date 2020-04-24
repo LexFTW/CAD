@@ -25,12 +25,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "userInterfaceStyle": "dark",
     },
     "android": {
       "package": "cad.expo.googlesignin",
       "googleServicesFile": "./google-services.json",
-      "userInterfaceStyle": "dark",
     }
   }
 }

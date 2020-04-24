@@ -4,15 +4,12 @@ import { Button, ActivityIndicator, Colors } from 'react-native-paper';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import firebase from 'firebase';
-import firebaseConfig from '../config/firebase';
+import firebase from '../config/firebase';
 import * as GoogleSignIn from 'expo-google-sign-in'
 
 import TextInputIcon from '../components/TextInputIcon';
 import Separator from '../components/Separator';
 import Resources from './../config/resources/resources';
-
-firebase.initializeApp(firebaseConfig);
 
 const Stack = createStackNavigator();
 
@@ -63,6 +60,12 @@ export default class LoginScreen extends Component {
   }
 
   renderCurrentState(){
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.props.navigation.navigate('Reader');
+        }
+     });
+
     if(this.state.auth){
         this.props.navigation.navigate('Reader');
     }

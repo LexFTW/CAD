@@ -1,14 +1,29 @@
-<p align="center">
-  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.jpg" width="450">
-  <br />
-  <img src="https://img.shields.io/badge/npm-6.4.1-blue" />
-  <img src="https://img.shields.io/badge/react_native-0.61.4-green" />
-  <img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
-  <a href="#" alt="GitHub Followers">
-    <img src="https://img.shields.io/github/followers/LexFTW?style=social" />
-  </a>
-</p>
+## DCA (Diabetes Control and Automation) <img src="https://img.shields.io/badge/npm-6.4.1-blue" /><img src="https://img.shields.io/badge/react_native-0.61.4-green" /><img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
 
-<p>CAD (Control y Automatización de la Diabetes) es un proyecto que busca establecer un sistema que permita al usuario tener un control más exacto y automatizado sobre su nivel de glucosa en sangre en su día a día.
+DCA (Control and Automation of Diabetes) is a project that seeks to establish a system that allows the user to have more accurate and automated control over his blood glucose level in his day to day.
 
-En este proyecto constará la parte de *software*, la idea es que en un futuro añadir la parte *hardware* donde a partir de la configuración serie de reglas establecidas por el usuario, el dispositivo permita regular la glucosa automaticamente al usuario.</p>
+In this project will consist the part of *software*, the idea is that in a future add the *hardware* part where from the configuration set of rules established by the user, the device allows to regulate the glucose automatically to the user.
+
+---
+
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+Before you can start and start working with the application, it is important to have Node and NPM installed. To check if you have both tools installed, open a terminal and write these statements.
+
+```
+node -v
+```
+```
+npm -v
+```
+
+### Installing
+Once you have Node and NPM installed, from the terminal pointing to the root directory of the project, you will execute this statement.
+
+```
+npm install
+```
+
+This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder

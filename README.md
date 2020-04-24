@@ -20,7 +20,7 @@
 - [Referencias](#references)
 - [Wireframes](#references)
 - [Wiki](#wiki)
-  
+
 ---
 
 ## Descripción
@@ -45,7 +45,7 @@ En este proyecto constará la parte de *software*, la idea es que en un futuro a
 </p>
 
 ## Objetivos
-- [ ] Módulo de *Multilanguages*
+- [x] Módulo de *Multilanguages*
 > Conseguir que la aplicación sea multilenguaje, dependiendo del idioma del OS.
 - Idiomas Disponibles:
   - es_ES

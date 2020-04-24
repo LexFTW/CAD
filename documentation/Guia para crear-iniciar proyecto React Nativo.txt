@@ -1,0 +1,28 @@
+1. Crear directorio
+PowerShell:
+2. npm install -g expo-cli
+3. expo init NombreDeProyecto
+4. cd NombreDeProyecto
+5. npm start
+6. Dara un error (error Invalid regular expression...)
+Atom:
+7. Abres el archivo node_modules\metro-config\src\defaults\blacklist.js
+8. Entre la linea 14/19 tendras algo asi:
+  var sharedBlacklist = [
+    /node_modules[/\\]react[/\\]dist[/\\].*/,
+    /website\/node_modules\/.*/,
+    /heapCapture\/bundle\.js/,
+    /.*\/__tests__\/.*/
+  ];
+-Y tendras ke cambiarlo a esto:
+  var sharedBlacklist = [
+    /node_modules[\/\\]react[\/\\]dist[\/\\].*/,
+    /website\/node_modules\/.*/,
+    /heapCapture\/bundle\.js/,
+    /.*\/__tests__\/.*/
+  ];
+Fin:
+9. Reinicias el servicio
+Emular el proyecto:
+10. Pones en el PowerShell un "?" (sin comillas)
+11. Tines varias opciones pero la ke te interesa es la primera (a: dispositivo/emulador; w: web)

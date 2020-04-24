@@ -53,6 +53,7 @@ export default class TextInputIcon extends Component{
     this.secureTextEntry = props.secureTextEntry;
     this.id = props.id;
     this.showPassword = props.showPassword;
+    this.value = props.value;
   }
 
   iWantButtonForShowPassword(){
@@ -83,6 +84,7 @@ export default class TextInputIcon extends Component{
           style={styles.input}
           textContentType={this.textContentType}
           id={this.id}
+          value={this.value}
         />
         {this.iWantButtonForShowPassword()}
       </View>

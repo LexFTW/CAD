@@ -1,7 +1,5 @@
-# Control y Automatización de la Diabetes (CAD)
-
-<p align="center>
-  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.svg" width="10%" />
+<p align="center">
+  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.jpg" width="450">
 </p>
 
 <p align="center">
@@ -14,7 +12,6 @@
 </p>
 
 ## Tabla de Contenidos
-En está sección podrás usarla como referencia de destino.
 
 - [Descripción](#descripción)
 - [Herramientas](#herramientas)
@@ -27,28 +24,36 @@ En está sección podrás usarla como referencia de destino.
 ---
 
 ## Descripción
-CAD (Control y Automatización de la Diabetes) es un proyecto que busca establecer un sistema que permita al usuario tener un control más exacto y automatico sobre su nivel de glucosa en sangre en el día a día. En este proyecto constará la parte de *software*, la idea es que en un futuro añadir la parte *hardware* donde a partir de la configuración establecida y una serie de reglas establecidas por el usuario, el *hardware* permita regular la glucosa automaticamente.
+CAD (Control y Automatización de la Diabetes) es un proyecto que busca establecer un sistema que permita al usuario tener un control más exacto y automatizado sobre su nivel de glucosa en sangre en su día a día.
+
+En este proyecto constará la parte de *software*, la idea es que en un futuro añadir la parte *hardware* donde a partir de la configuración serie de reglas establecidas por el usuario, el dispositivo permita regular la glucosa automaticamente al usuario.
 
 ---
 
 ## Herramientas
-- Lenguaje de Programación: React Nativo.
-- Base de datos NoSQL: Firebase.
-- API/s y Framework/s: 
-  - Expo CLI.
-	- NFC Manage.
-	- Chart Kit.
-	- Firebase Mailing / SMS.
-- Tarjetas de NFC.
 
-- Opcionales:
-	- Login con Huella Dactilar SHA1.
+- <a href="https://reactjs.org/" target="_blank">ReactJS</a>
+- <a href="https://expo.io/" target="_blank">Expo CLI</a>
+- <a href="https://firebase.google.com/" target="_blank">Firebase</a>
+- <a href="https://www.npmjs.com/package/react-native-chart-kit" target="_blank">Chart Kit</a>
+- <a href="https://jestjs.io/" target="_blank">Jest</a>
 
 ---
 ## Wireframes
-<img src="https://github.com/LexFTW/CAD/blob/master/images/Wireframe.png" />
+<p align="center">
+  <img src="https://github.com/LexFTW/CAD/blob/master/images/Wireframe.png" />
+</p>
 
 ## Objetivos
+- [ ] Módulo de *Multilanguages*
+> Conseguir que la aplicación sea multilenguaje, dependiendo del idioma del OS.
+- Idiomas Disponibles:
+  - es_ES
+  - en_US
+
+- [ ] Módulo de Login con *Email/Password*.
+> Este módulo permitirá acceder al aplicación con una cuenta de correo eléctronico y contraseña.
+
 - [ ] Módulo de Login con Google Account.
 > Este módulo permitirá acceder al aplicación con una cuenta de Google.
 

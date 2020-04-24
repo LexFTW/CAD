@@ -1,14 +1,14 @@
 import * as firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAYYdaJzU6ztXQlJlNDw_gzUSLEOEid-SQ",
-  authDomain: "app-react-native-9e522.firebaseapp.com",
-  databaseURL: "https://app-react-native-9e522.firebaseio.com",
-  projectId: "app-react-native-9e522",
-  storageBucket: "app-react-native-9e522.appspot.com",
-  messagingSenderId: "826415771287",
-  appId: "1:826415771287:web:0a4c9fe42c2f08277203d2",
-  measurementId: "G-8GPBBKE322"
+  apiKey: "AIzaSyBa-gFgZNcTHlZc2IEozr1pC1-Fjs-1vsU",
+  authDomain: "proyecto-cad.firebaseapp.com",
+  databaseURL: "https://proyecto-cad.firebaseio.com",
+  projectId: "proyecto-cad",
+  storageBucket: "proyecto-cad.appspot.com",
+  messagingSenderId: "750587560279",
+  appId: "1:750587560279:web:affce52bc1803152a8fe12",
+  measurementId: "G-0V59RMMDQJ"
 };
 
 export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();

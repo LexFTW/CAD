@@ -45,6 +45,12 @@ En este proyecto constará la parte de *software*, la idea es que en un futuro a
 </p>
 
 ## Objetivos
+- [ ] Módulo de *Multilanguages*
+> Conseguir que la aplicación sea multilenguaje, dependiendo del idioma del OS.
+- Idiomas Disponibles:
+  - es_ES
+  - en_US
+
 - [ ] Módulo de Login con *Email/Password*.
 > Este módulo permitirá acceder al aplicación con una cuenta de correo eléctronico y contraseña.
 

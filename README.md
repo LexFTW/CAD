@@ -45,8 +45,11 @@ Once executed, a window will open in your default browser and you can select in 
 * [JestJS](https://jestjs.io/) - The framework for unit test and mock.
 * [Firebase](https://firebase.google.com/) - The host for the app.
 
+## Details about the Project
+Please read PROJECT.md for details on how we have worked on this project.
+
 ## Goals
-Please read Goals.md for details about our goals.
+Please read GOALS.md for details about our goals.
 
 ## Authors
 * Alexis Mengual Vázquez

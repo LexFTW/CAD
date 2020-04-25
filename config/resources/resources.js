@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
 import Es_ES from './es_ES';
+import Pt_PT from './pt_PT';
 import En_US from './en_US';
 import Ca_ES from './ca_ES';
 
@@ -16,6 +17,9 @@ switch (deviceLanguage) {
     break;
   case 'es_ES':
     var Resources = Es_ES;
+    break;
+  case 'pt_PT':
+    var Resources = Pt_PT;
     break;
   case 'ca_ES':
     var Resources = Ca_ES;

@@ -1,74 +1,56 @@
-<p align="center">
-  <img src="https://github.com/LexFTW/CAD/blob/master/images/CAD_Logo.jpg" width="450">
-</p>
+## DCA (Diabetes Control and Automation) <img src="https://img.shields.io/badge/npm-6.4.1-blue" /> <img src="https://img.shields.io/badge/react_native-0.61.4-green" /> <img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
 
-<p align="center">
-  <img src="https://img.shields.io/badge/npm-6.4.1-blue" />
-  <img src="https://img.shields.io/badge/react_native-0.61.4-green" />
-  <img src="https://img.shields.io/badge/react_native_cli-2.0.1-green" />
-  <a href="#" alt="GitHub Followers">
-    <img src="https://img.shields.io/github/followers/LexFTW?style=social" />
-  </a>
-</p>
+DCA (Control and Automation of Diabetes) is a project that seeks to establish a system that allows the user to have more accurate and automated control over his blood glucose level in his day to day.
 
-## Tabla de Contenidos
-
-- [Descripción](#descripción)
-- [Herramientas](#herramientas)
-- [Objetivos](#objetivos)
-- [Como utilizar](#how-to-use)
-- [Referencias](#references)
-- [Wireframes](#references)
-- [Wiki](#wiki)
+In this project will consist the part of *software*, the idea is that in a future add the *hardware* part where from the configuration set of rules established by the user, the device allows to regulate the glucose automatically to the user.
 
 ---
 
-## Descripción
-CAD (Control y Automatización de la Diabetes) es un proyecto que busca establecer un sistema que permita al usuario tener un control más exacto y automatizado sobre su nivel de glucosa en sangre en su día a día.
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-En este proyecto constará la parte de *software*, la idea es que en un futuro añadir la parte *hardware* donde a partir de la configuración serie de reglas establecidas por el usuario, el dispositivo permita regular la glucosa automaticamente al usuario.
+### Prerequisites
+Before you can start and start working with the application, it is important to have Node and NPM installed. To check if you have both tools installed, open a terminal and write these statements.
 
----
+```
+node -v
+```
+```
+npm -v
+```
 
-## Herramientas
+### Installing
+Once you have Node and NPM installed, from the terminal pointing to the root directory of the project, you will execute this statement.
 
-- <a href="https://reactjs.org/" target="_blank">ReactJS</a>
-- <a href="https://expo.io/" target="_blank">Expo CLI</a>
-- <a href="https://firebase.google.com/" target="_blank">Firebase</a>
-- <a href="https://www.npmjs.com/package/react-native-chart-kit" target="_blank">Chart Kit</a>
-- <a href="https://jestjs.io/" target="_blank">Jest</a>
+```
+npm install
+```
 
----
-## Wireframes
-<p align="center">
-  <img src="https://github.com/LexFTW/CAD/blob/master/images/Wireframe.png" />
-</p>
+This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
 
-## Objetivos
-- [x] Módulo de *Multilanguages*
-> Conseguir que la aplicación sea multilenguaje, dependiendo del idioma del OS.
-- Idiomas Disponibles:
-  - ca_ES
-  - es_ES
-  - en_US
+## Deployment
+For deploy the app in Android, iOS or Web, from the terminal pointing to the root directory of the project, you will execute this statement.
 
-- [ ] Módulo de Login con *Email/Password*.
-> Este módulo permitirá acceder al aplicación con una cuenta de correo eléctronico y contraseña.
+```
+expo start
+```
 
-- [ ] Módulo de Login con Google Account.
-> Este módulo permitirá acceder al aplicación con una cuenta de Google.
+Once executed, a window will open in your default browser and you can select in which System you want to run the application.
 
-- [ ] Módulo de MultiPerfil.
-> Este módulo permitirá a un usuario tener más de un perfil para gestionar a diferentes personas. Este módulo será muy útil para familias que tengan a más de una persona diabetica.
+*To do it from Android or iOS, you will need to have the Expo app installed on your mobile or have an emulator on your computer*
 
-- [ ] Módulo de Lectura por NFC.
-> Este módulo gestionará la lectura de la parte *hardware* y obtendrá la información del nivel de glucosa.
+## Built With
+* [ReactJS](https://reactjs.org/) - The web framework used
+* [ExpoCLI](https://expo.io/) - The web framework used for a compiler the app in Android, IPhone and Web.
+* [JestJS](https://jestjs.io/) - The framework for unit test and mock.
+* [Firebase](https://firebase.google.com/) - The host for the app.
 
-- [ ] Módulo de Estadistica e Historial.
-> Este módulo servirá para poder tener un control e historial de los niveles de glucosa.
+## Project Details
+Please read PROJECT.md for details on how we have worked on this project.
 
-- [ ] Módulo de Automatización y configuración de reglas.
-> Este módulo consiste en una serie de configuraciones y reglas establecidas por el propio usuario con la finalidad de que la aplicación pueda, a partir del dato leído por NFC, indicar que cantidad de insulina se debe de añadir la persona.
+## Goals
+Please read GOALS.md for details about our goals.
 
-## Wiki
-<a href='https://github.com/LexFTW/CAD/blob/master/Guia%20para%20crear-iniciar%20proyecto%20React%20Nativo.txt'>Guia crear/iniciar</a>
+## Authors
+* Alexis Mengual Vázquez
+* David Usón

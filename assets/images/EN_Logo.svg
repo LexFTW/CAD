@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 347.36 231.58" style="enable-background:new 0 0 347.36 231.58;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;fill:url(#SVGID_1_);}
+	.st2{fill:none;stroke:url(#SVGID_2_);stroke-width:2.9672;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:url(#SVGID_3_);}
+	.st4{fill:url(#SVGID_4_);}
+	.st5{fill:url(#SVGID_5_);}
+	.st6{fill:none;}
+	.st7{fill:#0056C5;}
+	.st8{font-family:'Montserrat-Black';}
+	.st9{font-size:20.9178px;}
+	.st10{letter-spacing:17;}
+	.st11{letter-spacing:2;}
+	.st12{fill:#0096E0;}
+	.st13{font-family:'Oswald-Light';}
+	.st14{font-size:11.621px;}
+</style>
+<g id="BACKGROUND" class="st0">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="173.6813" y1="365.7875" x2="173.6813" y2="-134.2124">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#FEFEFE"/>
+	</linearGradient>
+	<rect x="-201.32" y="-134.21" class="st1" width="750" height="500"/>
+</g>
+<g id="OBJECTS">
+	<g>
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="49.9806" y1="159.2534" x2="177.1557" y2="159.2534">
+			<stop  offset="0" style="stop-color:#97DAEF"/>
+			<stop  offset="0.2229" style="stop-color:#7ACDEC"/>
+			<stop  offset="0.7035" style="stop-color:#30ACE5"/>
+			<stop  offset="1" style="stop-color:#0096E0"/>
+		</linearGradient>
+		<path class="st2" d="M51.46,122.7c0,40.37,32.73,73.1,73.1,73.1c19.89,0,37.93-7.94,51.11-20.83"/>
+		<g>
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="46.1215" y1="90.5499" x2="116.3743" y2="90.5499">
+				<stop  offset="0" style="stop-color:#97DAEF"/>
+				<stop  offset="0.2229" style="stop-color:#7ACDEC"/>
+				<stop  offset="0.7035" style="stop-color:#30ACE5"/>
+				<stop  offset="1" style="stop-color:#0096E0"/>
+			</linearGradient>
+			<path class="st3" d="M97.38,124.83c-0.62-8.2,2.39-15.7,7.59-21.08c7.56-7.81,11.41-18.48,11.41-29.35v0
+				c0-9.88-5.99-18.93-15.26-22.32c-4.71-1.72-9.83-2.6-15.17-2.46C64.96,50.18,47.5,66.99,46.2,87.94
+				c-1.47,23.8,17.39,43.55,40.87,43.55c3.89,0,7.64-0.55,11.21-1.57C97.82,128.28,97.51,126.58,97.38,124.83z"/>
+			<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="87.6763" y1="154.8289" x2="159.7007" y2="102.4195">
+				<stop  offset="0" style="stop-color:#0098DD"/>
+				<stop  offset="0.4725" style="stop-color:#007BD2"/>
+				<stop  offset="1" style="stop-color:#0056C5"/>
+			</linearGradient>
+			<path class="st4" d="M176.97,127.98c0,28.94-23.46,52.41-52.41,52.41c-28.94,0-52.41-23.46-52.41-52.41
+				c0-26.15,19.15-47.82,44.2-51.76c-0.18,10.22-4.1,20.09-11.26,27.4c-5.28,5.38-8.34,12.94-7.72,21.21
+				c1.02,13.49,12.16,24.37,25.66,25.1c15.75,0.86,28.8-11.66,28.8-27.23c0-7.32-2.89-13.97-7.58-18.87
+				c-7.16-7.46-11.29-17.3-11.47-27.61C157.82,80.16,176.97,101.83,176.97,127.98z M141.4,122.7c0-9.3-7.54-16.84-16.84-16.84
+				c-9.3,0-16.84,7.54-16.84,16.84c0,9.3,7.54,16.84,16.84,16.84C133.86,139.54,141.4,132,141.4,122.7z"/>
+			<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="132.7574" y1="85.4285" x2="192.6855" y2="85.4285">
+				<stop  offset="0" style="stop-color:#97DAEF"/>
+				<stop  offset="0.2229" style="stop-color:#7ACDEC"/>
+				<stop  offset="0.7035" style="stop-color:#30ACE5"/>
+				<stop  offset="1" style="stop-color:#0096E0"/>
+			</linearGradient>
+			<path class="st5" d="M162.72,35.77c-16.55,0-29.96,13.42-29.96,29.96v9.75c0,10.59,4.17,20.71,11.49,28.35
+				c4.7,4.9,7.58,11.54,7.58,18.87c0,3.37-0.64,6.58-1.76,9.56c3.85,1.8,8.12,2.83,12.65,2.83c16.55,0,29.96-13.42,29.96-29.96
+				V65.73C192.69,49.19,179.27,35.77,162.72,35.77z"/>
+		</g>
+		<g>
+			<rect x="183.09" y="134.86" class="st6" width="84.77" height="24.36"/>
+			<text transform="matrix(1 0 0 1 183.0896 150.3756)"><tspan x="0" y="0" class="st7 st8 st9 st10">DC</tspan><tspan x="67.9" y="0" class="st7 st8 st9 st11">A</tspan></text>
+			<rect x="183.09" y="156.31" class="st6" width="130.23" height="27.22"/>
+			<text transform="matrix(1 0 0 1 183.0896 165.7174)"><tspan x="0" y="0" class="st12 st13 st14">Diabetes</tspan><tspan x="34.52" y="0" class="st12 st13 st14 st11"> </tspan><tspan x="39.36" y="0" class="st12 st13 st14">Control</tspan><tspan x="68.23" y="0" class="st12 st13 st14 st11"> </tspan><tspan x="73.07" y="0" class="st12 st13 st14">&amp;</tspan><tspan x="80.08" y="0" class="st12 st13 st14 st11"> </tspan><tspan x="84.92" y="0" class="st12 st13 st14">Automation</tspan></text>
+		</g>
+	</g>
+</g>
+</svg>

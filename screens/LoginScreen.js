@@ -1,22 +1,27 @@
 import React, {Component} from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
+import { View, Image, Text, StyleSheet, TextInput, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
 import { Button, ActivityIndicator, Colors } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import firebase from '../config/firebase';
 import * as GoogleSignIn from 'expo-google-sign-in'
+import * as Facebook from 'expo-facebook';
 
-import TextInputIcon from '../components/TextInputIcon';
+import styles from '../components/TextInputIcon';
 import Separator from '../components/Separator';
 import Resources from './../config/resources/resources';
+
+import base from './../constants/styles/Styles';
 
 const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
+
   constructor(props){
     super(props);
-    this.state = {email: 'test@test.com', password: 'Asdqwe123', error: '', auth: false }
+    this.state = {email: '', password: '', error: '', auth: false, showPassword: true }
   }
 
   async signInWithEmail() {
@@ -35,28 +40,42 @@ export default class LoginScreen extends Component {
       });
   }
 
-  async signInWithGoogle() {
+  async signInWithFacebook() {
     try {
-      await GoogleSignIn.askForPlayServicesAsync();
-      const { type, user } = await GoogleSignIn.signInAsync();
-      const data = await GoogleSignIn.GoogleAuthentication.prototype.toJSON();
+      await Facebook.initializeAsync('666200950884855');
+      const {
+        type,
+        token,
+        expires,
+        permissions,
+        declinedPermissions,
+      } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile'],
+      });
       if (type === 'success') {
-        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-        const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
-        const googleProfileData = await firebase.auth().signInWithCredential(credential);
-        this.onLoginSuccess.bind(this);
+        const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+        this.onLoginSuccess.bind(this)
       }
     } catch ({ message }) {
-      alert('login: Error:' + message);
+      this.onLoginFailure.bind(this)(message);
     }
   }
 
   onLoginFailure(errorMessage) {
     this.setState({ error: errorMessage, auth: false });
+    Alert.alert(errorMessage);
   }
 
   onLoginSuccess() {
     this.props.navigation.navigate('Home')
+  }
+
+  showPasswordInTheInput(){
+    if(this.state.showPassword){
+      this.setState({showPassword: false})
+    }else{
+      this.setState({showPassword: true})
+    }
   }
 
   renderCurrentState(){
@@ -71,25 +90,42 @@ export default class LoginScreen extends Component {
     }
 
     return <View>
-      <Image source={require('../assets/images/CAD_Logo.png')} style={{width: 250, height: 200, marginBottom: 15}} />
-      <TextInputIcon
-        icon={'user'}
-        placeholder={Resources.LOGIN_EMAIL}
-        textContentType={'emailAddress'}
-        secureTextEntry={false}
-        showPassword={false}
-        defaultValue={'test@test.com'}
-        value={'test@test.com'}
-      />
-      <TextInputIcon
-        icon={'lock'}
-        placeholder={Resources.LOGIN_PASSWORD}
-        textContentType={'none'}
-        secureTextEntry={true}
-        showPassword={true}
-        defaultValue={'Asdqwe123'}
-        value={'Asdqwe123'}
-      />
+      <Image source={require('../assets/images/splash.png')} style={{width: 250, height: 200, marginBottom: 15}} />
+
+      <View>
+        <Icon name={'user'} size={28} style={styles.inputIcon}/>
+        <TextInput
+          placeholder={Resources.LOGIN_EMAIL}
+          placeholderTextColor="#adadad"
+          underlineColorAndroid='transparent'
+          textContentType={'emailAddress'}
+          secureTextEntry={false}
+          style={styles.input}
+          value={this.state.email}
+          onChangeText={email => this.setState({ email })}
+        />
+      </View>
+      <View>
+        <Icon name={'lock'} size={28} style={styles.inputIcon}/>
+        <TextInput
+          placeholder={Resources.LOGIN_PASSWORD}
+          placeholderTextColor="#adadad"
+          underlineColorAndroid='transparent'
+          textContentType={'none'}
+          secureTextEntry={this.state.showPassword}
+          showPassword={false}
+          style={styles.input}
+          value={this.state.password}
+          onChangeText={password => this.setState({ password })}
+        />
+        <Button
+          icon="eye"
+          mode="contained"
+          style={styles.inputIconRight}
+          labelStyle={{marginRight: 0}}
+          onPress={() => this.showPasswordInTheInput(this)}
+        />
+      </View>
       <Separator />
       <Button
         mode="contained"
@@ -101,10 +137,18 @@ export default class LoginScreen extends Component {
       <Button
         icon="google"
         mode="contained"
-        style={{backgroundColor: '#DB4437', borderRadius: 0}}
+        style={{backgroundColor: '#DB4437', borderRadius: 0, marginBottom: 5}}
         onPress={() => this.signInWithGoogle()}
         >
           {Resources.LOGIN_SIGNIN_GOOGLE}
+      </Button>
+      <Button
+        icon="facebook"
+        mode="contained"
+        style={{backgroundColor: '#3b5998', borderRadius: 0}}
+        onPress={() => this.signInWithFacebook()}
+        >
+          {Resources.LOGIN_SIGNIN_FACEBOOK}
       </Button>
       <Separator />
       <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}>
@@ -116,18 +160,9 @@ export default class LoginScreen extends Component {
 
   render() {
     return(
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={base.container}>
         {this.renderCurrentState()}
       </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

@@ -19,6 +19,9 @@ In this sprint we maked the next funcionalities:
   - *Navigation Menu*
   
 ### Wireframes 
+<p align="center">
+  <img src="https://github.com/LexFTW/CAD/blob/develop/assets/images/Wireframes.png" />
+</p>
 
 ### Incidences
 During Sprint 1, we had certain incidents that have caused us to have to look for other ways and restructure

@@ -9,7 +9,10 @@
     "test": "jest --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "~10.0.6",
@@ -42,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "babel-preset-expo": "~8.1.0",
+    "jest": "^25.4.0",
     "jest-expo": "~37.0.0"
   },
   "private": true

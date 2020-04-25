@@ -12,6 +12,8 @@ import TextInputIcon from '../components/TextInputIcon';
 import Separator from '../components/Separator';
 import Resources from './../config/resources/resources';
 
+import styles from './../constants/styles/Styles';
+
 const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
@@ -97,7 +99,7 @@ export default class LoginScreen extends Component {
     }
 
     return <View>
-      <Image source={require('../assets/images/CAD_Logo.png')} style={{width: 250, height: 200, marginBottom: 15}} />
+      <Image source={require('../assets/images/splash.png')} style={{width: 250, height: 200, marginBottom: 15}} />
       <TextInputIcon
         icon={'user'}
         placeholder={Resources.LOGIN_EMAIL}
@@ -156,12 +158,3 @@ export default class LoginScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 14380,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPid": 5160,
+  "expoServerNgrokUrl": "https://qz-xqt.lexftw.google-account-expo-2.exp.direct",
+  "packagerNgrokUrl": "https://packager.qz-xqt.lexftw.google-account-expo-2.exp.direct",
+  "ngrokPid": 16960,
   "webpackServerPort": 19006
 }

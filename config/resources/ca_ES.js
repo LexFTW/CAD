@@ -1,5 +1,4 @@
 const Resources = {
-  DEMO_HOME: "Pantalla d' Inici",
   LOGIN_EMAIL: 'Correu Electrònic',
   LOGIN_PASSWORD: 'Contrasenya',
   LOGIN_SIGNIN: 'Iniciar Sessió',
@@ -8,6 +7,8 @@ const Resources = {
   LOGIN_REGISTER: "Registra't",
   READER_TITLE: 'Lector de glucosa',
   READER_TEXT_BUTTON: 'Comença a llegir',
+  READER_HEADER: 'Lector',
+  PROFILE_HEADER: 'Perfil',
 }
 
 export default Resources;

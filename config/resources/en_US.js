@@ -8,6 +8,8 @@ const Resources = {
   LOGIN_REGISTER: 'Sign Up',
   READER_TITLE: 'Glucose Reader',
   READER_TEXT_BUTTON: 'Start Reading',
+  READER_HEADER: 'Reader',
+  PROFILE_HEADER: 'Profile',
 }
 
 export default Resources;

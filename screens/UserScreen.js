@@ -13,6 +13,7 @@ export default class UserScreen extends React.Component {
       .signOut()
       .then(() => {
         Alert.alert('You Sign Out!');
+        this.props.navigation.navigate('Login');
       })
       .catch(error => {
         // An error happened.

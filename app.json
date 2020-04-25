@@ -2,7 +2,7 @@
   "expo": {
     "name": "google-account-expo-2",
     "slug": "google-account-expo-2",
-    "userInterfaceStyle": "automatic",
+    "facebookScheme": "fb666200950884855",
     "platforms": [
       "ios",
       "android",

@@ -53,10 +53,7 @@ Once executed, a window will open in your default browser and you can select in 
 * [Firebase](https://firebase.google.com/) - The host for the app.
 
 ## Project Details
-Please read PROJECT.md for details on how we have worked on this project.
-
-## Goals
-Please read GOALS.md for details about our goals.
+Please read *Wiki* for details on how we have worked on this project.
 
 ## Authors
 * Alexis Mengual Vázquez

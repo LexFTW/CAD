@@ -14,7 +14,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 
 const styles = StyleSheet.create({
   input: {
-    width: 285,
+    width: 300,
     height: 40,
     fontSize: 16,
     marginBottom: 10,
@@ -41,53 +41,6 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     justifyContent: 'center',
   },
-})
+});
 
-export default class TextInputIcon extends Component{
-
-  constructor(props){
-    super(props);
-    this.icon = props.icon;
-    this.placeholder = props.placeholder;
-    this.textContentType = props.textContentType;
-    this.secureTextEntry = props.secureTextEntry;
-    this.id = props.id;
-    this.showPassword = props.showPassword;
-    this.value = props.value;
-  }
-
-  iWantButtonForShowPassword(){
-    if(this.showPassword){
-      return <Button
-        icon="eye"
-        mode="contained"
-        style={styles.inputIconRight}
-        labelStyle={{marginRight: 0}}
-        onPress={() => this.showPasswordInTheInput.bind(this)}
-      />
-    }
-  }
-
-  showPasswordInTheInput(){
-    Alert.alert(this.props)
-  }
-
-  render(){
-    return(
-      <View>
-        <Icon name={this.icon} size={28} style={styles.inputIcon}/>
-        <TextInput
-          placeholder={this.placeholder}
-          placeholderTextColor="#adadad"
-          underlineColorAndroid='transparent'
-          secureTextEntry={this.secureTextEntry}
-          style={styles.input}
-          textContentType={this.textContentType}
-          id={this.id}
-          value={this.value}
-        />
-        {this.iWantButtonForShowPassword()}
-      </View>
-    );
-  }
-}
+export default styles;

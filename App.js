@@ -1,4 +1,5 @@
 import * as React from 'react';
+import firebase from './config/firebase';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';

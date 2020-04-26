@@ -5,13 +5,13 @@ import Pt_PT from './pt_PT';
 import En_US from './en_US';
 import Ca_ES from './ca_ES';
 
-const deviceLanguage =
+/*const deviceLanguage =
           Platform.OS === 'ios'
             ? NativeModules.SettingsManager.settings.AppleLocale ||
               NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
             : NativeModules.I18nManager.localeIdentifier;
-
-switch (deviceLanguage) {
+*/
+switch ('es_ES') {
   case 'en_US':
     var Resources = En_US;
     break;

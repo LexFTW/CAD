@@ -9,7 +9,8 @@ const Resources = {
   READER_TITLE: 'Glucose Reader',
   READER_TEXT_BUTTON: 'Start Reading',
   READER_HEADER: 'Reader',
-  PROFILE_HEADER: 'Profile',
+  PROFILE_SETTINGS_PROFILE: 'Profile',
+  PROFILE_SETTINGS_MEDICATION: 'Medication',
 }
 
 export default Resources;

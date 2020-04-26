@@ -9,6 +9,8 @@ const Resources = {
   READER_TEXT_BUTTON: 'Comença a llegir',
   READER_HEADER: 'Lector',
   PROFILE_HEADER: 'Perfil',
+  PROFILE_SETTINGS_PROFILE: 'Perfil',
+  PROFILE_SETTINGS_MEDICATION: 'Tractament',
 }
 
 export default Resources;

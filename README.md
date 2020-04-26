@@ -28,6 +28,13 @@ npm install
 
 This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
 
+## Testing
+For test the app, you should write the next sentence in the terminal:
+
+```
+npm test
+```
+
 ## Deployment
 For deploy the app in Android, iOS or Web, from the terminal pointing to the root directory of the project, you will execute this statement.
 
@@ -46,10 +53,7 @@ Once executed, a window will open in your default browser and you can select in 
 * [Firebase](https://firebase.google.com/) - The host for the app.
 
 ## Project Details
-Please read PROJECT.md for details on how we have worked on this project.
-
-## Goals
-Please read GOALS.md for details about our goals.
+Please read *Wiki* for details on how we have worked on this project.
 
 ## Authors
 * Alexis Mengual Vázquez

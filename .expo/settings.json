@@ -3,6 +3,10 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "urlRandomness": "ib-jsz",
+=======
+  "urlRandomness": "a8-nhk",
+>>>>>>> 97e0c7957099456486a64a4219bb9cc7e66228eb
   "https": true
 }

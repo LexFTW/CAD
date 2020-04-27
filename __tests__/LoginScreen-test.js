@@ -1,50 +1,56 @@
 import 'react-native';
 import LoginScreen from '../screens/LoginScreen';
 
-const login = jest.fn(x, y);
-
 var log = new LoginScreen();
 
-// Static tests
+log.setState({email: "test@test.com"});
+log.setState({password: "Asdqwe123"});
+
+const login = jest.fn(log.state.email, log.state.password);
+
+// Correo correcto
 test('Correct Mail', () => {
-  expect(login("test@test.com", "Asdqwe123")).toBe(true);
-  expect(login("", "")).toBe(true);
+  expect(login(log.state.email, log.state.password)).toBe(login("test@test.com", "Asdqwe123"));
   expect(login).toHaveBeenCalledTimes(2);
-  expect(login).toHaveBeenCalledWith(x, y);
+  expect(login).toHaveBeenCalledWith("test@test.com", "Asdqwe123");
 });
 
+// Correo vacio
 test('Empty Test', () => {
-  expect(login("", "")).toBe(false);
+  expect(login("", "")).toBe(login(log.state.email, log.state.password));
 });
 
+// Correo no existente
 test('Wrong Test', () => {
-  expect(login("test@test.com", "Asdqwe123")).toBe(false);
+  expect(login("t@t.com", log.state.password)).toBe(login(log.state.email, log.state.password));
 });
 
-// Dinamic tests
+// Correo bien escrito
 test('Correct syntax Test', () => {
-  expect(log.state.email).toContain("@");
-  expect(log.state.email).toContain(".");
+  expect("test@test.com").toContain("@");
+  expect("test@test.com").toContain(".");
+
+  expect("test@testcom").toContain("@");
+  expect("testtest.com").toContain(".");
 });
+
+// Correo mal escrito
+function validateEmail() {
+  const expression = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+  if (!expression.test(String("testtest.com").toLowerCase())) {
+    throw new SyntaxError('error, correo incompleto');
+  }
+}
 
 test('Incorrect syntax Test', () => {
-  function syntaxScan() {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(log.state.email)){
-      
-     } else {
-      throw new ErrorObject('Syntax error');
-     }
+  function validate() {
+    validateEmail();
   }
 
-  expect(syntaxScan()).toThrowError(ErrorObject);
+  expect(validate).toThrowError(SyntaxError);
 });
 
+// Error en el metodo registrar con Correo
 test('Throw email error', () => {
-  const loginScreen = new LoginScreen();
-  expect(() => loginScreen.signInWithEmail()).toThrow();
-})
-
-test('Throw facebook error', () => {
-  const loginScreen = new LoginScreen();
-  expect(() => loginScreen.signInWithFacebook()).toThrow();
-})
+  expect(log.funcSing).toEqual({"_40": 0, "_55": null, "_65": 0, "_72": null});
+});

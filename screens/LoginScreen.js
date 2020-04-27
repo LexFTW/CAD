@@ -22,6 +22,7 @@ export default class LoginScreen extends Component {
   constructor(props){
     super(props);
     this.state = {email: '', password: '', error: '', auth: false, showPassword: true }
+    this.funcSing = this.signInWithEmail();
   }
 
   async signInWithEmail() {

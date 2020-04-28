@@ -5,6 +5,28 @@ import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
 import NavigationTop from './../components/NavigationTop';
 import Resources from './../config/resources/resources';
 import firebase from '../config/firebase';
+import { TabView, SceneMap } from 'react-native-tab-view';
+
+const [index, setIndex] = React.useState(0);
+const [routes] = React.useState([
+  { key: 'first', title: 'First' },
+  { key: 'second', title: 'Second' },
+]);
+
+const initialLayout = { width: Dimensions.get('window').width };
+
+const ProfileRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+);
+
+const MedicationRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+);
+
+const renderScene = SceneMap({
+  profile: ProfileRoute,
+  medication: MedicationRoute
+});
 
 export default class UserScreen extends React.Component {
   onSignOut(){
@@ -18,7 +40,7 @@ export default class UserScreen extends React.Component {
         Alert.alert(error);
       });
   }
-
+  
   render(){
     return (
       <SafeAreaView>
@@ -42,11 +64,24 @@ export default class UserScreen extends React.Component {
             />
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-around', padding: 15, marginTop: 25,}}>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_PROFILE}</Text>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_MEDICATION}</Text>
+          <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={initialLayout}
+          />
           </View>
         </View>
       </SafeAreaView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  scene: {
+    flex: 1,
+  },
+});
+
+/*<Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_PROFILE}</Text>
+            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_MEDICATION}</Text>*/

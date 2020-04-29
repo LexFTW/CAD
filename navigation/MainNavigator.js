@@ -44,5 +44,7 @@ function getHeaderTitle(route) {
       return 'Reader';
     case 'Profile':
       return 'Profile';
+    case 'Medication':
+      return 'Medication';
   }
 }

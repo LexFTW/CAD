@@ -6,7 +6,7 @@ import NavigationTop from './../components/NavigationTop';
 import Resources from './../config/resources/resources';
 import firebase from '../config/firebase';
 
-export default class UserScreen extends React.Component {
+export default class MedicationScreen extends React.Component {
   onSignOut(){
     firebase
       .auth()

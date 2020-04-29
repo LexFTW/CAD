@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
 import LoginScreen from '../screens/LoginScreen';
+import MedicationScreen from '../screens/MedicationScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -26,6 +27,13 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabBarIconFoundation focused={focused} name="graph-pie" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Medication"
+        component={MedicationScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabBarIconFontAwesome focused={focused} size={24} name="heartbeat" />,
         }}
       />
       <BottomTab.Screen
@@ -58,5 +66,7 @@ function getHeaderTitle(route) {
       return 'Reader';
     case 'Profile':
       return 'Profile';
+    case 'Medication':
+      return 'Medication';
   }
 }

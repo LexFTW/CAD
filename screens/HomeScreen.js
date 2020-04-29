@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
+import MedicationScreen from '../screens/MedicationScreen';
 import TabBarIconFoundation from '../components/TabBarIconFoundation';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
@@ -23,6 +24,13 @@ export default class HomeScreen extends React.Component {
             inactiveTintColor: '#72a2d3',
           }}
         >
+          <Tab.Screen
+            name="Medication"
+            component={MedicationScreen}
+            options={{
+              tabBarIcon: ({ focused }) => <TabBarIconFontAwesome size={24} focused={focused} name="heartbeat" />,
+            }}
+          />
           <Tab.Screen
             name="Reader"
             component={ReaderScreen}

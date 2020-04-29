@@ -3,6 +3,6 @@
   "minify": false,
   "hostType": "lan",
   "lanType": "ip",
-  "urlRandomness": "bc-die",
-  "https": false
+  "urlRandomness": "6m-emr",
+  "https": true
 }

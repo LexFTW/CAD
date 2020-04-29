@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, SafeAreaView, Alert, View  } from 'react-native';
 import  base  from '../constants/styles/Styles';
-import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
+import { IconButton, Colors, Divider, Avatar, Button } from 'react-native-paper';
 import NavigationTop from './../components/NavigationTop';
 import Resources from './../config/resources/resources';
 import firebase from '../config/firebase';
@@ -42,11 +42,24 @@ export default class UserScreen extends React.Component {
             />
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-around', padding: 15, marginTop: 25,}}>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_PROFILE}</Text>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_MEDICATION}</Text>
+            <Button
+              onPress={() => this.props.navigation.navigate('Profile')}
+              color={'white'}
+            >
+              Perfil
+            </Button>
+            <Button
+              onPress={() => this.props.navigation.navigate('Medication')}
+              color={'#72a2d3'}
+            >
+              Tratamiento
+            </Button>
           </View>
         </View>
       </SafeAreaView>
     );
   }
 }
+
+/*<Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_PROFILE}</Text>
+            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_MEDICATION}</Text>*/

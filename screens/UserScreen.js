@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ScrollView, Text, TextInput, SafeAreaView, Alert, View  } from 'react-native';
 import  base  from '../constants/styles/Styles';
 import { IconButton, Colors, Divider, Avatar, Button } from 'react-native-paper';
+import RNPickerSelect from 'react-native-picker-select';
 import NavigationTop from './../components/NavigationTop';
 import Resources from './../config/resources/resources';
 import firebase from '../config/firebase';
@@ -42,54 +43,55 @@ export default class UserScreen extends React.Component {
               />
             </View>
         </View>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
-        <UserSettings lines={2} text={"hola"} number={"1"}/>
+        <View style={{alignItems: "center", flex: 1, justifyContent: "center", marginVertical: 15}}>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <UserSettings lines={2} text={"hola"} number={"1"}/>
+          <View style={{alignItems: "center", flex: 1, justifyContent: "center"}}>
+            <View style={{width: 350, alignItems: "center", justifyContent: "space-between", paddingHorizontal: 40, backgroundColor: "#adccea", flex: 1, flexDirection: "row"}}>
+              <Text
+                style={{fontSize: 20, textTransform:"uppercase"}}
+              >{"hola"}</Text>
+              <RNPickerSelect
+                onValueChange={(value) => console.log(value)}
+                items={[
+                    { label: 'Football', value: 'football' },
+                    { label: 'Baseball', value: 'baseball' },
+                    { label: 'Hockey', value: 'hockey' },
+                ]}
+              />
+            </View>
+          </View>
+        </View>
       </ScrollView >
     );
   }
 }
-/*<Button
-              onPress={() => this.props.navigation.navigate('Profile')}
-              color={'white'}
-            >
-              Perfil
-            </Button>
-            <Button
-              onPress={() => this.props.navigation.navigate('Medication')}
-              color={'#72a2d3'}
-            >
-              Tratamiento
-            </Button>
-*/
+
 const UserSettings = ({lines, text, number}) => (
-  <View style={{marginTop: 35, paddingTop: 10, paddingHorizontal: 40, backgroundColor: "white", borderBottomColor: '#000000', borderWidth: 1, flex: 1}}>
-    <Text>{text}</Text>
+  <View style={{marginBottom: 10 ,width: 350, alignItems: "center", justifyContent: "space-between", paddingHorizontal: 40, paddingVertical: 5, backgroundColor: "#adccea", flex: 1, flexDirection: "row"}}>
+    <Text style={{fontSize: 20, textTransform:"uppercase"}}
+    >{text}</Text>
     <TextInput
       //multiline
       numberOfLines={lines}
       editable
       onChangeText={number => onChangeText(number)}
-      value={number}
+      
+      style={{fontSize: 15}}
+      placeholder={"Values"}
+      placeholderTextColor={"grey"}
     />
   </View>
 )

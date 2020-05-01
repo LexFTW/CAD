@@ -10,8 +10,8 @@ import * as GoogleSignIn from 'expo-google-sign-in'
 import * as Facebook from 'expo-facebook';
 
 import styles from '../components/TextInputIcon';
-import Separator from '../components/Separator';
 import Resources from './../config/resources/resources';
+import Separator from '../components/Separator';
 
 import base from './../constants/styles/Styles';
 

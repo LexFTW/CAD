@@ -1,22 +1,18 @@
 {
   "expo": {
-    "name": "google-account-expo-2",
-    "slug": "google-account-expo-2",
-    "facebook": {
-      "appId": "666200950884855",
-    },
-    "facebookScheme": "fb666200950884855",
+    "name": "firestore-example",
+    "slug": "firestore-example",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
+    "facebookScheme": "fb666200950884855",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -27,11 +23,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-    },
-    "android": {
-      "package": "cad.expo.googlesignin",
-      "googleServicesFile": "./google-services.json",
+      "supportsTablet": true
     }
   }
 }

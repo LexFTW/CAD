@@ -30,7 +30,7 @@
     "expo-google-app-auth": "^8.1.0",
     "expo-google-sign-in": "^8.1.0",
     "expo-web-browser": "~8.1.0",
-    "firebase": "7.9.0",
+    "firebase": "^7.14.2",
     "jest": "^25.4.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",

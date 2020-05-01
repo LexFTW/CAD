@@ -1,8 +1,10 @@
 const Resources = {
   DEMO_HOME: 'Home Screen',
 
+  LOGIN_USERNAME: 'Nombre de usuario',
   LOGIN_EMAIL: 'Correo Electrónico',
   LOGIN_PASSWORD: 'Contraseña',
+  LOGIN_CONFPASSWORD: 'Confirmar contraseña',
   LOGIN_SIGNIN: 'Iniciar Sesión',
   LOGIN_SIGNIN_GOOGLE: 'Iniciar Sesión con Google',
   LOGIN_SIGNIN_FACEBOOK: 'Iniciar Sesión con Facebook',

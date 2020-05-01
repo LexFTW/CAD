@@ -10,6 +10,7 @@ import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MedicationScreen from '../screens/MedicationScreen';
+import SingUpScreen from '../screens/SingUpScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -68,5 +69,7 @@ function getHeaderTitle(route) {
       return 'Profile';
     case 'Medication':
       return 'Medication';
+    case 'SingUp':
+      return 'SingUp';
   }
 }

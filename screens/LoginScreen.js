@@ -71,6 +71,10 @@ export default class LoginScreen extends Component {
     this.props.navigation.navigate('Home')
   }
 
+  onSingUp() {
+    this.props.navigation.navigate('SingUp')
+  }
+
   showPasswordInTheInput(){
     if(this.state.showPassword){
       this.setState({showPassword: false})
@@ -152,7 +156,8 @@ export default class LoginScreen extends Component {
           {Resources.LOGIN_SIGNIN_FACEBOOK}
       </Button>
       <Separator />
-      <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}>
+      <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}
+        onPress={() => this.onSingUp()}>
         {Resources.LOGIN_REGISTER}
       </Button>
     </View>

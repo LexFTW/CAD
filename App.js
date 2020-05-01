@@ -59,6 +59,7 @@ export default function App(props) {
             }}
           >
             <Stack.Screen name="Root" component={MainNavigator} />
+            <Stack.Screen name="SingUp" component={MainNavigator} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

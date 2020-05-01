@@ -11,9 +11,9 @@ export default function(containerRef) {
           Home: 'home',
           Profile: 'profile',
           Settings: 'settings',
-          Login: 'login',
+          Login: 'Login',
           Medication: 'medication',
-          SingUp: 'singup'
+          SingUp: 'SignUp'
         },
       },
     },

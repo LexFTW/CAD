@@ -25,7 +25,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(178, 178, 178, 0.2)',
     color: 'gray',
   },
-
+  inputPassword: {
+    width: 238,
+    height: 40,
+    fontSize: 16,
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1.5,
+    borderColor: '#2069b2',
+    paddingLeft: 40,
+    backgroundColor: 'rgba(178, 178, 178, 0.2)',
+    color: 'gray',
+  },
   inputIcon: {
     position: 'absolute',
     top: 5,

@@ -23,7 +23,7 @@ export default class SingUpScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state = {userName: '', email: '', password: '', confPassword: '', error: '', auth: false, showPassword: true }
+    this.state = {userName: '', email: '', password: '', confPassword: '', error: '', auth: false, showPassword: true}
   }
 
   showPasswordInTheInput(){
@@ -31,6 +31,34 @@ export default class SingUpScreen extends Component {
       this.setState({showPassword: false})
     }else{
       this.setState({showPassword: true})
+    }
+  }
+
+  signUpWithEmail() {
+    if (this.state.userName === '' || this.state.email === '' || this.state.password === '' || this.state.confPassword === '') {
+      Alert.alert('Por favor, rellene todos los campos.');
+    } else {
+      this.setState({
+        auth: true
+      })
+      firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((res) => {
+        Alert.alert(this.state.email + ' - ' + this.state.password);
+        res.user.updateProfile({
+          displayName: this.state.userName
+        })
+        Alert.alert('Usuario registrado.');
+        this.setState({
+          auth: false,
+          userName: '',
+          email: '',
+          password: ''
+        })
+        this.props.navigation.navigate('Login')
+      })
+      .catch(error => Alert.alert(error.message))
     }
   }
 
@@ -95,24 +123,17 @@ export default class SingUpScreen extends Component {
                 textContentType={'none'}
                 secureTextEntry={this.state.showPassword}
                 showPassword={false}
-                style={styles.input}
+                style={styles.inputPassword}
                 value={this.state.confPassword}
                 onChangeText={confPassword => this.setState({ confPassword })}
-              />
-              <Button
-                icon="eye"
-                mode="contained"
-                style={styles.inputIconRight}
-                labelStyle={{marginRight: 0}}
-                onPress={() => this.showPasswordInTheInput(this)}
               />
             </View>
           </View>
         </View>
 
-
         <Separator />
-            <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0, marginBottom: 50}}>
+            <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0, marginBottom: 50}}
+              onPress={() => this.signUpWithEmail()}>
               {Resources.LOGIN_REGISTER}
             </Button>
           <Separator />

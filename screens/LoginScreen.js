@@ -15,6 +15,9 @@ import * as Facebook from 'expo-facebook';
 import styles from '../components/TextInputIcon';
 import base from './../constants/styles/Styles';
 
+import { signInWithEmailAndPassword } from '../functions/LoginWithEmailAndPassword';
+import { signInWithFacebook } from '../functions/LoginWithFacebook';
+
 const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
@@ -22,7 +25,7 @@ export default class LoginScreen extends Component {
   constructor(props){
     super(props);
     this.state = {email: '', password: '', error: '', auth: false, showPassword: true }
-    // this.funcSing = this.signInWithEmail();
+    // this.funcSing = this.signInWithEmailAndPassword();
   }
 
   componentDidMount(){
@@ -31,52 +34,6 @@ export default class LoginScreen extends Component {
           this.props.navigation.navigate('Home');
         }
      });
-  }
-
-  async signInWithEmail() {
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(error => {
-          let errorCode = error.code;
-          let errorMessage = error.message;
-          if (errorCode == 'auth/weak-password') {
-              this.onLoginFailure.bind(this)('Weak Password!');
-          } else {
-              this.onLoginFailure.bind(this)(errorMessage);
-          }
-      });
-  }
-
-  async signInWithFacebook() {
-    try {
-      await Facebook.initializeAsync('666200950884855');
-      const {
-        type,
-        token,
-        expires,
-        permissions,
-        declinedPermissions,
-      } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      });
-      if (type === 'success') {
-        const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-        this.onLoginSuccess.bind(this)
-      }
-    } catch ({ message }) {
-      this.onLoginFailure.bind(this)(message);
-    }
-  }
-
-  onLoginFailure(errorMessage) {
-    this.setState({ error: errorMessage, auth: false });
-    Alert.alert(errorMessage);
-  }
-
-  onLoginSuccess() {
-    this.props.navigation.navigate('Home')
   }
 
   onSingUp() {
@@ -135,7 +92,7 @@ export default class LoginScreen extends Component {
           <Button
             mode="contained"
             style={base.btnPrimary}
-            onPress={() => this.signInWithEmail()}
+            onPress={() => signInWithEmailAndPassword(this.state.email, this.state.password, this.props)}
           >
             {Resources.LOGIN_SIGNIN}
           </Button>
@@ -143,7 +100,6 @@ export default class LoginScreen extends Component {
             icon="google"
             mode="contained"
             style={base.btnGoogle}
-            onPress={() => this.signInWithGoogle()}
             >
               {Resources.LOGIN_SIGNIN_GOOGLE}
           </Button>
@@ -151,7 +107,7 @@ export default class LoginScreen extends Component {
             icon="facebook"
             mode="contained"
             style={base.btnFacebook}
-            onPress={() => this.signInWithFacebook()}
+            onPress={() => signInWithFacebook(this.props)}
             >
               {Resources.LOGIN_SIGNIN_FACEBOOK}
           </Button>

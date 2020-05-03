@@ -13,7 +13,7 @@ export default function(containerRef) {
           Settings: 'settings',
           Login: 'Login',
           Medication: 'medication',
-          SingUp: 'SignUp'
+          Register: 'Register'
         },
       },
     },

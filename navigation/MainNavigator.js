@@ -8,7 +8,7 @@ import TabBarIconIonicons from '../components/TabBarIconIonicons';
 import LoginScreen from '../screens/LoginScreen';
 import MedicationScreen from '../screens/MedicationScreen';
 import HomeScreen from '../screens/HomeScreen';
-import SingUpScreen from '../screens/SingUpScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = 'Login';
@@ -29,7 +29,7 @@ export default function MainNavigator({ navigation, route }) {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Medication" component={MedicationScreen} />
-        <Stack.Screen name="SingUp" component={SingUpScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
   );
 }
@@ -48,7 +48,7 @@ function getHeaderTitle(route) {
       return 'Profile';
     case 'Medication':
       return 'Medication';
-    case 'SingUp':
-      return 'SingUp';
+    case 'Register':
+      return 'Register';
   }
 }

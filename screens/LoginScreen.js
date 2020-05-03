@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
   }
 
   onSingUp() {
-    this.props.navigation.navigate('SingUp')
+    this.props.navigation.navigate('Register')
   }
 
   showPasswordInTheInput(){

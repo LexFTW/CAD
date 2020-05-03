@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React, {Component} from 'react';
 
-import { ScrollView, Text, TextInput, SafeAreaView, Alert, View, Button  } from 'react-native';
+import { ScrollView, Text, TextInput, SafeAreaView, Alert, View, Button } from 'react-native';
 import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import NavigationTop from './../components/NavigationTop';
 
 import  base  from '../constants/styles/Styles';
+import  styles  from '../constants/styles/UserStyles';
 
 import Resources from './../config/resources/resources';
 
@@ -14,7 +15,7 @@ import 'firebase/firestore';
 
 const firestore = firebase.firestore();
 
-export default class UserScreen extends React.Component {
+export default class UserScreen extends Component {
 
   constructor(props){
     super(props);
@@ -102,17 +103,17 @@ export default class UserScreen extends React.Component {
   render(){
     return (
       <ScrollView>
-        <View style={{backgroundColor: '#2069b2', alignSelf: 'stretch', textAlign: 'center', height: 325}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 15, marginTop: 25,}}>
+        <View style={styles.containerHead}>
+          <View style={styles.viewHead}>
             <IconButton
               icon="settings"
               color={"#2069b2"}
               size={20}
             />
-            <View style={{justifyContent:'center', alignItems: 'center', marginTop: 15}}>
-              <Avatar.Text size={125} style={{borderWidth: 2, borderColor: 'white', padding: 5}} label="AM" labelStyle={{padding: 10, fontSize: 45}} />
-              <Text style={{color: 'white', fontSize: 22, marginTop: 10}}>{firebase.auth().currentUser.displayName}</Text>
-              <Text style={{color: 'white', fontSize: 14, fontStyle: 'italic'}}>{Resources.PROFILE_DIABETIS_TYPE}</Text>
+            <View style={styles.viewAvatar}>
+              <Avatar.Text size={125} style={styles.avatar} label="AM" labelStyle={{padding: 10, fontSize: 45}} />
+              <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
+              <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE}</Text>
             </View>
             <IconButton
               icon="logout"
@@ -122,70 +123,70 @@ export default class UserScreen extends React.Component {
             />
           </View>
         </View>
-        <View style={{alignItems: "center", flex: 1, justifyContent: "center", marginVertical: 15}}>
-          <View style={{borderColor: '#0069d9', borderWidth: 2, marginBottom: 10, backgroundColor: '#adccea'}}>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MAX}</Text>
+        <View style={styles.containterBody}>
+          <View style={styles.containerComp}>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MAX}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.interval_max} placeholderTextColor={"#444"} onChangeText={interval_max => this.setState({ interval_max })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MIN}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MIN}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.interval_min} placeholderTextColor={"#444"} onChangeText={interval_min => this.setState({ interval_min })} />
             </View>
           </View>
-          <View style={{borderColor: '#0069d9', borderWidth: 2, marginBottom: 10, backgroundColor: '#adccea'}}>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_HC_BASE_BREKFAST}</Text>
+          <View style={styles.containerComp}>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_BREKFAST}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_brekfast} placeholderTextColor={"#444"} onChangeText={hc_brekfast => this.setState({ hc_brekfast })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_HC_BASE_FOOD}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_FOOD}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_food} placeholderTextColor={"#444"} onChangeText={hc_food => this.setState({ hc_food })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_HC_BASE_SNACK}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_SNACK}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_snack} placeholderTextColor={"#444"} onChangeText={hc_snack => this.setState({ hc_snack })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_HC_BASE_DINNER}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_DINNER}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_dinner} placeholderTextColor={"#444"} onChangeText={hc_dinner => this.setState({ hc_dinner })} />
             </View>
           </View>
-          <View style={{borderColor: '#0069d9', borderWidth: 2, marginBottom: 10, backgroundColor: '#adccea'}}>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_INSULIN_BASE_BREKFAST}</Text>
+          <View style={styles.containerComp}>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_BREKFAST}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_brekfast} placeholderTextColor={"#444"} onChangeText={insulin_brekfast => this.setState({ insulin_brekfast })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_INSULIN_BASE_FOOD}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_FOOD}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_food} placeholderTextColor={"#444"} onChangeText={insulin_food => this.setState({ insulin_food })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_INSULIN_BASE_SNACK}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_SNACK}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_snack} placeholderTextColor={"#444"} onChangeText={insulin_snack => this.setState({ insulin_snack })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_INSULIN_BASE_DINNER}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_DINNER}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_dinner} placeholderTextColor={"#444"} onChangeText={insulin_dinner => this.setState({ insulin_dinner })} />
             </View>
           </View>
-          <View style={{borderColor: '#0069d9', borderWidth: 2, marginBottom: 10, backgroundColor: '#adccea'}}>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_RANGE_HC_UNDER_INTERVAL_MIN}</Text>
+          <View style={styles.containerComp}>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_RANGE_HC_UNDER_INTERVAL_MIN}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_under_hc} placeholderTextColor={"#444"} onChangeText={range_under_hc => this.setState({ range_under_hc })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_RANGE_HC_OVER_INTERVAL_MAX}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_RANGE_HC_OVER_INTERVAL_MAX}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_over_hc} placeholderTextColor={"#444"} onChangeText={range_over_hc => this.setState({ range_over_hc })} />
             </View>
           </View>
-          <View style={{borderColor: '#0069d9', borderWidth: 2, marginBottom: 10, backgroundColor: '#adccea'}}>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN}</Text>
+          <View style={styles.containerComp}>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_under_insulin} placeholderTextColor={"#444"} onChangeText={range_under_insulin => this.setState({ range_under_insulin })} />
             </View>
-            <View style={{paddingHorizontal: 15, width: 350, alignItems: "center", justifyContent: "space-between", paddingVertical: 5, flexDirection: "row"}}>
-              <Text style={{fontSize: 15, textTransform:"uppercase"}}>{Resources.MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX}</Text>
+            <View style={styles.component}>
+              <Text style={styles.key}>{Resources.MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX}</Text>
               <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_over_insulin} placeholderTextColor={"#444"} onChangeText={range_over_insulin => this.setState({ range_over_insulin })} />
             </View>
           </View>
@@ -196,49 +197,5 @@ export default class UserScreen extends React.Component {
         </View>
       </ScrollView>
     );
-  }
-}
-
-class UserSettings extends UserScreen{
-  constructor(props){
-    super(props);
-    this.text = props.text;
-    this.value = props.value;
-    this.label = props.label;
-  }
-
-  onChangeState(name, text){
-    super.onChangeState(name, text)
-    this.value = text;
-  }
-
-  render(){
-    return(
-      <View
-        style={{
-          paddingHorizontal: 15,
-          width: 350,
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingVertical: 5,
-          flexDirection: "row"}}
-      >
-      <Text
-        style={{
-          fontSize: 15,
-          textTransform:"uppercase"
-        }}
-      >
-        {this.text}
-      </Text>
-      <TextInput
-        keyboardType={'numeric'}
-        placeholder={"Values"}
-        value={this.value}
-        placeholderTextColor={"#444"}
-        onChangeText={(text) => this.onChangeState(this.label, text)}
-      />
-    </View>
-  );
   }
 }

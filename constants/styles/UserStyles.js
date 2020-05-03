@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2069b2',
     alignSelf: 'stretch',
     textAlign: 'center',
-    height: 325
+    height: 640
   },
   viewHead: {
     flexDirection: 'row',
@@ -34,9 +34,11 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   containterBody: {
-    alignItems: "center", flex: 1,
+    alignItems: "center",
+    flex: 1,
     justifyContent: "center",
-    marginVertical: 15
+    paddingVertical: 15,
+    backgroundColor: "white"
   },
   containerComp: {
     borderColor: '#0069d9',

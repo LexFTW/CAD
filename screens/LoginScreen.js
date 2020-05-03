@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
+
 import { View, Image, Text, StyleSheet, TextInput, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
 import { Button, ActivityIndicator, Colors } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Separator from '../components/Separator';
+
+import Resources from './../config/resources/resources';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import firebase from '../config/firebase';
-import * as GoogleSignIn from 'expo-google-sign-in'
 import * as Facebook from 'expo-facebook';
 
 import styles from '../components/TextInputIcon';
-import Resources from './../config/resources/resources';
-import Separator from '../components/Separator';
-
 import base from './../constants/styles/Styles';
 
 const Stack = createStackNavigator();
@@ -22,7 +22,15 @@ export default class LoginScreen extends Component {
   constructor(props){
     super(props);
     this.state = {email: '', password: '', error: '', auth: false, showPassword: true }
-    this.funcSing = this.signInWithEmail();
+    // this.funcSing = this.signInWithEmail();
+  }
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user || this.state.auth) {
+          this.props.navigation.navigate('Home');
+        }
+     });
   }
 
   async signInWithEmail() {
@@ -83,91 +91,76 @@ export default class LoginScreen extends Component {
     }
   }
 
-  renderCurrentState(){
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          this.props.navigation.navigate('Home');
-        }
-     });
-
-    if(this.state.auth){
-        this.props.navigation.navigate('Home');
-    }
-
-    return <View>
-      <Image source={require('../assets/images/splash.png')} style={{width: 250, height: 200, marginBottom: 15}} />
-
-      <View>
-        <Icon name={'user'} size={28} style={styles.inputIcon}/>
-        <TextInput
-          placeholder={Resources.LOGIN_EMAIL}
-          placeholderTextColor="#adadad"
-          underlineColorAndroid='transparent'
-          textContentType={'emailAddress'}
-          secureTextEntry={false}
-          style={styles.input}
-          value={this.state.email}
-          onChangeText={email => this.setState({ email })}
-        />
-      </View>
-      <View>
-        <Icon name={'lock'} size={28} style={styles.inputIcon}/>
-        <TextInput
-          placeholder={Resources.LOGIN_PASSWORD}
-          placeholderTextColor="#adadad"
-          underlineColorAndroid='transparent'
-          textContentType={'none'}
-          secureTextEntry={this.state.showPassword}
-          showPassword={false}
-          style={styles.input}
-          value={this.state.password}
-          onChangeText={password => this.setState({ password })}
-        />
-        <Button
-          icon="eye"
-          mode="contained"
-          style={styles.inputIconRight}
-          labelStyle={{marginRight: 0}}
-          onPress={() => this.showPasswordInTheInput(this)}
-        />
-      </View>
-      <Separator />
-      <Button
-        mode="contained"
-        style={{backgroundColor: '#2069b2', borderRadius: 0, marginBottom: 5}}
-        onPress={() => this.signInWithEmail()}
-      >
-        {Resources.LOGIN_SIGNIN}
-      </Button>
-      <Button
-        icon="google"
-        mode="contained"
-        style={{backgroundColor: '#DB4437', borderRadius: 0, marginBottom: 5}}
-        onPress={() => this.signInWithGoogle()}
-        >
-          {Resources.LOGIN_SIGNIN_GOOGLE}
-      </Button>
-      <Button
-        icon="facebook"
-        mode="contained"
-        style={{backgroundColor: '#3b5998', borderRadius: 0}}
-        onPress={() => this.signInWithFacebook()}
-        >
-          {Resources.LOGIN_SIGNIN_FACEBOOK}
-      </Button>
-      <Separator />
-      <Button mode="contained" style={{backgroundColor: '#2069b2', borderRadius: 0,}}
-        onPress={() => this.onSingUp()}>
-        {Resources.LOGIN_REGISTER}
-      </Button>
-    </View>
-
-  }
-
   render() {
     return(
       <SafeAreaView style={base.container}>
-        {this.renderCurrentState()}
+        <View>
+          <Image source={require('../assets/images/splash.png')} style={base.logo} />
+
+          <View>
+            <Icon name={'user'} size={28} style={styles.inputIcon}/>
+            <TextInput
+              placeholder={Resources.LOGIN_EMAIL}
+              placeholderTextColor="#adadad"
+              underlineColorAndroid='transparent'
+              textContentType={'emailAddress'}
+              secureTextEntry={false}
+              style={styles.input}
+              value={this.state.email}
+              onChangeText={email => this.setState({ email })}
+            />
+          </View>
+          <View>
+            <Icon name={'lock'} size={28} style={styles.inputIcon}/>
+            <TextInput
+              placeholder={Resources.LOGIN_PASSWORD}
+              placeholderTextColor="#adadad"
+              underlineColorAndroid='transparent'
+              textContentType={'none'}
+              secureTextEntry={this.state.showPassword}
+              showPassword={false}
+              style={styles.input}
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
+            />
+            <Button
+              icon="eye"
+              mode="contained"
+              style={styles.inputIconRight}
+              labelStyle={{marginRight: 0}}
+              onPress={() => this.showPasswordInTheInput(this)}
+            />
+          </View>
+          <Separator />
+          <Button
+            mode="contained"
+            style={base.btnPrimary}
+            onPress={() => this.signInWithEmail()}
+          >
+            {Resources.LOGIN_SIGNIN}
+          </Button>
+          <Button
+            icon="google"
+            mode="contained"
+            style={base.btnGoogle}
+            onPress={() => this.signInWithGoogle()}
+            >
+              {Resources.LOGIN_SIGNIN_GOOGLE}
+          </Button>
+          <Button
+            icon="facebook"
+            mode="contained"
+            style={base.btnFacebook}
+            onPress={() => this.signInWithFacebook()}
+            >
+              {Resources.LOGIN_SIGNIN_FACEBOOK}
+          </Button>
+          <Separator />
+          <Button mode="contained" style={base.btnPrimary}
+            onPress={() => this.onSingUp()}>
+            {Resources.LOGIN_REGISTER}
+          </Button>
+        </View>
       </SafeAreaView>
     );
   }

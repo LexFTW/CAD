@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {Component} from 'react';
 
 import { Text, TextInput, Button, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
@@ -12,9 +12,7 @@ import firebase from '../config/firebase';
 
 var state;
 
-export default function TabViewExample(props) {
-
-  const [index, setIndex] = React.useState(0);
+const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: Resources.PROFILE_SETTINGS_MEDICATION },
     { key: 'second', title: Resources.PROFILE_SETTINGS_PROFILE },
@@ -27,21 +25,29 @@ export default function TabViewExample(props) {
     second: SecondRoute,
   });
 
-  return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      renderTabBar={props =>
-        <TabBar
-          {...props}
-          indicatorStyle={{ backgroundColor: 'yellow' }}
-          style={{ backgroundColor: '#2069b2' }}
-        />
-      }
-    />
-  );
+export default class TabViewExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = props.state;
+  }
+
+  render() {
+    return (
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+        renderTabBar={props =>
+          <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: 'yellow' }}
+            style={{ backgroundColor: '#2069b2' }}
+          />
+        }
+      />
+    )
+  }
 }
 
 const FirstRoute = () => (

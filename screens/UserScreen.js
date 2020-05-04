@@ -5,6 +5,8 @@ import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import NavigationTop from './../components/NavigationTop';
 
+import TabView from '../components/UserTabView';
+
 import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/UserStyles';
 
@@ -34,6 +36,8 @@ export default class UserScreen extends Component {
       range_under_hc: "",
       range_over_insulin: "",
       range_under_insulin: "",
+      diabetes_type: "Unknown",
+      user_title_profile: "?",
     });
   }
 
@@ -45,9 +49,7 @@ export default class UserScreen extends Component {
     .doc(user.uid)
     .get()
     .then(doc => {
-      if (!doc.exists) {
-        Alert.alert('No such document!');
-      } else {
+      if (doc.exists) {
         this.setState({interval_max: doc.data().GlucoseIntervalMax});
         this.setState({interval_min: doc.data().GlucoseIntervalMin});
         this.setState({hc_brekfast: doc.data().HCBaseBrekfast});
@@ -62,8 +64,13 @@ export default class UserScreen extends Component {
         this.setState({range_under_hc: doc.data().RangeHCHipos});
         this.setState({range_over_insulin: doc.data().RangeInsulinHypers});
         this.setState({range_under_insulin: doc.data().RangeInsulinHipos});
+        this.setState({diabetes_type: doc.data().Type});
       }
-    })
+    });
+
+    if(user.displayName != null){
+      this.setState({user_title_profile: user.displayName.charAt(0)});
+    }
   }
 
   onSignOut(){
@@ -102,100 +109,27 @@ export default class UserScreen extends Component {
 
   render(){
     return (
-      <ScrollView>
-        <View style={styles.containerHead}>
-          <View style={styles.viewHead}>
-            <IconButton
-              icon="settings"
-              color={"#2069b2"}
-              size={20}
-            />
-            <View style={styles.viewAvatar}>
-              <Avatar.Text size={125} style={styles.avatar} label="AM" labelStyle={{padding: 10, fontSize: 45}} />
-              <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
-              <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE}</Text>
-            </View>
-            <IconButton
-              icon="logout"
-              color={Colors.white}
-              size={20}
-              onPress={() => this.onSignOut()}
-            />
+      <View style={styles.containerHead}>
+        <View style={styles.viewHead}>
+          <IconButton
+            icon="settings"
+            color={"#2069b2"}
+            size={20}
+          />
+          <View style={styles.viewAvatar}>
+            <Avatar.Text size={125} style={styles.avatar} label={this.state.user_title_profile} labelStyle={{padding: 10, fontSize: 45}} />
+            <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
+            <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE} {this.state.diabetes_type}</Text>
           </View>
-        </View>
-        <View style={styles.containterBody}>
-          <View style={styles.containerComp}>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MAX}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.interval_max} placeholderTextColor={"#444"} onChangeText={interval_max => this.setState({ interval_max })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_GLUCOSE_INTERVAL_MIN}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.interval_min} placeholderTextColor={"#444"} onChangeText={interval_min => this.setState({ interval_min })} />
-            </View>
-          </View>
-          <View style={styles.containerComp}>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_BREKFAST}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_brekfast} placeholderTextColor={"#444"} onChangeText={hc_brekfast => this.setState({ hc_brekfast })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_FOOD}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_food} placeholderTextColor={"#444"} onChangeText={hc_food => this.setState({ hc_food })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_SNACK}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_snack} placeholderTextColor={"#444"} onChangeText={hc_snack => this.setState({ hc_snack })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_HC_BASE_DINNER}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.hc_dinner} placeholderTextColor={"#444"} onChangeText={hc_dinner => this.setState({ hc_dinner })} />
-            </View>
-          </View>
-          <View style={styles.containerComp}>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_BREKFAST}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_brekfast} placeholderTextColor={"#444"} onChangeText={insulin_brekfast => this.setState({ insulin_brekfast })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_FOOD}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_food} placeholderTextColor={"#444"} onChangeText={insulin_food => this.setState({ insulin_food })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_SNACK}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_snack} placeholderTextColor={"#444"} onChangeText={insulin_snack => this.setState({ insulin_snack })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_INSULIN_BASE_DINNER}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.insulin_dinner} placeholderTextColor={"#444"} onChangeText={insulin_dinner => this.setState({ insulin_dinner })} />
-            </View>
-          </View>
-          <View style={styles.containerComp}>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_RANGE_HC_UNDER_INTERVAL_MIN}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_under_hc} placeholderTextColor={"#444"} onChangeText={range_under_hc => this.setState({ range_under_hc })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_RANGE_HC_OVER_INTERVAL_MAX}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_over_hc} placeholderTextColor={"#444"} onChangeText={range_over_hc => this.setState({ range_over_hc })} />
-            </View>
-          </View>
-          <View style={styles.containerComp}>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_under_insulin} placeholderTextColor={"#444"} onChangeText={range_under_insulin => this.setState({ range_under_insulin })} />
-            </View>
-            <View style={styles.component}>
-              <Text style={styles.key}>{Resources.MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX}</Text>
-              <TextInput keyboardType={'numeric'} placeholder={'Values'} value={this.state.range_over_insulin} placeholderTextColor={"#444"} onChangeText={range_over_insulin => this.setState({ range_over_insulin })} />
-            </View>
-          </View>
-          <Button
-            title="Insertar datos"
-            onPress={() => this.saveChangesInFirestore()}
+          <IconButton
+            icon="logout"
+            color={Colors.white}
+            size={20}
+            onPress={() => this.onSignOut()}
           />
         </View>
-      </ScrollView>
+        <TabView state={this.state}/>
+      </View>
     );
   }
 }

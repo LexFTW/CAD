@@ -1,6 +1,4 @@
 const Resources = {
-  DEMO_HOME: 'Home Screen',
-
   LOGIN_USERNAME: 'User name',
   LOGIN_EMAIL: 'Email',
   LOGIN_PASSWORD: 'Password',
@@ -9,6 +7,8 @@ const Resources = {
   LOGIN_SIGNIN_GOOGLE: 'Sign In with Google',
   LOGIN_SIGNIN_FACEBOOK: 'Sign In with Facebook',
   LOGIN_REGISTER: 'Sign Up',
+
+  REPORT_HEADER: 'Report',
 
   READER_TITLE: 'Glucose Reader',
   READER_TEXT_BUTTON: 'Start Reading',

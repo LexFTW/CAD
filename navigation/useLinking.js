@@ -12,7 +12,7 @@ export default function(containerRef) {
           Profile: 'profile',
           Settings: 'settings',
           Login: 'Login',
-          Medication: 'medication',
+          Historial: 'Historial',
           Register: 'Register'
         },
       },

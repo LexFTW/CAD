@@ -6,7 +6,7 @@ import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
 import LoginScreen from '../screens/LoginScreen';
-import MedicationScreen from '../screens/MedicationScreen';
+import HistorialScreen from '../screens/HistorialScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
@@ -28,7 +28,7 @@ export default function MainNavigator({ navigation, route }) {
       >
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Medication" component={MedicationScreen} />
+        <Stack.Screen name="Historial" component={HistorialScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
   );
@@ -46,8 +46,8 @@ function getHeaderTitle(route) {
       return 'Reader';
     case 'Profile':
       return 'Profile';
-    case 'Medication':
-      return 'Medication';
+    case 'Historial':
+      return 'Historial';
     case 'Register':
       return 'Register';
   }

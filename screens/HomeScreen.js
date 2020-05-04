@@ -1,20 +1,23 @@
-import * as React from 'react';
-import * as WebBrowser from 'expo-web-browser';
+import React, {Component} from 'react';
+
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button, SafeAreaView, StatusBar } from 'react-native';
-import Resources from './../config/resources/resources';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import ReaderScreen from '../screens/ReaderScreen';
-import UserScreen from '../screens/UserScreen';
-import MedicationScreen from '../screens/MedicationScreen';
 import TabBarIconFoundation from '../components/TabBarIconFoundation';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
+import Resources from './../config/resources/resources';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import ReaderScreen from '../screens/ReaderScreen';
+import UserScreen from '../screens/UserScreen';
+import HistorialScreen from '../screens/HistorialScreen';
+
 const Tab = createBottomTabNavigator();
 
-export default class HomeScreen extends React.Component {
+export default class HomeScreen extends Component {
 
   render(){
     return (
@@ -25,8 +28,8 @@ export default class HomeScreen extends React.Component {
           }}
         >
           <Tab.Screen
-            name="Medication"
-            component={MedicationScreen}
+            name="Historial"
+            component={HistorialScreen}
             options={{
               tabBarIcon: ({ focused }) => <TabBarIconFontAwesome size={24} focused={focused} name="heartbeat" />,
             }}

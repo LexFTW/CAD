@@ -22,20 +22,6 @@ export default class UserScreen extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      interval_min: "",
-      interval_max: "",
-      hc_brekfast: "",
-      hc_food: "",
-      hc_snack: "",
-      hc_dinner: "",
-      insulin_brekfast: "",
-      insulin_food: "",
-      insulin_snack: "",
-      insulin_dinner: "",
-      range_over_hc: "",
-      range_under_hc: "",
-      range_over_insulin: "",
-      range_under_insulin: "",
       diabetes_type: "Unknown",
       user_title_profile: "?",
     });
@@ -50,26 +36,14 @@ export default class UserScreen extends Component {
     .get()
     .then(doc => {
       if (doc.exists) {
-        this.setState({interval_max: doc.data().GlucoseIntervalMax});
-        this.setState({interval_min: doc.data().GlucoseIntervalMin});
-        this.setState({hc_brekfast: doc.data().HCBaseBrekfast});
-        this.setState({hc_food: doc.data().HCBaseFood});
-        this.setState({hc_snack: doc.data().HCBaseSnack});
-        this.setState({hc_dinner: doc.data().HCBaseDinner});
-        this.setState({insulin_brekfast: doc.data().InsulinBaseBrekfast});
-        this.setState({insulin_food: doc.data().InsulinBaseFood});
-        this.setState({insulin_snack: doc.data().InsulinBaseSnack});
-        this.setState({insulin_dinner: doc.data().InsulinBaseDinner});
-        this.setState({range_over_hc: doc.data().RangeHCHypers});
-        this.setState({range_under_hc: doc.data().RangeHCHipos});
-        this.setState({range_over_insulin: doc.data().RangeInsulinHypers});
-        this.setState({range_under_insulin: doc.data().RangeInsulinHipos});
         this.setState({diabetes_type: doc.data().Type});
       }
     });
 
     if(user.displayName != null){
       this.setState({user_title_profile: user.displayName.charAt(0)});
+    }else{
+      this.setState({user_title_profile: '?'});
     }
   }
 
@@ -83,28 +57,6 @@ export default class UserScreen extends Component {
       .catch(error => {
         Alert.alert(error);
       });
-  }
-
-  async saveChangesInFirestore(){
-    const user = firebase.auth().currentUser;
-    const doc = firestore.collection('userParametersMedication').doc(user.uid);
-
-    await doc.set({
-      GlucoseIntervalMax: this.state.interval_max,
-      GlucoseIntervalMin: this.state.interval_min,
-      HCBaseBrekfast: this.state.hc_brekfast,
-      HCBaseDinner: this.state.hc_dinner,
-      HCBaseFood: this.state.hc_food,
-      HCBaseSnack: this.state.hc_snack,
-      InsulinBaseBrekfast: this.state.insulin_brekfast,
-      InsulinBaseDinner: this.state.insulin_dinner,
-      InsulinBaseFood: this.state.insulin_food,
-      InsulinBaseSnack: this.state.insulin_snack,
-      RangeHCHipos: this.state.range_under_hc,
-      RangeHCHypers: this.state.range_over_hc,
-      RangeInsulinHipos: this.state.range_under_insulin,
-      RangeInsulinHypers: this.state.range_over_insulin,
-    });
   }
 
   render(){

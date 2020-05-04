@@ -9,7 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
 import LoginScreen from '../screens/LoginScreen';
-import MedicationScreen from '../screens/MedicationScreen';
+import HistorialScreen from '../screens/HistorialScreen';
 import SingUpScreen from '../screens/SingUpScreen';
 
 const BottomTab = createBottomTabNavigator();
@@ -31,8 +31,8 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="Medication"
-        component={MedicationScreen}
+        name="Historial"
+        component={HistorialScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabBarIconFontAwesome focused={focused} size={24} name="heartbeat" />,
         }}
@@ -67,8 +67,8 @@ function getHeaderTitle(route) {
       return 'Reader';
     case 'Profile':
       return 'Profile';
-    case 'Medication':
-      return 'Medication';
+    case 'Historial':
+      return 'Historial';
     case 'SingUp':
       return 'SingUp';
   }

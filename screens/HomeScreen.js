@@ -13,7 +13,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
-import HistorialScreen from '../screens/HistorialScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,8 +28,8 @@ export default class HomeScreen extends Component {
           }}
         >
           <Tab.Screen
-            name="Historial"
-            component={HistorialScreen}
+            name="History"
+            component={HistoryScreen}
             options={{
               tabBarIcon: ({ focused }) => <TabBarIconFontAwesome size={24} focused={focused} name="heartbeat" />,
             }}

@@ -6,7 +6,7 @@ import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
 import LoginScreen from '../screens/LoginScreen';
-import HistorialScreen from '../screens/HistorialScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
@@ -28,7 +28,7 @@ export default function MainNavigator({ navigation, route }) {
       >
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Historial" component={HistorialScreen} />
+        <Stack.Screen name="History" component={HistoryScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
   );

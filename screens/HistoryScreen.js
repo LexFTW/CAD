@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Alert, Text, TextInput, SafeAreaView, ScrollView, View, Dimensions } from 'react-native';
-import { Button, IconButton, Colors } from 'react-native-paper';
+import { ActivityIndicator, Button, IconButton, Colors } from 'react-native-paper';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -59,19 +59,7 @@ export default class HistoryScreen extends React.Component {
     .get()
     .then(snapshot => {
       if(snapshot.empty){
-        Alert.alert(
-          "Datos no encontrados.",
-          "Error al obtener los datos por la fecha introducida, revisela o compruebe que disponga de conexión a Internet.",
-          [
-            {
-              text: "Cancel",
-              onPress: () => console.log("Cancel Pressed"),
-              style: "cancel"
-            },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ],
-          { cancelable: false }
-        );
+        console.warn('Datos no encontrados.')
       }
 
       snapshot.forEach(doc => {
@@ -99,8 +87,19 @@ export default class HistoryScreen extends React.Component {
 
   generateDayReport(){
     const glucoseAverageDay = (parseInt(this.state.brekfastValue) + parseInt(this.state.foodValue) + parseInt(this.state.snackValue) + parseInt(this.state.dinnerValue)) / 4
+    this.setState({eag: (glucoseAverageDay).toFixed(2) });
+    this.setState({hypoglycemia: 0 });
+    this.setState({hyperglycemia: 2 });
     this.setState({hba1c: ((46.7 + glucoseAverageDay) / 28.7).toFixed(2) });
     this.setState({report: true});
+  }
+
+  renderChart(){
+    if(this.state.report){
+      return <Text>Graficazo to flama</Text>
+    }else{
+      return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
+    }
   }
 
   renderReport(){
@@ -110,8 +109,20 @@ export default class HistoryScreen extends React.Component {
           <Text style={{textTransform: 'uppercase', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 5}}>Informe</Text>
         </View>
         <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>eAG</Text>
+          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.eag}</Text>
+        </View>
+        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
           <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hba1c}</Text>
+        </View>
+        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hypoglycemia</Text>
+          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hypoglycemia}</Text>
+        </View>
+        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hyperglycemia</Text>
+          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hyperglycemia}</Text>
         </View>
         <View style={{marginTop: 20}}>
           <Button icon="file" mode="contained" style={base.btnPrimary}>
@@ -120,8 +131,6 @@ export default class HistoryScreen extends React.Component {
         </View>
       </View>
     }
-
-    return;
   }
 
   render(){
@@ -145,7 +154,7 @@ export default class HistoryScreen extends React.Component {
               onCancel={() => this.hideDatePicker()}
             />
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{backgroundColor: 'white', color: '#222', width: 270, justifyContent:'center', alignItems: 'center', paddingLeft: 10, fontSize: 17, fontWeight: 'bold'}}>{this.state.date}</Text>
+              <Text style={{backgroundColor: 'white', color: '#222', width: 250, justifyContent:'center', alignItems: 'center', paddingLeft: 10, fontSize: 17, fontWeight: 'bold'}}>{this.state.date}</Text>
               <IconButton
               icon="database-search"
               color={Colors.white}
@@ -156,7 +165,7 @@ export default class HistoryScreen extends React.Component {
             </View>
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue', height: 300, width: Dimensions.get('window').width}}>
-            <Text>No hay datos para mostrar</Text>
+            {this.renderChart()}
           </View>
           {this.renderReport()}
         </ScrollView>

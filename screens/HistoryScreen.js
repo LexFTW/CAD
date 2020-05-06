@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text, TextInput, SafeAreaView, ScrollView, View, Dimensions } from 'react-native';
+import { Alert, Text, TextInput, SafeAreaView, ScrollView, View, Dimensions } from 'react-native';
 import { Button, IconButton, Colors } from 'react-native-paper';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 
@@ -24,6 +24,7 @@ export default class HistoryScreen extends React.Component {
     super(props);
     this.state = {
       isVisible: false,
+      report: false,
       date: "",
     }
   }
@@ -58,12 +59,25 @@ export default class HistoryScreen extends React.Component {
     .get()
     .then(snapshot => {
       if(snapshot.empty){
-        console.warn('I cant find any document with these arguments: ', user.uid, this.state.date)
+        Alert.alert(
+          "Datos no encontrados.",
+          "Error al obtener los datos por la fecha introducida, revisela o compruebe que disponga de conexión a Internet.",
+          [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ],
+          { cancelable: false }
+        );
       }
 
       snapshot.forEach(doc => {
         var currentDocument = doc.data();
         this.saveDocumentInState(currentDocument);
+        this.generateDayReport();
       });
 
     })
@@ -81,8 +95,31 @@ export default class HistoryScreen extends React.Component {
     this.setState({snackTime: documentReceived.SnackTime});
     this.setState({dinnerValue: documentReceived.dinnerValue});
     this.setState({dinnerTime: documentReceived.dinnerTime});
+  }
 
-    console.warn(this.state);
+  generateDayReport(){
+    this.setState({report: true});
+  }
+
+  renderReport(){
+    if(this.state.report){
+      return <View style={{padding: 20}}>
+        <View style={{backgroundColor: '#2069b2'}}>
+          <Text style={{textTransform: 'uppercase', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 5}}>Informe</Text>
+        </View>
+        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
+          <Text style={{textTransform: 'uppercase', padding: 5}}>7.23</Text>
+        </View>
+        <View style={{marginTop: 20}}>
+          <Button icon="file" mode="contained" style={base.btnPrimary}>
+            <Text>Generar Informe</Text>
+          </Button>
+        </View>
+      </View>
+    }
+
+    return;
   }
 
   render(){
@@ -92,46 +129,34 @@ export default class HistoryScreen extends React.Component {
           title={Resources.READER_HEADER}
         />
         <ScrollView>
-          <View style={{marginTop: 65, backgroundColor: 'lightblue', height: 350, width: Dimensions.get('window').width}}>
-            <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{marginTop: 65, backgroundColor: '#2069b2', paddingVertical: 10, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <IconButton
+              icon="calendar"
+              color={Colors.white}
+              size={20}
+              onPress={() => this.showDatePicker()}
+            />
+            <DateTimePickerModal
+              isVisible={this.state.isVisible}
+              mode="date"
+              onConfirm={(date) => this.handleConfirm(date)}
+              onCancel={() => this.hideDatePicker()}
+            />
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{backgroundColor: 'white', color: '#222', width: 270, height: 35, paddingLeft: 20, fontSize: 18, paddingTop: 4, fontWeight: 'bold'}}>{this.state.date}</Text>
               <IconButton
-                icon="calendar"
-                color={Colors.white}
-                size={20}
-                onPress={() => this.showDatePicker()}
+              icon="database-search"
+              color={Colors.white}
+              style={{backgroundColor: 'lightblue', borderRadius: 0, margin: 0, height: 35, width: 40}}
+              size={20}
+              onPress={() => this.searchRegisterByDate()}
               />
-              <DateTimePickerModal
-                isVisible={this.state.isVisible}
-                mode="date"
-                onConfirm={(date) => this.handleConfirm(date)}
-                onCancel={() => this.hideDatePicker()}
-              />
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={{backgroundColor: 'white', borderTopLeftRadius: 10, borderBottomLeftRadius: 10, width: 270, height: 35, paddingLeft: 20, fontSize: 20, paddingTop: 2, fontWeight: 'bold'}}>{this.state.date}</Text>
-                <IconButton
-                icon="database-search"
-                color={Colors.black}
-                style={{backgroundColor: 'white', borderRadius: 0, borderTopRightRadius: 10, borderBottomRightRadius: 10, margin: 0, height: 35}}
-                size={20}
-                onPress={() => this.searchRegisterByDate()}
-                />
-              </View>
             </View>
           </View>
-          <View style={{padding: 20}}>
-            <View style={{backgroundColor: '#2069b2'}}>
-              <Text style={{textTransform: 'uppercase', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 5}}>Informe</Text>
-            </View>
-            <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
-              <Text style={{textTransform: 'uppercase', padding: 5}}>7.23</Text>
-            </View>
-            <View style={{marginTop: 20}}>
-              <Button icon="file" mode="contained" style={base.btnPrimary}>
-                <Text>Generar Informe</Text>
-              </Button>
-            </View>
+          <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue', height: 300, width: Dimensions.get('window').width}}>
+            <Text>No hay datos para mostrar</Text>
           </View>
+          {this.renderReport()}
         </ScrollView>
       </SafeAreaView>
     );

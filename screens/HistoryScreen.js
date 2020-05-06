@@ -14,6 +14,11 @@ import NavigationTop from './../components/NavigationTop';
 import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/ReaderStyles';
 
+import firebase from '../config/firebase';
+import 'firebase/firestore';
+
+const firestore = firebase.firestore();
+
 export default class HistoryScreen extends React.Component {
   constructor(props){
     super(props);
@@ -23,11 +28,12 @@ export default class HistoryScreen extends React.Component {
     }
   }
 
-  handleConfirm(date){
+  async handleConfirm(date){
+    await this.hideDatePicker();
+
     this.setState({
-      date: moment(date).format('DD-MM-yyyy')
+      date: moment(date).format('MM-DD-yyyy')
     });
-    hideDatePicker();
   }
 
   showDatePicker(){
@@ -40,6 +46,43 @@ export default class HistoryScreen extends React.Component {
     this.setState({
       isVisible: false
     });
+  }
+
+  async searchRegisterByDate(){
+    const user = firebase.auth().currentUser;
+
+    await firestore
+    .collection('userHistory')
+    .where('uid', '==', user.uid)
+    .where('createdAt', '==', this.state.date)
+    .get()
+    .then(snapshot => {
+      if(snapshot.empty){
+        console.warn('I cant find any document with these arguments: ', user.uid, this.state.date)
+      }
+
+      snapshot.forEach(doc => {
+        var currentDocument = doc.data();
+        this.saveDocumentInState(currentDocument);
+      });
+
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+  }
+
+  saveDocumentInState(documentReceived){
+    this.setState({brekfastValue: documentReceived.BrekfastValue});
+    this.setState({brekfastTime: documentReceived.BrekfastTime});
+    this.setState({foodValue: documentReceived.FoodValue});
+    this.setState({foodTime: documentReceived.FoodTime});
+    this.setState({snackValue: documentReceived.SnackValue});
+    this.setState({snackTime: documentReceived.SnackTime});
+    this.setState({dinnerValue: documentReceived.dinnerValue});
+    this.setState({dinnerTime: documentReceived.dinnerTime});
+
+    console.warn(this.state);
   }
 
   render(){
@@ -64,12 +107,13 @@ export default class HistoryScreen extends React.Component {
                 onCancel={() => this.hideDatePicker()}
               />
               <View style={{ flexDirection: 'row' }}>
-                <Text style={{backgroundColor: 'white', borderTopLeftRadius: 10, borderBottomLeftRadius: 10, width: 270, height: 35, paddingLeft: 20}}>{this.state.date}</Text>
+                <Text style={{backgroundColor: 'white', borderTopLeftRadius: 10, borderBottomLeftRadius: 10, width: 270, height: 35, paddingLeft: 20, fontSize: 20, paddingTop: 2, fontWeight: 'bold'}}>{this.state.date}</Text>
                 <IconButton
-                icon="calendar-search"
+                icon="database-search"
                 color={Colors.black}
                 style={{backgroundColor: 'white', borderRadius: 0, borderTopRightRadius: 10, borderBottomRightRadius: 10, margin: 0, height: 35}}
                 size={20}
+                onPress={() => this.searchRegisterByDate()}
                 />
               </View>
             </View>
@@ -79,7 +123,7 @@ export default class HistoryScreen extends React.Component {
               <Text style={{textTransform: 'uppercase', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 5}}>Informe</Text>
             </View>
             <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hba1c</Text>
+              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
               <Text style={{textTransform: 'uppercase', padding: 5}}>7.23</Text>
             </View>
             <View style={{marginTop: 20}}>

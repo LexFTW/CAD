@@ -93,11 +93,13 @@ export default class HistoryScreen extends React.Component {
     this.setState({foodTime: documentReceived.FoodTime});
     this.setState({snackValue: documentReceived.SnackValue});
     this.setState({snackTime: documentReceived.SnackTime});
-    this.setState({dinnerValue: documentReceived.dinnerValue});
-    this.setState({dinnerTime: documentReceived.dinnerTime});
+    this.setState({dinnerValue: documentReceived.DinnerValue});
+    this.setState({dinnerTime: documentReceived.DinnerTime});
   }
 
   generateDayReport(){
+    const glucoseAverageDay = (parseInt(this.state.brekfastValue) + parseInt(this.state.foodValue) + parseInt(this.state.snackValue) + parseInt(this.state.dinnerValue)) / 4
+    this.setState({hba1c: ((46.7 + glucoseAverageDay) / 28.7).toFixed(2) });
     this.setState({report: true});
   }
 
@@ -109,7 +111,7 @@ export default class HistoryScreen extends React.Component {
         </View>
         <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
-          <Text style={{textTransform: 'uppercase', padding: 5}}>7.23</Text>
+          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hba1c}</Text>
         </View>
         <View style={{marginTop: 20}}>
           <Button icon="file" mode="contained" style={base.btnPrimary}>
@@ -143,7 +145,7 @@ export default class HistoryScreen extends React.Component {
               onCancel={() => this.hideDatePicker()}
             />
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{backgroundColor: 'white', color: '#222', width: 270, height: 35, paddingLeft: 20, fontSize: 18, paddingTop: 4, fontWeight: 'bold'}}>{this.state.date}</Text>
+              <Text style={{backgroundColor: 'white', color: '#222', width: 270, justifyContent:'center', alignItems: 'center', paddingLeft: 10, fontSize: 17, fontWeight: 'bold'}}>{this.state.date}</Text>
               <IconButton
               icon="database-search"
               color={Colors.white}

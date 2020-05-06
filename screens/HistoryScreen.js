@@ -10,6 +10,7 @@ import moment from 'moment';
 import Resources from './../config/resources/resources';
 
 import NavigationTop from './../components/NavigationTop';
+import HistoryTabView from './../components/HistoryTabView';
 
 import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/ReaderStyles';
@@ -27,6 +28,13 @@ export default class HistoryScreen extends React.Component {
       report: false,
       date: "",
     }
+  }
+
+  componentDidMount(){
+    var date = new Date();
+    date.setDate(date.getDate());
+    const format = moment(date).format('MM-DD-yyyy');
+    this.searchRegisterByDate(format);
   }
 
   async handleConfirm(date){
@@ -49,23 +57,23 @@ export default class HistoryScreen extends React.Component {
     });
   }
 
-  async searchRegisterByDate(){
+  async searchRegisterByDate(date){
     const user = firebase.auth().currentUser;
 
     await firestore
     .collection('userHistory')
     .where('uid', '==', user.uid)
-    .where('createdAt', '==', this.state.date)
+    .where('createdAt', '==', date)
     .get()
     .then(snapshot => {
       if(snapshot.empty){
-        console.warn('Datos no encontrados.')
+        console.warn('Datos no encontrados.', date)
       }
 
       snapshot.forEach(doc => {
         var currentDocument = doc.data();
         this.saveDocumentInState(currentDocument);
-        this.generateDayReport();
+        this.setState({report: true});
       });
 
     })
@@ -85,15 +93,6 @@ export default class HistoryScreen extends React.Component {
     this.setState({dinnerTime: documentReceived.DinnerTime});
   }
 
-  generateDayReport(){
-    const glucoseAverageDay = (parseInt(this.state.brekfastValue) + parseInt(this.state.foodValue) + parseInt(this.state.snackValue) + parseInt(this.state.dinnerValue)) / 4
-    this.setState({eag: (glucoseAverageDay).toFixed(2) });
-    this.setState({hypoglycemia: 0 });
-    this.setState({hyperglycemia: 2 });
-    this.setState({hba1c: ((46.7 + glucoseAverageDay) / 28.7).toFixed(2) });
-    this.setState({report: true});
-  }
-
   renderChart(){
     if(this.state.report){
       return <Text>Graficazo to flama</Text>
@@ -102,45 +101,11 @@ export default class HistoryScreen extends React.Component {
     }
   }
 
-  renderReport(){
-    if(this.state.report){
-      return <View style={{padding: 20}}>
-        <View style={{backgroundColor: '#2069b2'}}>
-          <Text style={{textTransform: 'uppercase', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 5}}>Informe</Text>
-        </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>eAG</Text>
-          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.eag}</Text>
-        </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
-          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hba1c}</Text>
-        </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hypoglycemia</Text>
-          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hypoglycemia}</Text>
-        </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hyperglycemia</Text>
-          <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hyperglycemia}</Text>
-        </View>
-        <View style={{marginTop: 20}}>
-          <Button icon="file" mode="contained" style={base.btnPrimary}>
-            <Text>Generar Informe</Text>
-          </Button>
-        </View>
-      </View>
-    }
-  }
-
   render(){
     return (
-      <SafeAreaView style={base.container}>
-        <NavigationTop
-          title={Resources.READER_HEADER}
-        />
+      <View>
         <ScrollView>
-          <View style={{marginTop: 65, backgroundColor: '#2069b2', paddingVertical: 10, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingTop: 25, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <IconButton
               icon="calendar"
               color={Colors.white}
@@ -160,16 +125,16 @@ export default class HistoryScreen extends React.Component {
               color={Colors.white}
               style={{backgroundColor: 'lightblue', borderRadius: 0, margin: 0, height: 35, width: 40}}
               size={20}
-              onPress={() => this.searchRegisterByDate()}
+              onPress={() => this.searchRegisterByDate(this.state.date)}
               />
             </View>
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue', height: 300, width: Dimensions.get('window').width}}>
             {this.renderChart()}
           </View>
-          {this.renderReport()}
+           <HistoryTabView/>
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
   }
 

@@ -23,6 +23,8 @@ const s = StyleSheet.create({
 export default class DailyReportComponent extends React.Component {
   constructor(props){
     super(props);
+    this.collection = props.collection;
+
     this.state = {
       eag: null,
       hba1c: null,
@@ -32,38 +34,12 @@ export default class DailyReportComponent extends React.Component {
   }
 
   componentDidMount(){
-    var currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - 1);
-
-    this.getReportFromCollection(currentDate);
-  }
-
-  async getReportFromCollection(date){
-    const user = firebase.auth().currentUser;
-    await firestore
-    .collection('userHistory')
-    .where('uid', '==', user.uid)
-    .get()
-    .then(snapshot => {
-      if(snapshot.empty){
-        console.warn('Datos no encontrados.')
-      }
-
-      snapshot.forEach(doc => {
-        var currentDocument = doc.data();
-        this.generateDayReport();
-      });
-
-    })
-    .catch(error => {
-      console.warn(error);
-    });
+      this.generateDayReport();
   }
 
 
   generateDayReport(){
-    // const glucoseAverageDay = (parseInt(this.state.brekfastValue) + parseInt(this.state.foodValue) + parseInt(this.state.snackValue) + parseInt(this.state.dinnerValue)) / 4
-    const glucoseAverageDay = 165;
+    const glucoseAverageDay = (parseInt(this.collection.brekfastValue) + parseInt(this.collection.foodValue) + parseInt(this.collection.snackValue) + parseInt(this.collection.dinnerValue)) / 4
     this.setState({eag: (glucoseAverageDay).toFixed(2) });
     this.setState({hypoglycemia: 0 });
     this.setState({hyperglycemia: 2 });

@@ -33,6 +33,7 @@ export default class HistoryScreen extends React.Component {
   componentDidMount(){
     var date = new Date();
     date.setDate(date.getDate() - 1);
+
     const format = moment(date).format('MM-DD-yyyy');
     this.searchRegisterByDate(format);
   }
@@ -132,7 +133,7 @@ export default class HistoryScreen extends React.Component {
           <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue', height: 300, width: Dimensions.get('window').width}}>
             {this.renderChart()}
           </View>
-           <HistoryTabView/>
+          {this.state.report ? <HistoryTabView collection={this.state}/> : <View></View>}
         </ScrollView>
       </View>
     );

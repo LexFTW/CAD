@@ -34,7 +34,7 @@ export default class DailyReportComponent extends React.Component {
   }
 
   componentDidMount(){
-      this.generateDayReport();
+    this.generateDayReport();
   }
 
 
@@ -49,19 +49,19 @@ export default class DailyReportComponent extends React.Component {
   render(){
     return (
       <View style={[s.scene, {padding: 20}]}>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
+        <View style={{backgroundColor: '#adccea', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>eAG</Text>
             {this.state.eag != null ? <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.eag}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
         </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
+        <View style={{backgroundColor: '#adccea', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>HBA1C</Text>
             {this.state.eag != null ? <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hba1c}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
         </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
+        <View style={{backgroundColor: '#adccea', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hypoglycemia</Text>
             {this.state.eag != null ? <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
         </View>
-        <View style={{backgroundColor: 'lightblue', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
+        <View style={{backgroundColor: '#adccea', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10}}>
           <Text style={{textTransform: 'uppercase', fontWeight: 'bold', padding: 5}}>hyperglycemia</Text>
             {this.state.eag != null ? <Text style={{textTransform: 'uppercase', padding: 5}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
         </View>

@@ -7,10 +7,13 @@ import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from 'moment';
 
+import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from "react-native-chart-kit";
+
 import Resources from './../config/resources/resources';
 
 import NavigationTop from './../components/NavigationTop';
 import HistoryTabView from './../components/HistoryTabView';
+import HistoryChart from './../components/HistoryChart';
 
 import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/ReaderStyles';
@@ -95,7 +98,7 @@ export default class HistoryScreen extends React.Component {
 
   renderChart(){
     if(this.state.report){
-      return <Text>Graficazo to flama</Text>
+      return <HistoryChart state={this.state}/>
     }else{
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
     }
@@ -112,12 +115,12 @@ export default class HistoryScreen extends React.Component {
               size={20}
               onPress={() => this.showDatePicker()}
             />
-            <DateTimePickerModal
-              isVisible={this.state.isVisible}
-              mode="date"
-              onConfirm={(date) => this.handleConfirm(date)}
-              onCancel={() => this.hideDatePicker()}
-            />
+           <DateTimePickerModal
+            isVisible={this.state.isVisible}
+            mode="date"
+            onConfirm={(date) => this.handleConfirm(date)}
+            onCancel={() => this.hideDatePicker()}
+          />
             <View style={{ flexDirection: 'row' }}>
               <Text style={{backgroundColor: 'white', color: '#222', width: 250, justifyContent:'center', alignItems: 'center', paddingLeft: 10, fontSize: 17, fontWeight: 'bold'}}>{this.state.date}</Text>
               <IconButton
@@ -129,7 +132,7 @@ export default class HistoryScreen extends React.Component {
               />
             </View>
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue', height: 300, width: Dimensions.get('window').width}}>
+          <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#2069b2', height: 300, width: Dimensions.get('window').width}}>
             {this.renderChart()}
           </View>
            <HistoryTabView/>

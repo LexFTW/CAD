@@ -9,7 +9,7 @@ import  styles  from '../constants/styles/UserStyles';
 import Resources from './../config/resources/resources';
 
 import DailyReportComponent from './../components/DailyReportComponent';
-import MedicationScreen from '../screens/MedicationScreen';
+import MonthlyReportComponent from './../components/MonthlyReportComponent';
 
 export default class HistoryTabView extends React.Component{
 
@@ -41,7 +41,7 @@ export default class HistoryTabView extends React.Component{
       case 'first':
         return <DailyReportComponent collection={this.collection} />;
       case 'second':
-        return <DailyReportComponent collection={this.collection} />;
+        return <MonthlyReportComponent collection={this.collection} />;
       default:
         return <DailyReportComponent collection={this.collection} />;
     }

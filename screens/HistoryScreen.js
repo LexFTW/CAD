@@ -70,7 +70,7 @@ export default class HistoryScreen extends React.Component {
     .get()
     .then(snapshot => {
       if(snapshot.empty){
-        console.warn('Datos no encontrados.', date)
+        Alert.alert('Datos no encontrados.', date)
       }
 
       snapshot.forEach(doc => {
@@ -117,14 +117,22 @@ export default class HistoryScreen extends React.Component {
     return (
       <View>
         <ScrollView>
-          <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingTop: 25, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-            <Text>History, {this.state.createdAt}</Text>
-            <IconButton
-              icon="calendar"
-              color={Colors.white}
-              size={20}
-              onPress={() => this.showDatePicker()}
-            />
+          <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingTop: 30, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>History: {this.state.createdAt}</Text>
+            <View style={{flexDirection: 'row'}}>
+              <IconButton
+                icon="calendar"
+                color={Colors.white}
+                size={20}
+                onPress={() => this.showDatePicker()}
+              />
+              <IconButton
+                icon="file"
+                color={Colors.white}
+                size={20}
+                onPress={() => this.showDatePicker()}
+              />
+            </View>
             <DateTimePickerModal
               isVisible={this.state.isVisible}
               mode="date"

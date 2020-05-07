@@ -61,27 +61,29 @@ export default class UserScreen extends Component {
 
   render(){
     return (
-      <View style={styles.containerHead}>
-        <View style={styles.viewHead}>
-          <IconButton
-            icon="settings"
-            color={"#2069b2"}
-            size={20}
-          />
-          <View style={styles.viewAvatar}>
-            <Avatar.Text size={125} style={styles.avatar} label={this.state.user_title_profile} labelStyle={{padding: 10, fontSize: 45}} />
-            <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
-            <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE} {this.state.diabetes_type}</Text>
+      <ScrollView>
+        <View style={styles.containerHead}>
+          <View style={styles.viewHead}>
+            <IconButton
+              icon="settings"
+              color={"#2069b2"}
+              size={20}
+            />
+            <View style={styles.viewAvatar}>
+              <Avatar.Text size={125} style={styles.avatar} label={this.state.user_title_profile} labelStyle={{padding: 10, fontSize: 45}} />
+              <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
+              <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE} {this.state.diabetes_type}</Text>
+            </View>
+            <IconButton
+              icon="logout"
+              color={Colors.white}
+              size={20}
+              onPress={() => this.onSignOut()}
+            />
           </View>
-          <IconButton
-            icon="logout"
-            color={Colors.white}
-            size={20}
-            onPress={() => this.onSignOut()}
-          />
+          <TabView state={this.state}/>
         </View>
-        <TabView state={this.state}/>
-      </View>
+      </ScrollView>
     );
   }
 }

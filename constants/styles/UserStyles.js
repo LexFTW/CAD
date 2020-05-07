@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#2069b2',
     alignSelf: 'stretch',
     textAlign: 'center',
-    height: 640
   },
   viewHead: {
     flexDirection: 'row',
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     paddingVertical: 15,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   containerComp: {
     borderColor: '#0069d9',

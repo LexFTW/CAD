@@ -23,13 +23,17 @@ const s = StyleSheet.create({
 export default class DailyReportComponent extends React.Component {
   constructor(props){
     super(props);
-    this.collection = props.collection;
+
+    this.times = props.times;
+    this.values = props.values;
 
     this.state = {
       eag: null,
       hba1c: null,
       hyperglycemia: 0,
+      hyperglycemia_details: [0, 0, 0, 0],
       hypoglycemia: 0,
+      hypoglycemia_details: [0, 0, 0, 0],
     }
   }
 
@@ -39,106 +43,75 @@ export default class DailyReportComponent extends React.Component {
 
 
   generateDayReport(){
-    const glucoseAverageDay = (parseInt(this.collection.brekfastValue) + parseInt(this.collection.foodValue) + parseInt(this.collection.snackValue) + parseInt(this.collection.dinnerValue)) / 4
+    var glucoseAverageDay = 0;
+
+    for (var i = 0; i < this.values.length; i++) {
+      glucoseAverageDay += this.values[i];
+    }
+
+    glucoseAverageDay = glucoseAverageDay / this.values.length;
+
     this.setState({eag: (glucoseAverageDay).toFixed(2) });
-    this.countHypoglycemia();
-    this.countHyperglycemia();
+    this.countHypoglycemiaAndHyperglucemia();
     this.setState({hba1c: ((46.7 + glucoseAverageDay) / 28.7).toFixed(2) });
   }
 
-  countHypoglycemia(){
-    if(this.collection.brekfastValue < 80){
-      this.setState({hypoglycemia: this.state.hypoglycemia + 1})
-    }
-
-    if(this.collection.foodValue < 80){
-      this.setState({hypoglycemia: this.state.hypoglycemia + 1})
-    }
-
-    if(this.collection.snackValue < 80){
-      this.setState({hypoglycemia: this.state.hypoglycemia + 1})
-    }
-
-    if(this.collection.dinnerValue < 80){
-      this.setState({hypoglycemia: this.state.hypoglycemia + 1})
-    }
-  }
-
-  countHyperglycemia(){
-    if(this.collection.brekfastValue > 150){
-      this.setState({hyperglycemia: this.state.hyperglycemia + 1})
-    }
-
-    if(this.collection.foodValue > 150){
-      this.setState({hyperglycemia: this.state.hyperglycemia + 1})
-    }
-
-    if(this.collection.snackValue > 150){
-      this.setState({hyperglycemia: this.state.hyperglycemia + 1})
-    }
-
-    if(this.collection.dinnerValue > 150){
-      this.setState({hyperglycemia: this.state.hyperglycemia + 1})
+  countHypoglycemiaAndHyperglucemia(){
+    for (var i = 0; i < this.values.length; i++) {
+      if(this.values[i] > 150){
+        this.setState({hyperglycemia: this.state.hyperglycemia + 1})
+        console.warn(this.state.hyperglycemia_details[i])
+        this.state.hyperglycemia_details[i] = 1;
+        console.warn(this.state.hyperglycemia_details[i])
+      }else if(this.values[i] < 80){
+        this.setState({hypoglycemia: this.state.hypoglycemia + 1})
+        this.state.hypoglycemia_details[i] = 1;
+      }
     }
   }
 
   render(){
     return (
       <View style={[s.scene, {flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}]}>
-        <View style={{width: Dimensions.get('window').width / 2, height: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderRightWidth: 0}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 25, textAlign: 'center'}}>eAG</Text>
-          {this.state.eag != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{this.state.eag}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-        </View>
-        <View style={{width: Dimensions.get('window').width / 2, height: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd'}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 25, textAlign: 'center'}}>hba1c</Text>
-          {this.state.hba1c != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{this.state.hba1c}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-        </View>
-        <View style={{width: Dimensions.get('window').width, paddingVertical: 20, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderRightWidth: 0, borderTopWidth: 0}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 20, textAlign: 'center'}}>hyperglycemia</Text>
-          {this.state.hyperglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-          <View style={{flexDirection: 'row', paddingVertical: 15}}>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>brekfast</Text>
-              {this.state.hyperglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>food</Text>
-              {this.state.hyperglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>snack</Text>
-              {this.state.hyperglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>dinner</Text>
-              {this.state.hyperglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hyperglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-          </View>
-        </View>
-        <View style={{width: Dimensions.get('window').width, paddingVertical: 20, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderRightWidth: 0, borderTopWidth: 0}}>
-          <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 20, textAlign: 'center'}}>hypoglycemia</Text>
-          {this.state.hypoglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-          <View style={{flexDirection: 'row', paddingVertical: 15}}>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>brekfast</Text>
-              {this.state.hypoglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>food</Text>
-              {this.state.hypoglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>snack</Text>
-              {this.state.hypoglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-            <View style={{width: Dimensions.get('window').width / 4, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>dinner</Text>
-              {this.state.hypoglycemia != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 12}}>{this.state.hypoglycemia}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
-            </View>
-          </View>
-        </View>
+        <HistoryComponent title={'eag'} value={this.state.eag} />
+        <HistoryComponent title={'hba1c'} value={this.state.hba1c} />
+        <MultipleHistoryComponent title={'hyperglycemia'} value={this.state.hyperglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[1, 2, 3, 4]}/>
+        <MultipleHistoryComponent title={'hypoglycemia'} value={this.state.hypoglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[1, 2, 3, 4]} />
       </View>
       );
   }
+}
 
+function HistoryComponent({title, value}) {
+  return (
+      <View style={{width: Dimensions.get('window').width / 2.01, height: 170, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderBottomWidth: 0, borderRightWidth: 0}}>
+        <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 23, textAlign: 'center'}}>{title}</Text>
+        {value != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{value}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
+      </View>
+  )
+}
+
+function MultipleHistoryComponent({title, value, titleChilds, childs}) {
+  return (
+      <View style={{width: Dimensions.get('window').width, height: 170, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderBottomWidth: 0, borderRightWidth: 0}}>
+        <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 23, textAlign: 'center'}}>{title}</Text>
+        {value != null ? <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{value}</Text> : <ActivityIndicator animating={true} size={20} color={Colors.blue700} />}
+        <View style={{flexDirection: 'row', paddingVertical: 15}}>
+          {renderChilds(titleChilds, childs)}
+        </View>
+      </View>
+  )
+}
+
+function renderChilds(titleChilds, childs){
+  var size = childs.length;
+  var component = [];
+  for (var i = 0; i < childs.length; i++) {
+    component.push(<View style={{width: Dimensions.get('window').width / size, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 15, textAlign: 'center'}}>{titleChilds[i]}</Text>
+      <Text style={{textTransform: 'uppercase', color: '#adccea', fontSize: 18}}>{childs[i]}</Text>
+    </View>);
+  }
+
+  return component;
 }

@@ -7,29 +7,24 @@ export default class HistoryChart extends Component {
 
     constructor(props) {
         super(props);
-        this.state = props.state;
+        this.labels = props.labels;
+        this.values = props.values;
     }
 
     render() {
         return (
-            <View style={{marginTop: 5}}>
+            <ScrollView horizontal={true} style={{marginTop: 5}}>
                 <BarChart
                     data={{
-                        labels: [this.state.brekfastTime, this.state.foodTime, this.state.snackTime, this.state.dinnerTime],
+                        labels: this.labels,
                         datasets: [
                         {
-                            data: [
-                            this.state.brekfastValue,
-                            this.state.foodValue,
-                            this.state.snackValue,
-                            this.state.dinnerValue,
-                           ]
+                            data: this.values
                         }
                         ]
                     }}
                     width={Dimensions.get("window").width}
                     height={300}
-                    yAxisInterval={1}
                     chartConfig={{
                         backgroundGradientFrom: "#2069b2",
                         backgroundGradientTo: "#2069b2",
@@ -38,7 +33,7 @@ export default class HistoryChart extends Component {
                     }}
                     bezier
                 />
-            </View>
+            </ScrollView>
         )
     }
 }

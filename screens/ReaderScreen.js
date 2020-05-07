@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Button, Text, SafeAreaView, Alert, View } from 'react-native';
+import { Button, Text, SafeAreaView, Alert, View, Dimensions } from 'react-native';
 import { IconButton, Colors } from 'react-native-paper';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 
@@ -13,42 +13,32 @@ import  styles  from '../constants/styles/ReaderStyles';
 
 export default class ReaderScreen extends Component {
 
-  scannButton() {
-    Alert.alert("Hola");
-  }
-
-  /**<Button
-          mode="contained"
-          style={base.btnPrimary}
-        >
-          <Text style={{fontSize: 25}}>{Resources.READER_TEXT_BUTTON}</Text>
-        </Button>
- */
-
   render(){
     return (
       <SafeAreaView style={{
         flex: 1,
         backgroundColor: '#fafafa',
-        justifyContent: 'center',
         alignItems: 'center',
       }}>
         <NavigationTop
           title={Resources.READER_HEADER}
         />
 
-        <IconButton
-          icon="wifi"
-          color={Colors.blue600}
-          size={150}
-          onPress={() => this.scannButton()}
-        />
-                 
-        <View style={{paddingTop: 20}}>
-          <HistoryComponent text={"BrekfastValue"} value={"Valor 1"}/>
-          <HistoryComponent text={"FoodValue"} value={"Valor 2"}/>
-          <HistoryComponent text={"SnackValue"} value={"Valor 3"}/>
-          <HistoryComponent text={"DinnerValue"} value={"Valor 4"}/>
+        <View style={{backgroundColor: '#efefef', padding: 20, borderRadius: 150, marginTop: 115}}>
+          <IconButton
+            icon="wifi"
+            color={'#2069b2'}
+            style={{backgroundColor: 'white', color: '#2069b2', shadowColor: '#000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5}}
+            size={150}
+            onPress={() => Alert.alert('Hola')}
+          />
+        </View>
+
+        <View style={{width: Dimensions.get('window').width, flexDirection: 'row', flexWrap: 'wrap', position: 'absolute',bottom: 0,}}>
+          <HistoryComponent title={'Brekfast'} value={"195"} />
+          <HistoryComponent title={'Food'} value={"-"} />
+          <HistoryComponent title={'Snack'} value={"-"} />
+          <HistoryComponent title={'Dinner'} value={"-"} />
         </View>
       </SafeAreaView>
     );
@@ -56,11 +46,11 @@ export default class ReaderScreen extends Component {
 
 }
 
-function HistoryComponent({text, value}) {
+function HistoryComponent({title, value}) {
   return (
-    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text style={{paddingRight: 20}}>{text}</Text>
-        <Text>{value}</Text>
-    </View>
-  );
+      <View style={{width: Dimensions.get('window').width / 2, height: 170, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderBottomWidth: 0, borderRightWidth: 0}}>
+        <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 25, textAlign: 'center'}}>{title}</Text>
+        <Text style={{textTransform: 'uppercase', color: '#8db1d3', fontSize: 18, textAlign: 'center', paddingVertical: 5}}>{value}</Text>
+      </View>
+  )
 }

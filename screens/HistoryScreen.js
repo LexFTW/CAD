@@ -30,6 +30,8 @@ export default class HistoryScreen extends React.Component {
       date: "",
       report: false,
       isVisible: false,
+      values: [],
+      times: [],
     }
   }
 
@@ -49,6 +51,8 @@ export default class HistoryScreen extends React.Component {
       report: false,
     });
 
+    this.state.values = [];
+    this.state.times = [];
     this.searchRegisterByDate(this.state.date);
   }
 
@@ -86,20 +90,19 @@ export default class HistoryScreen extends React.Component {
   }
 
   saveDocumentInState(documentReceived){
-    this.setState({brekfastValue: documentReceived.BrekfastValue});
-    this.setState({brekfastTime: documentReceived.BrekfastTime});
-    this.setState({foodValue: documentReceived.FoodValue});
-    this.setState({foodTime: documentReceived.FoodTime});
-    this.setState({snackValue: documentReceived.SnackValue});
-    this.setState({snackTime: documentReceived.SnackTime});
-    this.setState({dinnerValue: documentReceived.DinnerValue});
-    this.setState({dinnerTime: documentReceived.DinnerTime});
-    this.setState({createdAt: documentReceived.createdAt});
+    this.state.values.push(documentReceived.BrekfastValue);
+    this.state.values.push(documentReceived.FoodValue);
+    this.state.values.push(documentReceived.SnackValue);
+    this.state.values.push(documentReceived.DinnerValue);
+    this.state.times.push(documentReceived.BrekfastTime);
+    this.state.times.push(documentReceived.FoodTime);
+    this.state.times.push(documentReceived.SnackTime);
+    this.state.times.push(documentReceived.DinnerTime);
   }
 
   renderChart(){
     if(this.state.report){
-      return <HistoryChart state={this.state}/>
+      return <HistoryChart labels={this.state.times} values={this.state.values}/>
     }else{
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
     }
@@ -107,7 +110,7 @@ export default class HistoryScreen extends React.Component {
 
   renderReports(){
     if(this.state.report){
-      return <HistoryTabView collection={this.state}/>
+      return <HistoryTabView values={this.state.values} times={this.state.times}/>
     }else{
       return;
     }

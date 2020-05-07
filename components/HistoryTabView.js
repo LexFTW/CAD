@@ -20,10 +20,12 @@ export default class HistoryTabView extends React.Component{
       routes: [
         { key: 'first', title: 'DAILY' },
         { key: 'second', title: 'MONTHLY' },
+        { key: 'third', title: 'QUARTER' },
       ],
     };
 
-    this.collection = props.collection;
+    this.times = props.times;
+    this.values = props.values;
 
     this.renderScene = this.renderScene.bind(this);
     this.renderLabel = this.renderLabel.bind(this);
@@ -39,11 +41,13 @@ export default class HistoryTabView extends React.Component{
 
     switch(route.key){
       case 'first':
-        return <DailyReportComponent collection={this.collection} />;
+        return <DailyReportComponent times={this.times} values={this.values} />;
       case 'second':
-        return <MonthlyReportComponent collection={this.collection} />;
+        return <MonthlyReportComponent times={this.times} values={this.values} />;
+      case 'third':
+        return <MonthlyReportComponent times={this.times} values={this.values} />;
       default:
-        return <DailyReportComponent collection={this.collection} />;
+        return <DailyReportComponent times={this.times} values={this.values} />;
     }
   }
 

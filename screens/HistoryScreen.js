@@ -32,7 +32,7 @@ export default class HistoryScreen extends React.Component {
 
   componentDidMount(){
     var date = new Date();
-    date.setDate(date.getDate());
+    date.setDate(date.getDate() - 1);
     const format = moment(date).format('MM-DD-yyyy');
     this.searchRegisterByDate(format);
   }

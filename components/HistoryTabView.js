@@ -19,14 +19,6 @@ export default function HistoryTabView(props) {
     { key: 'second', title: 'MONTHLY' },
     { key: 'third', title: 'TRIMESTLY' },
   ]);
-  const s = StyleSheet.create({
-    scene: {
-      flex: 1,
-      overflow: 'hidden',
-      textAlign: 'center',
-      alignItems: 'center'
-    }
-  });
 
   const renderScene = SceneMap({
     first: DailyReportComponent,
@@ -41,7 +33,6 @@ export default function HistoryTabView(props) {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={initialLayout}
-      style={s.container}
       renderTabBar={props =>
         <TabBar
           {... props}

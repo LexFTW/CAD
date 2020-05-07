@@ -27,15 +27,16 @@ export default class HistoryScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isVisible: false,
-      report: false,
       date: "",
+      report: false,
+      isVisible: false,
     }
   }
 
   componentDidMount(){
     var date = new Date();
     date.setDate(date.getDate() - 1);
+
     const format = moment(date).format('MM-DD-yyyy');
     this.searchRegisterByDate(format);
   }
@@ -44,20 +45,19 @@ export default class HistoryScreen extends React.Component {
     await this.hideDatePicker();
 
     this.setState({
-      date: moment(date).format('MM-DD-yyyy')
+      date: moment(date).format('MM-DD-yyyy'),
+      report: false,
     });
+
+    this.searchRegisterByDate(this.state.date);
   }
 
   showDatePicker(){
-    this.setState({
-      isVisible: true
-    });
+    this.setState({isVisible: true})
   }
 
   hideDatePicker(){
-    this.setState({
-      isVisible: false
-    });
+    this.setState({isVisible: false})
   }
 
   async searchRegisterByDate(date){
@@ -94,6 +94,7 @@ export default class HistoryScreen extends React.Component {
     this.setState({snackTime: documentReceived.SnackTime});
     this.setState({dinnerValue: documentReceived.DinnerValue});
     this.setState({dinnerTime: documentReceived.DinnerTime});
+    this.setState({createdAt: documentReceived.createdAt});
   }
 
   renderChart(){
@@ -104,38 +105,37 @@ export default class HistoryScreen extends React.Component {
     }
   }
 
+  renderReports(){
+    if(this.state.report){
+      return <HistoryTabView collection={this.state}/>
+    }else{
+      return;
+    }
+  }
+
   render(){
     return (
       <View>
         <ScrollView>
           <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingTop: 25, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text>History, {this.state.createdAt}</Text>
             <IconButton
               icon="calendar"
               color={Colors.white}
               size={20}
               onPress={() => this.showDatePicker()}
             />
-           <DateTimePickerModal
-            isVisible={this.state.isVisible}
-            mode="date"
-            onConfirm={(date) => this.handleConfirm(date)}
-            onCancel={() => this.hideDatePicker()}
-          />
-            <View style={{ flexDirection: 'row' }}>
-              <Text style={{backgroundColor: 'white', color: '#222', width: 250, justifyContent:'center', alignItems: 'center', paddingLeft: 10, fontSize: 17, fontWeight: 'bold'}}>{this.state.date}</Text>
-              <IconButton
-              icon="database-search"
-              color={Colors.white}
-              style={{backgroundColor: 'lightblue', borderRadius: 0, margin: 0, height: 35, width: 40}}
-              size={20}
-              onPress={() => this.searchRegisterByDate(this.state.date)}
-              />
-            </View>
+            <DateTimePickerModal
+              isVisible={this.state.isVisible}
+              mode="date"
+              onConfirm={(date) => this.handleConfirm(date)}
+              onCancel={() => this.hideDatePicker()}
+            />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#2069b2', height: 300, width: Dimensions.get('window').width}}>
             {this.renderChart()}
           </View>
-           <HistoryTabView/>
+          {this.renderReports()}
         </ScrollView>
       </View>
     );

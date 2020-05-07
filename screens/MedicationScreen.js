@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Text, ScrollView, View, TextInput, Alert } from 'react-native';
+import { Text, ScrollView, View, TextInput, Alert, Dimensions } from 'react-native';
 import { Button } from 'react-native-paper';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 
@@ -90,7 +90,6 @@ export default class MedicationScreen extends Component {
 
   render(){
     return (
-      <ScrollView>
         <View style={styles.containterBody}>
           <View style={styles.containerComp}>
             <View style={styles.component}>
@@ -166,7 +165,6 @@ export default class MedicationScreen extends Component {
             Insertar
           </Button>
         </View>
-      </ScrollView>
     );
   }
 

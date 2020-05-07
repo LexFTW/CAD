@@ -11,35 +11,77 @@ import Resources from './../config/resources/resources';
 import DailyReportComponent from './../components/DailyReportComponent';
 import MedicationScreen from '../screens/MedicationScreen';
 
-export default function HistoryTabView(props) {
-  const initialLayout = { width: Dimensions.get('window').width };
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'first', title: 'DAILY' },
-    { key: 'second', title: 'MONTHLY' },
-    { key: 'third', title: 'TRIMESTLY' },
-  ]);
+export default class HistoryTabView extends React.Component{
 
-  const renderScene = SceneMap({
-    first: DailyReportComponent,
-    second: DailyReportComponent,
-    third: DailyReportComponent,
-  });
+  constructor(props){
+    super(props);
+    this.state = {
+      index: 0,
+      routes: [
+        { key: 'first', title: 'DAILY' },
+        { key: 'second', title: 'MONTHLY' },
+      ],
+    };
 
-  return (
-    <TabView
-      lazy
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      renderTabBar={props =>
-        <TabBar
-          {... props}
-          indicatorStyle={{ backgroundColor: 'yellow' }}
-          style={{ backgroundColor: '#2069b2' }}
-        />
-      }
-    />
-  );
+    this.collection = props.collection;
+
+    this.renderScene = this.renderScene.bind(this);
+    this.renderLabel = this.renderLabel.bind(this);
+    this.onTabChange = this.onTabChange.bind(this);
+  }
+
+  onTabChange(index) {
+    this.setState({ index });
+  }
+
+  renderScene({ route }){
+    if (!route.key) return null;
+
+    switch(route.key){
+      case 'first':
+        return <DailyReportComponent collection={this.collection} />;
+      case 'second':
+        return <DailyReportComponent collection={this.collection} />;
+      default:
+        return <DailyReportComponent collection={this.collection} />;
+    }
+  }
+
+  renderLabel({ route }, props) {
+    const { index } = this.state;
+    const selected = route.key === props.navigationState.routes[index].key;
+
+    return (
+      <View>
+        <Text>
+          {route.title.toUpperCase()}
+        </Text>
+      </View>
+    );
+  }
+
+  renderTab() {
+    return (
+      <TabView
+        navigationState={this.state}
+        onIndexChange={this.onTabChange}
+        renderScene={this.renderScene}
+        renderTabBar={props => (
+          <TabBar
+            {... props}
+            indicatorStyle={{ backgroundColor: 'yellow' }}
+            style={{ backgroundColor: '#2069b2' }}
+          />
+        )}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <View>
+        {this.renderTab()}
+      </View>
+    );
+  }
 }

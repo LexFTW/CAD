@@ -1,23 +1,19 @@
 import * as React from 'react';
 
-import { Text, TextInput, Button, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
-import { IconButton, Colors, Avatar } from 'react-native-paper';
+import { View } from 'react-native';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-import  styles  from '../constants/styles/UserStyles';
-
-import Resources from './../config/resources/resources';
-
-import HistoryScreen from './../screens/HistoryScreen';
-
-import DailyReportComponent from './../components/DailyReportComponent';
-import MonthlyReportComponent from './../components/MonthlyReportComponent';
+import DailyHistoryPartial from './../screens/partials/DailyHistoryPartial';
+import MonthlyHistoryPartial from './../screens/partials/MonthlyHistoryPartial';
+import QuarterHistoryPartial from './../screens/partials/QuarterHistoryPartial';
 
 export default class HistoryTabView extends React.Component{
 
   constructor(props){
     super(props);
+
     this.state = {
+      chart: false,
       index: 0,
       routes: [
         { key: 'first', title: 'DAILY' },
@@ -26,16 +22,27 @@ export default class HistoryTabView extends React.Component{
       ],
     };
 
-    this.times = props.times;
-    this.values = props.values;
-
     this.renderScene = this.renderScene.bind(this);
     this.renderLabel = this.renderLabel.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
   }
 
-  onTabChange(index) {
-    this.setState({ index });
+  setDaily(data, times){
+    this.props.onTrigger(data, times);
+
+    this.state.dailyData = data;
+    this.state.dailyTimes = times;
+    this.isChart(true)
+  }
+
+  setMonthly(data, times){
+    this.state.monthlyData = data;
+    this.state.monthlyTimes = times;
+    this.isChart(true)
+  }
+
+  isChart(chart){
+    this.setState({chart: chart});
   }
 
   renderScene({ route }){
@@ -43,13 +50,11 @@ export default class HistoryTabView extends React.Component{
 
     switch(route.key){
       case 'first':
-        return <DailyReportComponent times={this.times} values={this.values} />;
+        return <DailyHistoryPartial onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
       case 'second':
-        return <MonthlyReportComponent times={this.times} values={this.values} />;
+        return <MonthlyHistoryPartial onTrigger={this.setMonthly.bind(this)} date={this.props.date} />;
       case 'third':
-        return <MonthlyReportComponent times={this.times} values={this.values} />;
-      default:
-        return <DailyReportComponent times={this.times} values={this.values} />;
+        return <QuarterHistoryPartial onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
     }
   }
 
@@ -83,11 +88,29 @@ export default class HistoryTabView extends React.Component{
     );
   }
 
-  render() {
-    return (
+  onTabChange(index) {
+   this.setState({ index });
+   this.setValuesToChart(index);
+  }
+
+  setValuesToChart(index){
+    if(this.state.chart){
+      switch (index) {
+        case 0:
+            this.props.onTrigger(this.state.dailyData, this.state.dailyTimes);
+          break;
+        default:
+          this.props.onTrigger(this.state.monthlyData, this.state.monthlyTimes);
+      }
+    }
+  }
+
+  render(){
+    return(
       <View>
         {this.renderTab()}
       </View>
     );
   }
+
 }

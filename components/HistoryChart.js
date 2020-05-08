@@ -7,8 +7,6 @@ export default class HistoryChart extends Component {
 
     constructor(props) {
         super(props);
-        this.labels = props.labels;
-        this.values = props.values;
     }
 
     render() {
@@ -16,10 +14,10 @@ export default class HistoryChart extends Component {
             <ScrollView horizontal={true} style={{marginTop: 5}}>
                 <BarChart
                     data={{
-                        labels: this.labels,
+                        labels: this.props.labels,
                         datasets: [
                         {
-                            data: this.values
+                            data: this.props.values
                         }
                         ]
                     }}

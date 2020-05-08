@@ -48,7 +48,7 @@ export default class ReaderScreen extends Component {
 
 function HistoryComponent({title, value}) {
   return (
-      <View style={{width: Dimensions.get('window').width / 2, height: 170, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderBottomWidth: 0, borderRightWidth: 0}}>
+      <View style={{width: Dimensions.get('window').width / 2, height: Dimensions.get('window').height / 5, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#ddd', borderBottomWidth: 0, borderRightWidth: 0}}>
         <Text style={{textTransform: 'uppercase', fontWeight: 'bold', color: '#2069b2', fontSize: 25, textAlign: 'center'}}>{title}</Text>
         <Text style={{textTransform: 'uppercase', color: '#8db1d3', fontSize: 18, textAlign: 'center', paddingVertical: 5}}>{value}</Text>
       </View>

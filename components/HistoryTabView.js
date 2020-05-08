@@ -8,6 +8,8 @@ import  styles  from '../constants/styles/UserStyles';
 
 import Resources from './../config/resources/resources';
 
+import HistoryScreen from './../screens/HistoryScreen';
+
 import DailyReportComponent from './../components/DailyReportComponent';
 import MonthlyReportComponent from './../components/MonthlyReportComponent';
 

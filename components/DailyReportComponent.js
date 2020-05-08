@@ -5,6 +5,8 @@ import { ActivityIndicator, Button, IconButton, Colors } from 'react-native-pape
 
 import Resources from './../config/resources/resources';
 
+import HistoryChart from './../components/HistoryChart';
+
 import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/ReaderStyles';
 
@@ -59,25 +61,32 @@ export default class DailyReportComponent extends React.Component {
   countHypoglycemiaAndHyperglucemia(){
     for (var i = 0; i < this.values.length; i++) {
       if(this.values[i] > 150){
-        this.setState({hyperglycemia: this.state.hyperglycemia + 1})
-        this.state.hyperglycemia_details[i] = 1;
+        this.setState({hyperglycemia: i})
+        this.state.hyperglycemia_details.splice(i, 1, 1);
       }else if(this.values[i] < 80){
         this.setState({hypoglycemia: this.state.hypoglycemia + 1})
-        this.state.hypoglycemia_details[i] = 1;
+        this.state.hyperglycemia_details.splice(i, 1, 1);
       }
     }
+  }
 
-    console.warn(this.state)
+  renderChart(){
+    return <HistoryChart labels={this.times} values={this.values}/>
   }
 
   render(){
     return (
+      <SafeAreaView>
+      <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#2069b2', height: 300, width: Dimensions.get('window').width}}>
+        {this.renderChart()}
+      </View>
       <View style={[s.scene, {flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}]}>
         <HistoryComponent title={'eag'} value={this.state.eag} />
         <HistoryComponent title={'hba1c'} value={this.state.hba1c} />
-        <MultipleHistoryComponent title={'hyperglycemia'} value={this.state.hyperglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[1, 2, 3, 4]}/>
-        <MultipleHistoryComponent title={'hypoglycemia'} value={this.state.hypoglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[1, 2, 3, 4]} />
+        <MultipleHistoryComponent title={'hyperglycemia'} value={this.state.hyperglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={this.state.hyperglycemia_details}/>
+        <MultipleHistoryComponent title={'hypoglycemia'} value={this.state.hypoglycemia} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={this.state.hypoglycemia_details} />
       </View>
+      </SafeAreaView>
       );
   }
 }

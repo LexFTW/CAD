@@ -90,14 +90,9 @@ export default class HistoryScreen extends React.Component {
   }
 
   saveDocumentInState(documentReceived){
-    this.state.values.push(documentReceived.BrekfastValue);
-    this.state.values.push(documentReceived.FoodValue);
-    this.state.values.push(documentReceived.SnackValue);
-    this.state.values.push(documentReceived.DinnerValue);
-    this.state.times.push(documentReceived.BrekfastTime);
-    this.state.times.push(documentReceived.FoodTime);
-    this.state.times.push(documentReceived.SnackTime);
-    this.state.times.push(documentReceived.DinnerTime);
+    this.state.values = documentReceived.data;
+    this.state.times = documentReceived.time;
+    this.setState({createdAt: documentReceived.createdAt});
   }
 
   renderChart(){
@@ -142,9 +137,6 @@ export default class HistoryScreen extends React.Component {
               onConfirm={(date) => this.handleConfirm(date)}
               onCancel={() => this.hideDatePicker()}
             />
-          </View>
-          <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#2069b2', height: 300, width: Dimensions.get('window').width}}>
-            {this.renderChart()}
           </View>
           {this.renderReports()}
         </ScrollView>

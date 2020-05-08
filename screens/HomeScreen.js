@@ -22,6 +22,7 @@ export default class HomeScreen extends Component {
   render(){
     return (
         <Tab.Navigator
+          initialRouteName='Reader'
           tabBarOptions={{
             activeTintColor: 'white',
             inactiveTintColor: '#72a2d3',

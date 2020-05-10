@@ -111,6 +111,10 @@ export default class HistoryScreen extends React.Component {
     }
   }
 
+  makeReportFromDate() {
+
+  }
+
   render(){
     return (
       <View>
@@ -128,7 +132,7 @@ export default class HistoryScreen extends React.Component {
                 icon="file"
                 color={Colors.white}
                 size={20}
-                onPress={() => this.showDatePicker()}
+                onPress={() => this.makeReportFromDate()}
               />
             </View>
             <DateTimePickerModal

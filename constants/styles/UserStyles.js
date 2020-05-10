@@ -40,10 +40,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   containerComp: {
-    borderColor: '#0069d9',
-    borderWidth: 2,
     marginBottom: 10,
-    backgroundColor: '#adccea'
+    backgroundColor: '#adccea',
+    flexDirection: 'row'
   },
   component: {
     paddingHorizontal: 15,

@@ -1,146 +1,138 @@
 import * as React from 'react';
 
-import { Alert, Text, TextInput, SafeAreaView, ScrollView, View, Dimensions } from 'react-native';
-import { ActivityIndicator, Button, IconButton, Colors } from 'react-native-paper';
-import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
+import { ScrollView, View, Text } from 'react-native'
+import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-import moment from 'moment';
-
-import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from "react-native-chart-kit";
-
-import Resources from './../config/resources/resources';
-
-import NavigationTop from './../components/NavigationTop';
-import HistoryTabView from './../components/HistoryTabView';
+import DateTimePicker from './../components/DateTimePicker';
 import HistoryChart from './../components/HistoryChart';
+import HistoryTabView from './../components/HistoryTabView';
 
 import  base  from '../constants/styles/Styles';
-import  styles  from '../constants/styles/ReaderStyles';
 
-import firebase from '../config/firebase';
-import 'firebase/firestore';
+import moment from 'moment';
 
-const firestore = firebase.firestore();
 
-export default class HistoryScreen extends React.Component {
+export default class HistoryScreen extends React.Component{
+
   constructor(props){
     super(props);
+
     this.state = {
-      date: "",
-      report: false,
-      isVisible: false,
+      date: '',
       values: [],
-      times: [],
+      labels: [],
+      loading: false,
+      chart: false,
+      report: false,
     }
   }
 
-  componentDidMount(){
-    var date = new Date();
-    date.setDate(date.getDate() - 1);
-
-    const format = moment(date).format('MM-DD-yyyy');
-    this.searchRegisterByDate(format);
+  async componentDidMount(){
+    await this.componentSetDate();
+    await this.isReport(true);
   }
 
-  async handleConfirm(date){
-    await this.hideDatePicker();
+  componentSetDate(){
+    const date = this.getLastDay();
+    const format = this.setFormatDate(date);
 
-    this.setState({
-      date: moment(date).format('MM-DD-yyyy'),
-      report: false,
-    });
-
-    this.state.values = [];
-    this.state.times = [];
-    this.searchRegisterByDate(this.state.date);
+    this.setDate(format);
+    this.isLoading(true);
   }
 
-  showDatePicker(){
-    this.setState({isVisible: true})
+  getDateFromDatePicker(date){
+    const format = this.setFormatDate(date);
+
+    this.setDate(format);
   }
 
-  hideDatePicker(){
-    this.setState({isVisible: false})
+  getLastDay(){
+    const date = new Date();
+
+    return date.setDate(date.getDate() - 1);
   }
 
-  async searchRegisterByDate(date){
-    const user = firebase.auth().currentUser;
-
-    await firestore
-    .collection('userHistory')
-    .where('uid', '==', user.uid)
-    .where('createdAt', '==', date)
-    .get()
-    .then(snapshot => {
-      if(snapshot.empty){
-        Alert.alert('Datos no encontrados.', date)
-      }
-
-      snapshot.forEach(doc => {
-        var currentDocument = doc.data();
-        this.saveDocumentInState(currentDocument);
-        this.setState({report: true});
-      });
-
-    })
-    .catch(error => {
-      console.warn(error);
-    });
+  setFormatDate(date){
+    return moment(date).format('MM-DD-yyyy');
   }
 
-  saveDocumentInState(documentReceived){
-    this.state.values = documentReceived.data;
-    this.state.times = documentReceived.time;
-    this.setState({createdAt: documentReceived.createdAt});
+  setDate(date){
+    this.setState({date: date})
+  }
+
+  setValuesChart(values){
+    this.setState({values: values});
+  }
+
+  setLabelsChart(labels){
+    this.setState({labels: labels});
+  }
+
+  setCollection(data, times){
+    this.setState.labels = [];
+    this.setState.values = [];
+
+    this.setLabelsChart(times);
+    this.setValuesChart(data);
+
+    this.isChart(true);
+  }
+
+  isLoading(loading){
+    this.setState({loading: loading});
+  }
+
+  isChart(chart){
+    this.setState({chart: chart});
+  }
+
+  isReport(report){
+    this.setState({report: report});
   }
 
   renderChart(){
-    if(this.state.report){
-      return <HistoryChart labels={this.state.times} values={this.state.values}/>
-    }else{
-      return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
+    if(!this.state.chart){
+      return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
     }
+
+    return <HistoryChart labels={this.state.labels} values={this.state.values} />
   }
 
   renderReports(){
-    if(this.state.report){
-      return <HistoryTabView values={this.state.values} times={this.state.times}/>
-    }else{
-      return;
+    if(this.state.reports){
+      return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
     }
+
+    return <HistoryTabView onTrigger={this.setCollection.bind(this)} date={this.state.date}/>
+  }
+
+  loadingScreen(){
+    if(!this.state.loading){
+      return <View style={base.container}>
+        <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
+      </View>
+    }
+
+    return <View>
+      <View style={{backgroundColor: '#2069b2', paddingVertical: 10}}>
+        <View style={{paddingHorizontal: 20, paddingTop: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{flexDirection: 'row'}}>
+            <DateTimePicker onClick={this.getDateFromDatePicker.bind(this)}/>
+            <IconButton icon={'share'} size={20} color={Colors.white}/>
+          </View>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.date}</Text>
+        </View>
+        {this.renderChart()}
+      </View>
+      {this.renderReports()}
+    </View>
   }
 
   render(){
-    return (
-      <View>
-        <ScrollView>
-          <View style={{backgroundColor: '#2069b2', paddingVertical: 10, paddingTop: 30, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>History: {this.state.createdAt}</Text>
-            <View style={{flexDirection: 'row'}}>
-              <IconButton
-                icon="calendar"
-                color={Colors.white}
-                size={20}
-                onPress={() => this.showDatePicker()}
-              />
-              <IconButton
-                icon="file"
-                color={Colors.white}
-                size={20}
-                onPress={() => this.showDatePicker()}
-              />
-            </View>
-            <DateTimePickerModal
-              isVisible={this.state.isVisible}
-              mode="date"
-              onConfirm={(date) => this.handleConfirm(date)}
-              onCancel={() => this.hideDatePicker()}
-            />
-          </View>
-          {this.renderReports()}
-        </ScrollView>
-      </View>
+    return(
+      <ScrollView>
+        {this.loadingScreen()}
+      </ScrollView>
     );
   }
 

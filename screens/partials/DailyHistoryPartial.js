@@ -22,7 +22,6 @@ export default class DailyHistoryPartial extends React.Component{
 
   async componentDidMount(){
     await this.getCollectionHistory();
-    console.warn(this.state.data)
     this.props.onTrigger(this.state.data, this.state.times);
   }
 

@@ -25,6 +25,13 @@ export default class DailyHistoryPartial extends React.Component{
     this.props.onTrigger(this.state.data, this.state.times);
   }
 
+  async componentDidUpdate(oldProps){
+    if(oldProps.date != this.props.date){
+      await this.getCollectionHistory();
+      this.props.onTrigger(this.state.data, this.state.times);
+    }
+  }
+
   async getCollectionHistory(){
     const auth = firebase.auth().currentUser;
 

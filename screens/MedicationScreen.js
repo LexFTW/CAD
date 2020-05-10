@@ -91,32 +91,26 @@ export default class MedicationScreen extends Component {
   render(){
     return (
         <View style={styles.containterBody}>
-          <Text style={styles.textTitle}>Glucosa</Text>
           <View style={styles.containerComp}>
             <HistoryComponentX2 title={Resources.MEDICATION_GLUCOSE_INTERVAL_MAX} value={this.state.interval_max} change={interval_max => this.setState({ interval_max })} />
             <HistoryComponentX2 title={Resources.MEDICATION_GLUCOSE_INTERVAL_MIN} value={this.state.interval_min} change={interval_min => this.setState({ interval_min })} />
           </View>
-          <Text style={styles.textTitle}>Hidratos de Carbono</Text>
           <View style={styles.containerComp}>
             <HistoryComponentX4 title={Resources.MEDICATION_HC_BASE_BREKFAST} value={this.state.hc_brekfast} change={hc_brekfast => this.setState({ hc_brekfast })} />
             <HistoryComponentX4 title={Resources.MEDICATION_HC_BASE_FOOD} value={this.state.hc_food} change={hc_food => this.setState({ hc_food })} />
             <HistoryComponentX4 title={Resources.MEDICATION_HC_BASE_SNACK} value={this.state.hc_snack} change={hc_snack => this.setState({ hc_snack })} />
             <HistoryComponentX4 title={Resources.MEDICATION_HC_BASE_DINNER} value={this.state.hc_dinner} change={hc_dinner => this.setState({ hc_dinner })} />
           </View>
-          <Text style={styles.textTitle}>Unidades de Insulina</Text>
           <View style={styles.containerComp}>
             <HistoryComponentX4 title={Resources.MEDICATION_INSULIN_BASE_BREKFAST} value={this.state.insulin_brekfast} change={insulin_brekfast => this.setState({ insulin_brekfast })} />
             <HistoryComponentX4 title={Resources.MEDICATION_INSULIN_BASE_FOOD} value={this.state.insulin_food} change={insulin_food => this.setState({ insulin_food })} />
             <HistoryComponentX4 title={Resources.MEDICATION_INSULIN_BASE_SNACK} value={this.state.insulin_snack} change={insulin_snack => this.setState({ insulin_snack })} />
             <HistoryComponentX4 title={Resources.MEDICATION_INSULIN_BASE_DINNER} value={this.state.insulin_dinner} change={insulin_dinner => this.setState({ insulin_dinner })} />
           </View>
-          <Text style={styles.textTitle}>Resta de unidades de Insulina</Text>
-          <Text style={styles.textSubTitle}>Hidratos de Carbono</Text>
           <View style={styles.containerComp}>
             <HistoryComponentX2 title={Resources.MEDICATION_RANGE_HC_UNDER_INTERVAL_MIN} value={this.state.range_under_hc} change={range_under_hc => this.setState({ range_under_hc })} />
             <HistoryComponentX2 title={Resources.MEDICATION_RANGE_HC_OVER_INTERVAL_MAX} value={this.state.range_over_hc} change={range_over_hc => this.setState({ range_over_hc })} />
           </View>
-          <Text style={styles.textSubTitle}>Glucosa</Text>
           <View style={styles.containerComp}>
             <HistoryComponentX2 title={Resources.MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN} value={this.state.range_under_insulin} change={range_under_insulin => this.setState({ range_under_insulin })} />
             <HistoryComponentX2 title={Resources.MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX} value={this.state.range_over_insulin} change={range_over_insulin => this.setState({ range_over_insulin })} />

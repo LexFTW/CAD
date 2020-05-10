@@ -6,6 +6,7 @@ import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 import DateTimePicker from './../components/DateTimePicker';
 import HistoryChart from './../components/HistoryChart';
 import HistoryTabView from './../components/HistoryTabView';
+import MailComponent from './../components/MailComponent';
 
 import  base  from '../constants/styles/Styles';
 
@@ -24,6 +25,7 @@ export default class HistoryScreen extends React.Component{
       loading: false,
       chart: false,
       report: false,
+      mail: false,
     }
   }
 
@@ -76,6 +78,7 @@ export default class HistoryScreen extends React.Component{
     this.setValuesChart(data);
 
     this.isChart(true);
+    this.isMail(true);
   }
 
   isLoading(loading){
@@ -84,6 +87,10 @@ export default class HistoryScreen extends React.Component{
 
   isChart(chart){
     this.setState({chart: chart});
+  }
+
+  isMail(mail){
+    this.setState({mail: mail});
   }
 
   isReport(report){
@@ -99,7 +106,7 @@ export default class HistoryScreen extends React.Component{
   }
 
   renderReports(){
-    if(this.state.reports){
+    if(this.state.reports == false){
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
     }
 
@@ -109,7 +116,7 @@ export default class HistoryScreen extends React.Component{
   loadingScreen(){
     if(!this.state.loading){
       return <View style={base.container}>
-        <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} />
+        <ActivityIndicator animating={true} size={15} color={Colors.blue700} />
       </View>
     }
 
@@ -118,7 +125,7 @@ export default class HistoryScreen extends React.Component{
         <View style={{paddingHorizontal: 20, paddingTop: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'row'}}>
             <DateTimePicker onClick={this.getDateFromDatePicker.bind(this)}/>
-            <IconButton icon={'share'} size={20} color={Colors.white}/>
+            {this.state.mail != false ? <MailComponent to={'lexmengual@gmail.com'} subject={'Testing'} body={'testeo'} /> : <Text>''</Text>}
           </View>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.date}</Text>
         </View>

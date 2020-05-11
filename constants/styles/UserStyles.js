@@ -36,11 +36,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
-    paddingVertical: 15,
     backgroundColor: "white",
   },
   containerComp: {
-    marginBottom: 10,
     backgroundColor: '#adccea',
     flexDirection: 'row'
   },

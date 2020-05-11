@@ -32,7 +32,29 @@ const Resources = {
   MEDICATION_RANGE_HC_OVER_INTERVAL_MAX: "Suma d'unitats d'insulina \nper rang superior \nd'hidrats de carboni",
   MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN: "Resta d'unitats d'insulina \nper rang inferior \nde la glucosa màxima",
   MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX: "Suma d'unitats d'insulina \nper rang superior \nde la glucosa màxima",
-  MEDICATION_DIABETES_TYPE: 'Tipus de Diabetes'
+  MEDICATION_DIABETES_TYPE: 'Tipus de Diabetes',
+  MEDICATION_SAVE_CHANGES: 'Guardar canvis',
+
+  HISTORYTABVIEW_TITLE_ROUTE_DAILY: 'DIARI',
+  HISTORYTABVIEW_TITLE_ROUTE_MONTHLY: 'MENSUAL',
+  HISTORYTABVIEW_TITLE_ROUTE_QUARTER: 'TRIMESTRAL',
+
+  BREAKFAST: 'Esmorzar',
+  FOOD: 'Menjar',
+  SNACK: 'Berenar',
+  DINNER: 'Dinar',
+  
+  MAIL_SUBJECT: 'Informe',
+  MAIL_BODY_DATE_1: 'Us envio el següent correu electrònic amb l’informe del dia ',
+  MAIL_BODY_DATE_2: ' que he registrat:\n',
+  MAIL_BODY_EAG: '\n\tEag: ',
+  MAIL_BODY_HBA1C: '\n\tHba1c: ',
+  MAIL_BODY_HYPER: '\n\tHiperglicèmia: ',
+  MAIL_BODY_HYPO: '\n\tHipoglicèmia: ',
+  MAIL_BODY_END: '\nAquest correu electrònic ha comptat amb el suport de DCA Team.',
+
+  ERROR_REGISTER_EMPTY: 'Hi ha camps buits, si us plau, tothom.',
+  ERROR_REGISTER_PASS: 'Assegureu-vos de confirmar correctament la contrasenya.'
 }
 
 export default Resources;

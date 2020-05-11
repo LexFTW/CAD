@@ -130,7 +130,7 @@ export default class MedicationScreen extends Component {
         color={'white'}
         onPress={() => this.saveChangesInFirestore()}
       >
-        Insertar
+        {Resources.MEDICATION_SAVE_CHANGES}
       </Button>
     </View>
   }

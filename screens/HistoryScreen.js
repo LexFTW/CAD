@@ -3,6 +3,8 @@ import * as React from 'react';
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 
+import Resources from './../config/resources/resources';
+
 import DateTimePicker from './../components/DateTimePicker';
 import HistoryChart from './../components/HistoryChart';
 import HistoryTabView from './../components/HistoryTabView';
@@ -106,12 +108,12 @@ export default class HistoryScreen extends React.Component{
   }
 
   getBodyForMail(){
-    var body = "I send you the following email with the report of the day " + this.state.date  + " that I have registered:\n";
-    body += "\n\teAG: " + this.state.eag;
-    body += "\n\tHba1c: " + this.state.hba1c;
-    body += "\n\tHyperglucemia: " + 0;
-    body += "\n\tHypoglucemia: " + 0;
-    body += "This email has been supported by DCA Team.";
+    var body = Resources.MAIL_BODY_DATE_1 + this.state.date  + Resources.MAIL_BODY_DATE_2;
+    body += Resources.MAIL_BODY_EAG + this.state.eag;
+    body += Resources.MAIL_BODY_HBA1C + this.state.hba1c;
+    body += Resources.MAIL_BODY_HYPER + 0;
+    body += Resources.MAIL_BODY_HYPO + 0;
+    body += Resources.MAIL_BODY_END;
 
     return body;
   }

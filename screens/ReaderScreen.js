@@ -35,10 +35,10 @@ export default class ReaderScreen extends Component {
         </View>
 
         <View style={{width: Dimensions.get('window').width, flexDirection: 'row', flexWrap: 'wrap', position: 'absolute',bottom: 0,}}>
-          <HistoryComponent title={'Brekfast'} value={"195"} />
-          <HistoryComponent title={'Food'} value={"-"} />
-          <HistoryComponent title={'Snack'} value={"-"} />
-          <HistoryComponent title={'Dinner'} value={"-"} />
+          <HistoryComponent title={Resources.BREAKFAST} value={"195"} />
+          <HistoryComponent title={Resources.FOOD} value={"-"} />
+          <HistoryComponent title={Resources.SNACK} value={"-"} />
+          <HistoryComponent title={Resources.DINNER} value={"-"} />
         </View>
       </SafeAreaView>
     );

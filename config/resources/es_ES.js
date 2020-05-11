@@ -33,7 +33,29 @@ const Resources = {
   MEDICATION_RANGE_HC_OVER_INTERVAL_MAX: 'Suma de unidades de insulina \npor rango superior \nde hidratos de carbono',
   MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN: 'Resta de unidades de insulina \npor rango inferior \nde la glucosa mínima',
   MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX: 'Suma de unidades de insulina \npor rango superior \nde la glucosa máxima',
-  MEDICATION_DIABETES_TYPE: 'Tipo de Diabetes'
+  MEDICATION_DIABETES_TYPE: 'Tipo de Diabetes',
+  MEDICATION_SAVE_CHANGES: 'Guardar cambios',
+
+  HISTORYTABVIEW_TITLE_ROUTE_DAILY: 'DIARIO',
+  HISTORYTABVIEW_TITLE_ROUTE_MONTHLY: 'MENSUAL',
+  HISTORYTABVIEW_TITLE_ROUTE_QUARTER: 'TRIMESTRAL',
+
+  BREAKFAST: 'Desayuno',
+  FOOD: 'Comida',
+  SNACK: 'Merienda',
+  DINNER: 'Cena',
+
+  MAIL_SUBJECT: 'Informe',
+  MAIL_BODY_DATE_1: 'Te envío el siguiente correo electrónico con el informe del día ',
+  MAIL_BODY_DATE_2: ' que he registrado:\n',
+  MAIL_BODY_EAG: '\n\tEag: ',
+  MAIL_BODY_HBA1C: '\n\tHba1c: ',
+  MAIL_BODY_HYPER: '\n\tHyperglucemia: ',
+  MAIL_BODY_HYPO: '\n\tHypoglucemia: ',
+  MAIL_BODY_END: '\nEste correo electrónico ha sido respaldado por el equipo de DCA.',
+
+  ERROR_REGISTER_EMPTY: 'Hay campos vacios, por favor rellenelos todos.',
+  ERROR_REGISTER_PASS: 'Asegurate de confirmar correctamente la contraseña.'
 }
 
 export default Resources

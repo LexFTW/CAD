@@ -4,7 +4,9 @@ import firebase from '../config/firebase';
 
 export async function signUpWithEmailAndPassword(state, props) {
   if (state.userName === '' || state.email === '' || state.password === '' || state.confPassword === '') {
-    Alert.alert('Por favor, rellene todos los campos.');
+    Alert.alert('Hay campos vacios, por favor rellenelos todos.');
+  } else if (state.password !== state.confPassword) {
+    Alert.alert('Asegurate de confirmar correctamente la contraseña.');
   } else {
     await firebase
     .auth()

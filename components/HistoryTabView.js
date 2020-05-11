@@ -20,8 +20,6 @@ export default class HistoryTabView extends React.Component{
         { key: 'second', title: 'MONTHLY' },
         { key: 'third', title: 'QUARTER' },
       ],
-      statePartialEag: '',
-      statePartialHba1c: ''
     };
 
     this.renderScene = this.renderScene.bind(this);
@@ -48,13 +46,7 @@ export default class HistoryTabView extends React.Component{
   }
 
   setStateFromPartial(eag, hba1c) {
-    this.setState({statePartialEag: eag});
-    this.setState({statePartialHba1c: hba1c});
-   
-    console.log(eag);
-    console.log(hba1c);
-    
-    this.props.returnState(this.state.eag, this.state.hba1c);
+    this.props.onReport(eag, hba1c);
   }
 
   renderScene({ route }){

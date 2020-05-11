@@ -80,7 +80,6 @@ export default class HistoryScreen extends React.Component{
     this.setValuesChart(data);
 
     this.isChart(true);
-    this.isMail(true);
   }
 
   isLoading(loading){
@@ -100,8 +99,21 @@ export default class HistoryScreen extends React.Component{
   }
 
   setStateFromPartial(eag, hba1c) {
-    this.setState({statePartialEag: eag});
-    this.setState({statePartialHba1c: hba1c});
+    this.setState({eag: eag});
+    this.setState({hba1c: hba1c});
+
+    this.isMail(true);
+  }
+
+  getBodyForMail(){
+    var body = "I send you the following email with the report of the day " + this.state.date  + " that I have registered:\n";
+    body += "\n\teAG: " + this.state.eag;
+    body += "\n\tHba1c: " + this.state.hba1c;
+    body += "\n\tHyperglucemia: " + 0;
+    body += "\n\tHypoglucemia: " + 0;
+    body += "This email has been supported by DCA Team.";
+
+    return body;
   }
 
   renderChart(){
@@ -117,7 +129,7 @@ export default class HistoryScreen extends React.Component{
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
     }
 
-    return <HistoryTabView returnState={this.setStateFromPartial.bind(this)} onTrigger={this.setCollection.bind(this)} date={this.state.date}/>
+    return <HistoryTabView onReport={this.setStateFromPartial.bind(this)} onTrigger={this.setCollection.bind(this)} date={this.state.date}/>
   }
 
   loadingScreen(){
@@ -134,7 +146,7 @@ export default class HistoryScreen extends React.Component{
         <View style={{paddingHorizontal: 20, paddingTop: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'row'}}>
             <DateTimePicker onClick={this.getDateFromDatePicker.bind(this)}/>
-            {this.state.mail != false ? <MailComponent body={this.state} /> : <Text>''</Text>}
+            {this.state.mail != false ? <MailComponent body={this.getBodyForMail()} /> : <Text>''</Text>}
           </View>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.date}</Text>
         </View>

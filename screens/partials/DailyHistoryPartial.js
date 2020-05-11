@@ -31,6 +31,7 @@ export default class DailyHistoryPartial extends React.Component{
     if(oldProps.date != this.props.date){
       await this.getCollectionHistory();
       this.props.onTrigger(this.state.data, this.state.times);
+      this.props.returnState(this.state.eag, this.state.hba1c);
     }
   }
 

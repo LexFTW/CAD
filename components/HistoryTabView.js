@@ -20,6 +20,8 @@ export default class HistoryTabView extends React.Component{
         { key: 'second', title: 'MONTHLY' },
         { key: 'third', title: 'QUARTER' },
       ],
+      statePartialEag: '',
+      statePartialHba1c: ''
     };
 
     this.renderScene = this.renderScene.bind(this);
@@ -45,12 +47,22 @@ export default class HistoryTabView extends React.Component{
     this.setState({chart: chart});
   }
 
+  setStateFromPartial(eag, hba1c) {
+    this.setState({statePartialEag: eag});
+    this.setState({statePartialHba1c: hba1c});
+   
+    console.log(eag);
+    console.log(hba1c);
+    
+    this.props.returnState(this.state.eag, this.state.hba1c);
+  }
+
   renderScene({ route }){
     if (!route.key) return null;
 
     switch(route.key){
       case 'first':
-        return <DailyHistoryPartial onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
+        return <DailyHistoryPartial returnState={this.setStateFromPartial.bind(this)} onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
       case 'second':
         return <MonthlyHistoryPartial onTrigger={this.setMonthly.bind(this)} date={this.props.date} />;
       case 'third':

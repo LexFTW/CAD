@@ -6,6 +6,7 @@ import { HistoryComponent, MultipleHistoryComponent } from './../../components/H
 
 import firebase from './../../config/firebase';
 import 'firebase/firestore';
+import HistoryScreen from '../HistoryScreen';
 
 const firestore = firebase.firestore();
 
@@ -23,6 +24,7 @@ export default class DailyHistoryPartial extends React.Component{
   async componentDidMount(){
     await this.getCollectionHistory();
     this.props.onTrigger(this.state.data, this.state.times);
+    this.props.returnState(this.state.eag, this.state.hba1c);
   }
 
   async componentDidUpdate(oldProps){

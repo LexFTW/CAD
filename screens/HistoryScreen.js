@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, Alert } from 'react-native'
 import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 
 import DateTimePicker from './../components/DateTimePicker';
@@ -26,6 +26,8 @@ export default class HistoryScreen extends React.Component{
       chart: false,
       report: false,
       mail: false,
+      statePartialEag: '',
+      statePartialHba1c: '',
     }
   }
 
@@ -97,6 +99,11 @@ export default class HistoryScreen extends React.Component{
     this.setState({report: report});
   }
 
+  setStateFromPartial(eag, hba1c) {
+    this.setState({statePartialEag: eag});
+    this.setState({statePartialHba1c: hba1c});
+  }
+
   renderChart(){
     if(!this.state.chart){
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
@@ -110,7 +117,7 @@ export default class HistoryScreen extends React.Component{
       return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
     }
 
-    return <HistoryTabView onTrigger={this.setCollection.bind(this)} date={this.state.date}/>
+    return <HistoryTabView returnState={this.setStateFromPartial.bind(this)} onTrigger={this.setCollection.bind(this)} date={this.state.date}/>
   }
 
   loadingScreen(){
@@ -120,12 +127,14 @@ export default class HistoryScreen extends React.Component{
       </View>
     }
 
+    console.log(this.props.returnState);
+
     return <View>
       <View style={{backgroundColor: '#2069b2', paddingVertical: 10}}>
         <View style={{paddingHorizontal: 20, paddingTop: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'row'}}>
             <DateTimePicker onClick={this.getDateFromDatePicker.bind(this)}/>
-            {this.state.mail != false ? <MailComponent to={'lexmengual@gmail.com'} subject={'Testing'} body={'testeo'} /> : <Text>''</Text>}
+            {this.state.mail != false ? <MailComponent body={this.state} /> : <Text>''</Text>}
           </View>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.date}</Text>
         </View>

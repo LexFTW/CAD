@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 
-import { ScrollView, Text, TextInput, SafeAreaView, Alert, View, Button } from 'react-native';
-import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
-import RNPickerSelect from 'react-native-picker-select';
-import NavigationTop from './../components/NavigationTop';
+import { ScrollView, Text, Alert, View } from 'react-native';
+import { IconButton, Colors, Avatar } from 'react-native-paper';
 
 import TabView from '../components/UserTabView';
 
-import  base  from '../constants/styles/Styles';
 import  styles  from '../constants/styles/UserStyles';
 
 import Resources from './../config/resources/resources';

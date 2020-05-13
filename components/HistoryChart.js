@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Alert, Text, TextInput, SafeAreaView, ScrollView, View, Dimensions } from 'react-native';
-import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from "react-native-chart-kit";
+import { ScrollView, Dimensions } from 'react-native';
+import { BarChart } from "react-native-chart-kit";
 
 export default class HistoryChart extends Component {
 

@@ -1,10 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import TabBarIconFoundation from '../components/TabBarIconFoundation';
-import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
-import TabBarIconIonicons from '../components/TabBarIconIonicons';
-
 import LoginScreen from '../screens/LoginScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';

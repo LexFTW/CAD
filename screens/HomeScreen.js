@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
 
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button, SafeAreaView, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import TabBarIconFoundation from '../components/TabBarIconFoundation';
 import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 import TabBarIconIonicons from '../components/TabBarIconIonicons';
 
-import Resources from './../config/resources/resources';
-
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import ReaderScreen from '../screens/ReaderScreen';
-import ReaderScreenResult from '../screens/ReaderScreenResult';
 import UserScreen from '../screens/UserScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 

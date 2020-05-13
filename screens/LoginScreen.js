@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 
-import { View, Image, Text, StyleSheet, TextInput, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
-import { Button, ActivityIndicator, Colors } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Image, SafeAreaView } from 'react-native';
+import { Button } from 'react-native-paper';
 import Separator from '../components/Separator';
 
 import Resources from './../config/resources/resources';
@@ -10,9 +9,7 @@ import Resources from './../config/resources/resources';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import firebase from '../config/firebase';
-import * as Facebook from 'expo-facebook';
 
-import styles from '../components/TextInputIcon';
 import base from './../constants/styles/Styles';
 
 import { signInWithEmailAndPassword } from '../functions/LoginWithEmailAndPassword';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ScrollView, View, Text, Alert } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 
 import Resources from './../config/resources/resources';

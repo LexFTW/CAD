@@ -1,6 +1,5 @@
 import {Alert} from 'react-native';
 
-import firebase from '../config/firebase';
 import * as Facebook from 'expo-facebook';
 
 export async function signInWithFacebook(props){

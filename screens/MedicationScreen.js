@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 
-import { Text, ScrollView, View, TextInput, Alert, Dimensions } from 'react-native';
+import { View } from 'react-native';
 import { ActivityIndicator, Button, Colors } from 'react-native-paper';
-import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
 
 import Resources from './../config/resources/resources';
 
-import NavigationTop from './../components/NavigationTop';
 import TextInputBox from './../components/TextInputBox';
 
 import  base  from '../constants/styles/Styles';

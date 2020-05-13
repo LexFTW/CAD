@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 
 export default class ReaderFunctions extends React.Component{

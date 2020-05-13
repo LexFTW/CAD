@@ -1,14 +1,4 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Platform,
-  Dimensions,
-  Alert
-} from 'react-native';
-import { Button, Colors } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 

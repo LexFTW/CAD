@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
 
-import { Button, Text, SafeAreaView, Alert, View, Dimensions } from 'react-native';
-import { IconButton, Colors } from 'react-native-paper';
-import TabBarIconFontAwesome from '../components/TabBarIconFontAwesome';
+import { Text, SafeAreaView, View, Dimensions } from 'react-native';
+import { IconButton } from 'react-native-paper';
 
 import Resources from './../config/resources/resources';
 
 import NavigationTop from './../components/NavigationTop';
-
-import  base  from '../constants/styles/Styles';
-import  styles  from '../constants/styles/ReaderStyles';
 
 export default class ReaderScreen extends Component {
 

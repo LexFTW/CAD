@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-import { Alert, SafeAreaView, View, Text } from 'react-native';
+import { Alert, SafeAreaView, View } from 'react-native';
 
 import { HistoryComponent, MultipleHistoryComponent } from './../../components/HistoryComponent';
 
 import firebase from './../../config/firebase';
 import 'firebase/firestore';
-import HistoryScreen from '../HistoryScreen';
 
 import Resources from './../../config/resources/resources';
 

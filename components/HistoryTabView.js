@@ -1,13 +1,11 @@
 import * as React from 'react';
 
 import { View } from 'react-native';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import { TabView, TabBar } from 'react-native-tab-view';
 
 import Resources from './../config/resources/resources';
 
 import DailyHistoryPartial from './../screens/partials/DailyHistoryPartial';
-import MonthlyHistoryPartial from './../screens/partials/MonthlyHistoryPartial';
-import QuarterHistoryPartial from './../screens/partials/QuarterHistoryPartial';
 
 export default class HistoryTabView extends React.Component{
 

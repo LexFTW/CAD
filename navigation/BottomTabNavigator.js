@@ -8,9 +8,7 @@ import TabBarIconIonicons from '../components/TabBarIconIonicons';
 import HomeScreen from '../screens/HomeScreen';
 import ReaderScreen from '../screens/ReaderScreen';
 import UserScreen from '../screens/UserScreen';
-import LoginScreen from '../screens/LoginScreen';
 import HistoryScreen from '../screens/HistoryScreen';
-import SingUpScreen from '../screens/SingUpScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';

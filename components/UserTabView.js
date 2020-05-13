@@ -1,10 +1,7 @@
 import * as React from 'react';
 
-import { Text, TextInput, Button, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { Dimensions } from 'react-native';
 import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
-import { IconButton, Colors, Avatar } from 'react-native-paper';
-
-import  styles  from '../constants/styles/UserStyles';
 
 import Resources from './../config/resources/resources';
 

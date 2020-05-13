@@ -1,20 +1,9 @@
-import React, {Component} from 'react';
-import { View, Image, Text, StyleSheet, TextInput, SafeAreaView, NativeModules, Platform, Alert } from 'react-native';
-import { Button, ActivityIndicator, Colors, Card } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Button, Card } from 'react-native-paper';
 import IconFontAwesome from '../components/TabBarIconFontAwesome';
 
-import MainNavigator from '../navigation/MainNavigator';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import firebase from '../config/firebase';
-import * as GoogleSignIn from 'expo-google-sign-in'
-import * as Facebook from 'expo-facebook';
-
-import Resources from './../config/resources/resources';
-import Separator from '../components/Separator';
-
-import base from './../constants/styles/Styles';
 
 const Stack = createStackNavigator();
 

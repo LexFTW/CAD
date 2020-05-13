@@ -18,6 +18,9 @@ import base from './../constants/styles/Styles';
 import { signInWithEmailAndPassword } from '../functions/LoginWithEmailAndPassword';
 import { signInWithFacebook } from '../functions/LoginWithFacebook';
 
+import TextInputLoginEmail from '../components/TextInputLoginEmail';
+import TextInputLoginPass from '../components/TextInputLoginPass';
+
 const Stack = createStackNavigator();
 
 export default class LoginScreen extends Component {
@@ -40,12 +43,8 @@ export default class LoginScreen extends Component {
     this.props.navigation.navigate('Register')
   }
 
-  showPasswordInTheInput(){
-    if(this.state.showPassword){
-      this.setState({showPassword: false})
-    }else{
-      this.setState({showPassword: true})
-    }
+  async setStateFromInput(name, value) {
+    this.setState({[name]: value});
   }
 
   render() {
@@ -53,41 +52,8 @@ export default class LoginScreen extends Component {
       <SafeAreaView style={base.container}>
         <View>
           <Image source={require('../assets/images/splash.png')} style={base.logo} />
-
-          <View>
-            <Icon name={'user'} size={28} style={styles.inputIcon}/>
-            <TextInput
-              placeholder={Resources.LOGIN_EMAIL}
-              placeholderTextColor="#adadad"
-              underlineColorAndroid='transparent'
-              textContentType={'emailAddress'}
-              secureTextEntry={false}
-              style={styles.input}
-              value={this.state.email}
-              onChangeText={email => this.setState({ email })}
-            />
-          </View>
-          <View>
-            <Icon name={'lock'} size={28} style={styles.inputIcon}/>
-            <TextInput
-              placeholder={Resources.LOGIN_PASSWORD}
-              placeholderTextColor="#adadad"
-              underlineColorAndroid='transparent'
-              textContentType={'none'}
-              secureTextEntry={this.state.showPassword}
-              showPassword={false}
-              style={styles.input}
-              value={this.state.password}
-              onChangeText={password => this.setState({ password })}
-            />
-            <Button
-              icon="eye"
-              mode="contained"
-              style={styles.inputIconRight}
-              labelStyle={{marginRight: 0}}
-              onPress={() => this.showPasswordInTheInput(this)}
-            />
-          </View>
+          <TextInputLoginEmail iconName={'user'} resources={Resources.LOGIN_EMAIL} textContentType={'emailAddress'} label={'email'} value={this.state.email} onChange={this.setStateFromInput.bind(this)} />
+          <TextInputLoginPass iconName={'lock'} resources={Resources.LOGIN_PASSWORD} textContentType={'none'} label={'password'} value={this.state.password} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
           <Separator />
           <Button
             mode="contained"

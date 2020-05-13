@@ -17,6 +17,9 @@ import styles from '../components/TextInputIcon';
 
 import {signUpWithEmailAndPassword} from '../functions/RegisterWithEmailAndPassword';
 
+import TextInputRegisterNameAndEmail from '../components/TextInputRegisterNameAndEmail';
+import TextInputRegisterPassword from '../components/TextInputRegisterPassword';
+
 const Stack = createStackNavigator();
 
 export default class RegisterScreen extends Component {
@@ -34,6 +37,10 @@ export default class RegisterScreen extends Component {
     }
   }
 
+  async setStateFromInput(name, value) {
+    this.setState({[name]: value});
+  }
+
   render() {
     return(
       <SafeAreaView style={base.container}>
@@ -46,67 +53,10 @@ export default class RegisterScreen extends Component {
             <View style={{marginTop: 60, alignItems: 'center'}}>
               <Image source={require('../assets/images/splash.png')} style={{width: 250, height: 200, marginBottom: 15}} />
               <View style={{marginTop: 20}}>
-                <View>
-                  <Icon name={'user'} size={28} style={styles.inputIcon}/>
-                  <TextInput
-                    placeholder={Resources.LOGIN_USERNAME}
-                    placeholderTextColor="#adadad"
-                    underlineColorAndroid='transparent'
-                    textContentType={'username'}
-                    secureTextEntry={false}
-                    style={styles.input}
-                    value={this.state.userName}
-                    onChangeText={userName => this.setState({ userName })}
-                  />
-                </View>
-                <View>
-                  <Icon name={'user'} size={28} style={styles.inputIcon}/>
-                  <TextInput
-                    placeholder={Resources.LOGIN_EMAIL}
-                    placeholderTextColor="#adadad"
-                    underlineColorAndroid='transparent'
-                    textContentType={'emailAddress'}
-                    secureTextEntry={false}
-                    style={styles.input}
-                    value={this.state.email}
-                    onChangeText={email => this.setState({ email })}
-                  />
-                </View>
-                <View>
-                  <Icon name={'lock'} size={28} style={styles.inputIcon}/>
-                  <TextInput
-                    placeholder={Resources.LOGIN_PASSWORD}
-                    placeholderTextColor="#adadad"
-                    underlineColorAndroid='transparent'
-                    textContentType={'none'}
-                    secureTextEntry={this.state.showPassword}
-                    showPassword={false}
-                    style={styles.input}
-                    value={this.state.password}
-                    onChangeText={password => this.setState({ password })}
-                  />
-                  <Button
-                    icon="eye"
-                    mode="contained"
-                    style={styles.inputIconRight}
-                    labelStyle={{marginRight: 0}}
-                    onPress={() => this.showPasswordInTheInput(this)}
-                  />
-                </View>
-                <View>
-                  <Icon name={'lock'} size={28} style={styles.inputIcon}/>
-                  <TextInput
-                    placeholder={Resources.LOGIN_CONFPASSWORD}
-                    placeholderTextColor="#adadad"
-                    underlineColorAndroid='transparent'
-                    textContentType={'none'}
-                    secureTextEntry={this.state.showPassword}
-                    showPassword={false}
-                    style={styles.inputPassword}
-                    value={this.state.confPassword}
-                    onChangeText={confPassword => this.setState({ confPassword })}
-                  />
-                </View>
+                <TextInputRegisterNameAndEmail iconName={'user'} resources={Resources.LOGIN_USERNAME} textContentType={'username'} label={'userName'} value={this.state.userName} onChange={this.setStateFromInput.bind(this)} />
+                <TextInputRegisterNameAndEmail iconName={'user'} resources={Resources.LOGIN_EMAIL} textContentType={'emailAddress'} label={'email'} value={this.state.email} onChange={this.setStateFromInput.bind(this)} />
+                <TextInputRegisterPassword iconName={'lock'} resources={Resources.LOGIN_PASSWORD} textContentType={'none'} label={'password'} value={this.state.password} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
+                <TextInputRegisterPassword iconName={'lock'} resources={Resources.LOGIN_CONFPASSWORD} textContentType={'none'} label={'confPassword'} value={this.state.confPassword} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
               </View>
             </View>
 

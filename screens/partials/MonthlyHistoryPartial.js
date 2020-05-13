@@ -7,6 +7,8 @@ import { HistoryComponent, MultipleHistoryComponent } from './../../components/H
 import firebase from './../../config/firebase';
 import 'firebase/firestore';
 
+import Resources from './../../config/resources/resources';
+
 const firestore = firebase.firestore();
 
 export default class DailyHistoryPartial extends React.Component{
@@ -94,8 +96,8 @@ export default class DailyHistoryPartial extends React.Component{
         <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
           <HistoryComponent title={'eag'} value={this.state.eag} />
           <HistoryComponent title={'hba1c'} value={this.state.hba1c} />
-          <MultipleHistoryComponent title={'hyperglycemia'} value={0} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[0,0,0,0]}/>
-          <MultipleHistoryComponent title={'hypoglycemia'} value={0} titleChilds={['Brekfast', 'Food', 'Snack', 'Dinner']} childs={[0,0,0,0]}/>
+          <MultipleHistoryComponent title={'hyperglycemia'} value={0} titleChilds={[Resources.BREAKFAST, Resources.FOOD, Resources.SNACK, Resources.DINNER]} childs={[0,0,0,0]}/>
+          <MultipleHistoryComponent title={'hypoglycemia'} value={0} titleChilds={[Resources.BREAKFAST, Resources.FOOD, Resources.SNACK, Resources.DINNER]} childs={[0,0,0,0]}/>
         </View>
       </SafeAreaView>
     );

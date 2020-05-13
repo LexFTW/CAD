@@ -33,7 +33,32 @@ const Resources = {
   MEDICATION_RANGE_HC_OVER_INTERVAL_MAX: 'Insulin range over \ncarbohydrates base',
   MEDICATION_RANGE_INSULIN_UNDER_INTERVAL_MIN: 'Insulin units under \nglucose interval',
   MEDICATION_RANGE_INSULIN_OVER_INTERVAL_MAX: 'Insulin units over \nglucose interval',
-  MEDICATION_DIABETES_TYPE: 'Diabetes Type'
+  MEDICATION_DIABETES_TYPE: 'Diabetes Type',
+  MEDICATION_SAVE_CHANGES: 'Save changes',
+
+  HISTORYTABVIEW_TITLE_ROUTE_DAILY: 'DAILY',
+  HISTORYTABVIEW_TITLE_ROUTE_MONTHLY: 'MONTHLY',
+  HISTORYTABVIEW_TITLE_ROUTE_QUARTER: 'QUARTER',
+
+  HISTORY_REPORT_HYPERGLYCEMIA: 'Hyperglycemia',
+  HISTORY_REPORT_HYPOGLYCEMIA: 'Hypoglycemia',
+
+  BREAKFAST: 'Breakfast',
+  FOOD: 'Food',
+  SNACK: 'Snack',
+  DINNER: 'Dinner',
+
+  MAIL_SUBJECT: 'Reporte',
+  MAIL_BODY_DATE_1: 'I send you the following email with the report of the day ',
+  MAIL_BODY_DATE_2: ' that I have registered:\n',
+  MAIL_BODY_EAG: '\n\tEag: ',
+  MAIL_BODY_HBA1C: '\n\tHba1c: ',
+  MAIL_BODY_HYPER: '\n\tHyperglycemia: ',
+  MAIL_BODY_HYPO: '\n\tHypoglycemia: ',
+  MAIL_BODY_END: '\nThis email has been supported by DCA Team.',
+
+  ERROR_REGISTER_EMPTY: 'There are empty fields, please everyone.',
+  ERROR_REGISTER_PASS: 'Make sure to correctly confirm the password.'
 }
 
 export default Resources;

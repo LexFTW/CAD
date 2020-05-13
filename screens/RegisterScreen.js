@@ -15,7 +15,7 @@ import Resources from './../config/resources/resources';
 import base from './../constants/styles/Styles';
 import styles from '../components/TextInputIcon';
 
-import {signUpWithEmailAndPassword} from '../functions/RegisterWithEmailAndPassword';
+import { signUpWithEmailAndPassword } from '../functions/RegisterWithEmailAndPassword';
 
 const Stack = createStackNavigator();
 

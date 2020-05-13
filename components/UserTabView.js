@@ -15,11 +15,9 @@ export default function TabViewExample(props) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: Resources.PROFILE_SETTINGS_MEDICATION },
-    { key: 'first', title: Resources.PROFILE_SETTINGS_MEDICATION },
   ]);
 
   const renderScene = SceneMap({
-    first: MedicationScreen,
     first: MedicationScreen,
   });
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import { View, Image, SafeAreaView } from 'react-native';
-import { Button } from 'react-native-paper';
+import { ActivityIndicator, Button, Colors } from 'react-native-paper';
 import Separator from '../components/Separator';
 
 import Resources from './../config/resources/resources';
@@ -24,15 +24,36 @@ export default class LoginScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state = {email: '', password: '', error: '', auth: false, showPassword: true }
+
+    this.state = {
+      email: '',
+      password: '',
+      loading: false,
+      password: true,
+      auth: false,
+    }
   }
 
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user || this.state.auth) {
-          this.props.navigation.navigate('Home');
-        }
-     });
+  async componentDidMount(){
+    await this.isAuthentication();
+  }
+
+  async isAuthentication(){
+    await firebase.auth().onAuthStateChanged((user) => {
+      if (user || this.state.auth) {
+        this.redirectIfIsAuthentication();
+      }else{
+        this.isLoading(true);
+      }
+    });
+  }
+
+  redirectIfIsAuthentication(){
+    this.props.navigation.navigate('Home');
+  }
+
+  isLoading(value){
+    this.setState({loading: value});
   }
 
   onSingUp() {
@@ -43,42 +64,52 @@ export default class LoginScreen extends Component {
     this.setState({[name]: value});
   }
 
-  render() {
-    return(
-      <SafeAreaView style={base.container}>
+  currentRender(){
+    if(!this.state.loading){
+      return <ActivityIndicator animating={true} size={100} color={Colors.blue700} />
+    }else{
+      return <View>
         <View>
           <Image source={require('../assets/images/splash.png')} style={base.logo} />
           <TextInputLoginEmail iconName={'user'} resources={Resources.LOGIN_EMAIL} textContentType={'emailAddress'} label={'email'} value={this.state.email} onChange={this.setStateFromInput.bind(this)} />
-          <TextInputLoginPass iconName={'lock'} resources={Resources.LOGIN_PASSWORD} textContentType={'none'} label={'password'} value={this.state.password} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
+          <TextInputLoginPass iconName={'lock'} resources={Resources.LOGIN_PASSWORD} textContentType={'none'} label={'password'} value={this.state.password} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.password} />
           <Separator />
           <Button
-            mode="contained"
-            style={base.btnPrimary}
-            onPress={() => signInWithEmailAndPassword(this.state.email, this.state.password, this.props)}
+          mode="contained"
+          style={base.btnPrimary}
+          onPress={() => signInWithEmailAndPassword(this.state.email, this.state.password, this.props)}
           >
-            {Resources.LOGIN_SIGNIN}
+          {Resources.LOGIN_SIGNIN}
           </Button>
           <Button
-            icon="google"
-            mode="contained"
-            style={base.btnGoogle}
-            >
-              {Resources.LOGIN_SIGNIN_GOOGLE}
+          icon="google"
+          mode="contained"
+          style={base.btnGoogle}
+          >
+          {Resources.LOGIN_SIGNIN_GOOGLE}
           </Button>
           <Button
-            icon="facebook"
-            mode="contained"
-            style={base.btnFacebook}
-            onPress={() => signInWithFacebook(this.props)}
-            >
-              {Resources.LOGIN_SIGNIN_FACEBOOK}
+          icon="facebook"
+          mode="contained"
+          style={base.btnFacebook}
+          onPress={() => signInWithFacebook(this.props)}
+          >
+          {Resources.LOGIN_SIGNIN_FACEBOOK}
           </Button>
           <Separator />
           <Button mode="contained" style={base.btnPrimary}
-            onPress={() => this.onSingUp()}>
-            {Resources.LOGIN_REGISTER}
+          onPress={() => this.onSingUp()}>
+          {Resources.LOGIN_REGISTER}
           </Button>
         </View>
+      </View>
+    }
+  }
+
+  render() {
+    return(
+      <SafeAreaView style={base.container}>
+        {this.currentRender()}
       </SafeAreaView>
     );
   }

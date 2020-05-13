@@ -24,7 +24,7 @@ export default class MailComponent extends React.Component{
     email('noreply@dca.com', {
       subject: Resources.MAIL_SUBJECT,
       body: this.state.body,
-    }).catch(console.warn('Error'))
+    })
   }
 
   render(){

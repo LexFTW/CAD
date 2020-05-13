@@ -18,9 +18,7 @@ export default class HistoryTabView extends React.Component{
       chart: false,
       index: 0,
       routes: [
-        { key: 'first', title: Resources.HISTORYTABVIEW_TITLE_ROUTE_DAILY },
-        { key: 'second', title: Resources.HISTORYTABVIEW_TITLE_ROUTE_MONTHLY },
-        { key: 'third', title: Resources.HISTORYTABVIEW_TITLE_ROUTE_QUARTER },
+        { key: 'first', title: Resources.HISTORYTABVIEW_TITLE_ROUTE_DAILY  },
       ],
     };
 
@@ -57,10 +55,6 @@ export default class HistoryTabView extends React.Component{
     switch(route.key){
       case 'first':
         return <DailyHistoryPartial returnState={this.setStateFromPartial.bind(this)} onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
-      case 'second':
-        return <MonthlyHistoryPartial onTrigger={this.setMonthly.bind(this)} date={this.props.date} />;
-      case 'third':
-        return <QuarterHistoryPartial onTrigger={this.setDaily.bind(this)} date={this.props.date} />;
     }
   }
 

@@ -39,11 +39,14 @@ const Resources = {
   HISTORYTABVIEW_TITLE_ROUTE_MONTHLY: 'MENSUAL',
   HISTORYTABVIEW_TITLE_ROUTE_QUARTER: 'TRIMESTRAL',
 
+  HISTORY_REPORT_HYPERGLYCEMIA: 'Hyperglycemia',
+  HISTORY_REPORT_HYPOGLYCEMIA: 'Hypoglycemia',
+
   BREAKFAST: 'Esmorzar',
   FOOD: 'Menjar',
   SNACK: 'Berenar',
   DINNER: 'Dinar',
-  
+
   MAIL_SUBJECT: 'Informe',
   MAIL_BODY_DATE_1: 'Us envio el següent correu electrònic amb l’informe del dia ',
   MAIL_BODY_DATE_2: ' que he registrat:\n',

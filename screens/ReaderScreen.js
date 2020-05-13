@@ -30,13 +30,13 @@ export default class ReaderScreen extends Component {
             color={'#2069b2'}
             style={{backgroundColor: 'white', color: '#2069b2', shadowColor: '#000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5}}
             size={150}
-            onPress={() => Alert.alert(Resources.READER_HEADER)}
+            onPress={() => this.props.navigation.navigate('ReaderScreenResult')}
           />
         </View>
 
         <View style={{width: Dimensions.get('window').width, flexDirection: 'row', flexWrap: 'wrap', position: 'absolute', bottom: 0,}}>
           <HistoryComponent title={Resources.BREAKFAST} value={"195"} />
-          <HistoryComponent title={Resources.FOOD} value={"-"} />
+          <HistoryComponent title={Resources.FOOD} value={"150"} />
           <HistoryComponent title={Resources.SNACK} value={"-"} />
           <HistoryComponent title={Resources.DINNER} value={"-"} />
         </View>

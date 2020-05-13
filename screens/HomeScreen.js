@@ -12,6 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import ReaderScreen from '../screens/ReaderScreen';
+import ReaderScreenResult from '../screens/ReaderScreenResult';
 import UserScreen from '../screens/UserScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Alert, SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 
 import { HistoryComponent, MultipleHistoryComponent } from './../../components/HistoryComponent';
 
@@ -45,10 +45,6 @@ export default class DailyHistoryPartial extends React.Component{
     .where('createdAt', '==', this.props.date)
     .get()
     .then(snapshot => {
-      if(snapshot.empty){
-        Alert.alert('Datos no encontrados.', this.props.date)
-      }
-
       snapshot.forEach(doc => {
         var currentDocument = doc.data();
         this.setCollection(currentDocument);

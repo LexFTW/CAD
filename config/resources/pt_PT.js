@@ -40,6 +40,8 @@ const Resources = {
   HISTORYTABVIEW_TITLE_ROUTE_MONTHLY: 'MENSALMENTE',
   HISTORYTABVIEW_TITLE_ROUTE_QUARTER: 'TRIMESTRE',
 
+  HISTORY_NO_DATA_FOUND: 'Nenhum dado encontrado',
+
   BREAKFAST: 'Café da manhã',
   FOOD: 'Alimento',
   SNACK: 'Lanche',

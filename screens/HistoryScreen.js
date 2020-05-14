@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ScrollView, View, Text } from 'react-native'
+import { Image, ScrollView, View, Text, Alert } from 'react-native'
 import { ActivityIndicator, Colors, IconButton } from 'react-native-paper';
 
 import Resources from './../config/resources/resources';
@@ -30,6 +30,7 @@ export default class HistoryScreen extends React.Component{
       mail: false,
       statePartialEag: '',
       statePartialHba1c: '',
+      noDataFound: true,
     }
   }
 
@@ -81,7 +82,15 @@ export default class HistoryScreen extends React.Component{
     this.setLabelsChart(times);
     this.setValuesChart(data);
 
-    this.isChart(true);
+    this.thereAreLabels();
+  }
+  
+  thereAreLabels() {
+    if (this.state.labels.length > 0) {
+      this.isChart(true);
+    }
+
+    this.setState({noDataFound: false})
   }
 
   isLoading(loading){
@@ -120,9 +129,12 @@ export default class HistoryScreen extends React.Component{
 
   renderChart(){
     if(!this.state.chart){
-      return <ActivityIndicator animating={true} size={'large'} color={Colors.blue700} style={{paddingVertical: 50}} />
+      if (this.state.noDataFound == false) {
+      return <Text style={{marginVertical: 50, fontSize: 20, color: 'white', textAlign: 'center'}}>{Resources.HISTORY_NO_DATA_FOUND}</Text>
+      }
+      return <ActivityIndicator animating={true} size={'large'} color={Colors.white} style={{paddingVertical: 50}} />
     }
-
+    
     return <HistoryChart labels={this.state.labels} values={this.state.values} />
   }
 
@@ -140,8 +152,6 @@ export default class HistoryScreen extends React.Component{
         <ActivityIndicator animating={true} size={15} color={Colors.blue700} />
       </View>
     }
-
-    console.log(this.props.returnState);
 
     return <View>
       <View style={{backgroundColor: '#2069b2', paddingVertical: 10}}>

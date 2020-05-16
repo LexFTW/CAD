@@ -37,11 +37,11 @@ export default class RegisterScreen extends Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     return(
       <SafeAreaView style={base.container}>
         <NavigationTop
             title={Resources.SINGUP_READER}
-            button={true}
             screen={'Login'}
         />
         <View>

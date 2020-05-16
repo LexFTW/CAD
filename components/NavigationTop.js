@@ -12,29 +12,14 @@ export default class NavigationTop extends React.Component {
   constructor(props) {
     super(props)
     this.title = props.title;
-    this.button = props.button;
     this.screen = props.screen;
   }
 
-  showButton() {
-    if (this.button) {
-      return (
-        <Button style={{position: 'absolute', bottom: 7, borderRadius: 0}} onPress={() => this.redirecTo()}>
-            <IconFontAwesome color="rgb(97,174,172)" size={14} name={'chevron-left'}/>
-        </Button>
-      )
-    }
-  }
-
-  redirecTo(){
-    this.props.navigation.navigate(this.screen)
-  }
-
   render() {
+    console.disableYellowBox = true;
     return (
       <View style={styles.container}>
         <Card style={styles.navigationTop}>
-          {this.showButton()}
           <Card.Title titleStyle={{color: 'white'}} title={this.title} style={styles.navigationTitle}/>
         </Card>
       </View>

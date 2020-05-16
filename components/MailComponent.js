@@ -27,6 +27,7 @@ export default class MailComponent extends React.Component{
   }
 
   render(){
+    console.disableYellowBox = true;
     return(
       <View>
         <IconButton

@@ -69,7 +69,6 @@ export default class UserScreen extends Component {
             <View style={styles.viewAvatar}>
               <Avatar.Text size={125} style={styles.avatar} label={this.state.user_title_profile} labelStyle={{padding: 10, fontSize: 45}} />
               <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
-              <Text style={styles.type}>{Resources.PROFILE_DIABETIS_TYPE} {this.state.diabetes_type}</Text>
             </View>
             <IconButton
               icon="logout"

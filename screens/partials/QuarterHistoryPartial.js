@@ -11,7 +11,7 @@ import Resources from './../../config/resources/resources';
 
 const firestore = firebase.firestore();
 
-export default class DailyHistoryPartial extends React.Component{
+export default class QuarterHistoryPartial extends React.Component{
 
   constructor(props){
     super(props);

@@ -13,6 +13,7 @@ const Resources = {
   READER_TITLE: 'Lector de Glucosa',
   READER_TEXT_BUTTON: 'Empezar Lectura',
   READER_HEADER: 'Lector',
+  SINGUP_READER: 'Registrar',
 
   PROFILE_HEADER: 'Perfil',
   PROFILE_SETTINGS_PROFILE: 'Perfil',

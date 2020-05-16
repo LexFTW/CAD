@@ -15,6 +15,7 @@ export default class ResultScreen extends React.Component{
   }
 
   render(){
+    console.disableYellowBox = true;
     return(
       <SafeAreaView style={{backgroundColor: '#fff'}}>
         <NavigationTop

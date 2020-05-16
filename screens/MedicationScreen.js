@@ -62,8 +62,8 @@ export default class MedicationScreen extends Component {
         this.setState({range_over_insulin: doc.data().RangeInsulinHypers});
         this.setState({range_under_insulin: doc.data().RangeInsulinHipos});
         this.setState({diabetes_type: doc.data().Type});
-        this.setState({render: true});
       }
+      this.setState({render: true});
     });
   }
 
@@ -101,7 +101,7 @@ export default class MedicationScreen extends Component {
     return <View>
       <View style={styles.containerComp}>
         <TextInputBox class={'col_2'} title={Resources.MEDICATION_GLUCOSE_INTERVAL_MAX} label={'interval_max'} value={this.state.interval_max} onChange={this.onChangeTextInput.bind(this)} />
-        <TextInputBox class={'col_2'} title={Resources.MEDICATION_GLUCOSE_INTERVAL_MAX} label={'interval_min'} value={this.state.interval_min} onChange={this.onChangeTextInput.bind(this)} />
+        <TextInputBox class={'col_2'} title={Resources.MEDICATION_GLUCOSE_INTERVAL_MIN} label={'interval_min'} value={this.state.interval_min} onChange={this.onChangeTextInput.bind(this)} />
       </View>
       <View style={styles.containerComp}>
         <TextInputBox class={'col_4'} title={Resources.MEDICATION_HC_BASE_BREKFAST} label={'hc_brekfast'} value={this.state.hc_brekfast} onChange={this.onChangeTextInput.bind(this)} />

@@ -107,6 +107,7 @@ export default class LoginScreen extends Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     return(
       <SafeAreaView style={base.container}>
         {this.currentRender()}

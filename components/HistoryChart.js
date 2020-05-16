@@ -10,6 +10,7 @@ export default class HistoryChart extends Component {
     }
 
     render() {
+        console.disableYellowBox = true;
         return (
             <ScrollView horizontal={true} style={{marginTop: 5}}>
                 <BarChart

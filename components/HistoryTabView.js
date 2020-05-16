@@ -104,6 +104,7 @@ export default class HistoryTabView extends React.Component{
   }
 
   render(){
+    console.disableYellowBox = true;
     return(
       <View>
         {this.renderTab()}

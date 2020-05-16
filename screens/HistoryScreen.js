@@ -169,6 +169,7 @@ export default class HistoryScreen extends React.Component{
   }
 
   render(){
+    console.disableYellowBox = true;
     return(
       <ScrollView>
         {this.loadingScreen()}

@@ -10,6 +10,7 @@ import NavigationTop from './../components/NavigationTop';
 export default class ReaderScreen extends Component {
 
   render(){
+    console.disableYellowBox = true;
     return (
       <SafeAreaView style={{
         flex: 1,

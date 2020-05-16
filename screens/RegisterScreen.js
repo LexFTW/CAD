@@ -50,7 +50,6 @@ export default class RegisterScreen extends Component {
               <View style={{marginTop: 20}}>
                 <TextInputRegisterNameAndEmail iconName={'user'} resources={Resources.LOGIN_USERNAME} textContentType={'username'} label={'userName'} value={this.state.userName} onChange={this.setStateFromInput.bind(this)} />
                 <TextInputRegisterNameAndEmail iconName={'user'} resources={Resources.LOGIN_EMAIL} textContentType={'emailAddress'} label={'email'} value={this.state.email} onChange={this.setStateFromInput.bind(this)} />
-                <TextInputRegisterNameAndEmail iconName={'user'} resources={Resources.LOGIN_EMAIL} textContentType={'emailAddress'} label={'type'} value={this.state.email} onChange={this.setStateFromInput.bind(this)} />
                 <TextInputRegisterPassword iconName={'lock'} resources={Resources.LOGIN_PASSWORD} textContentType={'none'} label={'password'} value={this.state.password} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
                 <TextInputRegisterPassword iconName={'lock'} resources={Resources.LOGIN_CONFPASSWORD} textContentType={'none'} label={'confPassword'} value={this.state.confPassword} onChange={this.setStateFromInput.bind(this)} showPassword={this.state.showPassword} />
               </View>

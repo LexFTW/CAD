@@ -26,7 +26,7 @@ export default class ReaderScreen extends Component {
             color={'#2069b2'}
             style={{backgroundColor: 'white', color: '#2069b2', shadowColor: '#000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5}}
             size={150}
-            onPress={() => this.props.navigation.navigate('ReaderScreenResult')}
+            onPress={() => this.props.navigation.navigate('Result')}
           />
         </View>
 

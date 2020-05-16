@@ -5,14 +5,12 @@ import LoginScreen from '../screens/LoginScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import ResultScreen from '../screens/ResultScreen';
 
 const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = 'Login';
 
 export default function MainNavigator({ navigation, route }) {
-  // Set the header title on the parent stack navigator depending on the
-  // currently active tab. Learn more in the documentation:
-  // https://reactnavigation.org/docs/en/screen-options-resolution.html
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
@@ -26,6 +24,7 @@ export default function MainNavigator({ navigation, route }) {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="History" component={HistoryScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
       </Stack.Navigator>
   );
 }

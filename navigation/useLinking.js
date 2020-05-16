@@ -8,12 +8,12 @@ export default function(containerRef) {
       Root: {
         path: 'root',
         screens: {
-          Home: 'home',
-          Profile: 'profile',
-          Settings: 'settings',
+          Home: 'Home',
+          Profile: 'Profile',
           Login: 'Login',
           History: 'History',
-          Register: 'Register'
+          Register: 'Register',
+          Result: 'Result',
         },
       },
     },

@@ -26,6 +26,17 @@ Once you have Node and NPM installed, from the terminal pointing to the root dir
 npm install
 ```
 
+After do this, you have to change tow files to correct functionality:
+ 
+ ```
+CAD-master\node_modules\@react-navigation\bottom-tabs\src\views\BottomTabBar.tsx
+ ```
+ ```
+CAD-master\node_modules\@firebase\firestore\dist\index.cjs.js
+ ```
+ 
+ The correct files are in folder 'substituation'.
+
 This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
 
 ## Testing

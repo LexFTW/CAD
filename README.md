@@ -37,7 +37,7 @@ CAD-master\node_modules\@react-navigation\bottom-tabs\src\views\BottomTabBar.tsx
 CAD-master\node_modules\@firebase\firestore\dist\index.cjs.js
  ```
  
- The correct files are in folder *substituation*.
+ The correct files are in folder *replace*.
 
 ## Testing
 For test the app, you should write the next sentence in the terminal:

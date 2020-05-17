@@ -1,12 +1,49 @@
-import * as React from 'react';
-import { Text, SafeAreaView, Alert, View  } from 'react-native';
-import  base  from '../constants/styles/Styles';
-import { IconButton, Colors, Divider, Avatar } from 'react-native-paper';
-import NavigationTop from './../components/NavigationTop';
-import Resources from './../config/resources/resources';
-import firebase from '../config/firebase';
+import React, {Component} from 'react';
 
-export default class UserScreen extends React.Component {
+import { ScrollView, Text, Alert, View } from 'react-native';
+import { IconButton, Colors, Avatar } from 'react-native-paper';
+
+import TabView from '../components/UserTabView';
+
+import  styles  from '../constants/styles/UserStyles';
+
+import Resources from './../config/resources/resources';
+
+import firebase from '../config/firebase';
+import 'firebase/firestore';
+
+const firestore = firebase.firestore();
+
+export default class UserScreen extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = ({
+      diabetes_type: "Unknown",
+      user_title_profile: "?",
+    });
+  }
+
+  async componentDidMount(){
+    const user = firebase.auth().currentUser;
+
+    await firestore
+    .collection('userParametersMedication')
+    .doc(user.uid)
+    .get()
+    .then(doc => {
+      if (doc.exists) {
+        this.setState({diabetes_type: doc.data().Type});
+      }
+    });
+
+    if(user.displayName != null){
+      this.setState({user_title_profile: user.displayName.charAt(0)});
+    }else{
+      this.setState({user_title_profile: '?'});
+    }
+  }
+
   onSignOut(){
     firebase
       .auth()
@@ -21,32 +58,28 @@ export default class UserScreen extends React.Component {
 
   render(){
     return (
-      <SafeAreaView>
-        <View style={{backgroundColor: '#2069b2', alignSelf: 'stretch', textAlign: 'center', height: 325}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 15, marginTop: 25,}}>
+      <ScrollView>
+        <View style={styles.containerHead}>
+          <View style={styles.viewHead}>
             <IconButton
-            icon="settings"
-            color={'#2069b2'}
-            size={20}
+              icon="settings"
+              color={"#2069b2"}
+              size={20}
             />
-            <View style={{justifyContent:'center', alignItems: 'center', marginTop: 15}}>
-              <Avatar.Text size={125} style={{borderWidth: 2, borderColor: 'white', padding: 5}} label="AM" labelStyle={{padding: 10, fontSize: 45}} />
-              <Text style={{color: 'white', fontSize: 22, marginTop: 10}}>Alexis Mengual</Text>
-              <Text style={{color: 'white', fontSize: 14, fontStyle: 'italic'}}>Diabetes Tipo 1</Text>
+            <View style={styles.viewAvatar}>
+              <Avatar.Text size={125} style={styles.avatar} label={this.state.user_title_profile} labelStyle={{padding: 10, fontSize: 45}} />
+              <Text style={styles.name}>{firebase.auth().currentUser.displayName}</Text>
             </View>
             <IconButton
-            icon="logout"
-            color={Colors.white}
-            size={20}
-            onPress={() => this.onSignOut()}
+              icon="logout"
+              color={Colors.white}
+              size={20}
+              onPress={() => this.onSignOut()}
             />
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around', padding: 15, marginTop: 25,}}>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_PROFILE}</Text>
-            <Text style={{textAlign: 'center', color: 'white', fontSize: 16}}>{Resources.PROFILE_SETTINGS_MEDICATION}</Text>
-          </View>
+          <TabView state={this.state}/>
         </View>
-      </SafeAreaView>
+      </ScrollView>
     );
   }
 }

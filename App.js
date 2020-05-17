@@ -17,26 +17,17 @@ export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const containerRef = React.useRef();
+  const isAuthentication = React.useState(false);
   const { getInitialState } = useLinking(containerRef);
 
-  // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHide();
-
-        // Load our initial navigation state
         setInitialNavigationState(await getInitialState());
-
-        // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-        });
-
+        loadFonts();
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
-        console.warn(e);
+        console.log(e);
       } finally {
         setLoadingComplete(true);
         SplashScreen.hide();
@@ -59,11 +50,19 @@ export default function App(props) {
             }}
           >
             <Stack.Screen name="Root" component={MainNavigator} />
+            <Stack.Screen name="SingUp" component={MainNavigator} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
     );
   }
+}
+
+async function loadFonts(){
+  await Font.loadAsync({
+    ...Ionicons.font,
+    'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+  });
 }
 
 const styles = StyleSheet.create({

@@ -1,34 +1,49 @@
-import * as React from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
-import { Avatar, Button, Card, Title, Colors } from 'react-native-paper';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Button, Card } from 'react-native-paper';
+import IconFontAwesome from '../components/TabBarIconFontAwesome';
 
-export default function NavigationTop(props) {
-  const styles = StyleSheet.create({
-    container: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      marginBottom: 250,
-    },
-    navigationTop:{
-      paddingTop: 20,
-      justifyContent: 'center',
-      marginBottom: 25,
-      backgroundColor: '#2069b2',
-      borderRadius: 0,
-    },
-    navigationTitle:{
-      textAlign: 'center',
-    }
-  });
+import { createStackNavigator } from '@react-navigation/stack';
 
-  return (
-    <View style={styles.container}>
-      <Card style={styles.navigationTop}>
-        <Card.Title titleStyle={{color: 'white'}} title={props.title} style={styles.navigationTitle}/>
-      </Card>
-    </View>
-  );
+const Stack = createStackNavigator();
+
+export default class NavigationTop extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.title = props.title;
+    this.screen = props.screen;
+  }
+
+  render() {
+    console.disableYellowBox = true;
+    return (
+      <View style={styles.container}>
+        <Card style={styles.navigationTop}>
+          <Card.Title titleStyle={{color: 'white'}} title={this.title} style={styles.navigationTitle}/>
+        </Card>
+      </View>
+    )
+  }
+
 }
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    marginBottom: 250,
+  },
+  navigationTop:{
+    backgroundColor: '#2069b2',
+    borderRadius: 0,
+    height: 65,
+  },
+  navigationTitle:{
+    position: 'absolute',
+    left: 40,
+    bottom: 0,
+  }
+});

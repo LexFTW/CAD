@@ -1,14 +1,4 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Platform,
-  Dimensions,
-  Alert
-} from 'react-native';
-import { Button, Colors } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -25,7 +15,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(178, 178, 178, 0.2)',
     color: 'gray',
   },
-
+  inputPassword: {
+    width: 300,
+    height: 40,
+    fontSize: 16,
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1.5,
+    borderColor: '#2069b2',
+    paddingLeft: 40,
+    backgroundColor: 'rgba(178, 178, 178, 0.2)',
+    color: 'gray',
+  },
   inputIcon: {
     position: 'absolute',
     top: 5,

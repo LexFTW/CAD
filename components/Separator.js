@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Platform,
-  Dimensions
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const STYLES = StyleSheet.create({
   separator: {

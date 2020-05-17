@@ -1,8 +1,8 @@
-  {
-  "dev": true,
-  "minify": false,
+{
   "hostType": "lan",
   "lanType": "ip",
-  "urlRandomness": "ze-kd9",
-  "https": true
+  "dev": true,
+  "minify": false,
+  "urlRandomness": null,
+  "https": false
 }

@@ -28,7 +28,7 @@ npm install
 
 This will cause all the packages and libraries necessary for the proper functioning of the application to be installed in the *node_modules* folder
 
-After do this, you have to change tow files to correct functionality:
+After do this, you have to change two files to correct functionality:
  
  ```
 CAD-master\node_modules\@react-navigation\bottom-tabs\src\views\BottomTabBar.tsx

@@ -26,3 +26,7 @@ coverage
 
 # Benchmarking
 benchmarks/graphs
+
+# Expo
+.expo/package-info.json
+.expo/settings.json

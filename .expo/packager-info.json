@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 12336,
+  "expoServerNgrokUrl": "https://mi-c6s.elussy99.cad.exp.direct",
+  "packagerNgrokUrl": "https://packager.mi-c6s.elussy99.cad.exp.direct",
+  "ngrokPid": 11340,
   "webpackServerPort": null
 }

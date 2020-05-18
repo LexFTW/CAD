@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "firestore-example",
-    "slug": "firestore-example",
+    "name": "DCA",
+    "slug": "dca",
     "platforms": [
       "ios",
       "android",
@@ -10,9 +10,9 @@
     "facebookScheme": "fb666200950884855",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,6 +24,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/LexFTW/CAD"
   }
 }

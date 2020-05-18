@@ -57,6 +57,10 @@ Once executed, a window will open in your default browser and you can select in 
 
 *To do it from Android or iOS, you will need to have the Expo app installed on your mobile or have an emulator on your computer*
 
+### Published App
+We have published our App on Expo, with Expo app, scan QR code and it will be installed on your mobile phone:
+https://expo.io/@elussy99/dca
+
 ## Built With
 * [ReactJS](https://reactjs.org/) - The web framework used
 * [ExpoCLI](https://expo.io/) - The web framework used for a compiler the app in Android, IPhone and Web.

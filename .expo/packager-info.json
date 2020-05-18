@@ -1,9 +1,10 @@
 {
-    "devToolsPort": 19002,
-    "expoServerPort": 19000,
-    "packagerPort": 19001,
-    "packagerPid": 15832,
-    "expoServerNgrokUrl": "https://ar-25m.anonymous.cad.exp.direct",
-    "packagerNgrokUrl": "https://packager.ar-25m.anonymous.cad.exp.direct",
-    "ngrokPid": 15300
-  }
+  "devToolsPort": 19002,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
+}
